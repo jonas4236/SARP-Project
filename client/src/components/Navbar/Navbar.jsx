@@ -23,12 +23,12 @@ const Navbar = () => {
                 Login
               </button>
             </Link>
-            <Link to={"/dashboard"}>
+            <Link to={"/add"}>
               <button
                 type="button"
                 class="text-white bg-red-600 hover:bg-red-900 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0  dark:focus:ring-blue-800 ml-4"
               >
-                Dashboard
+                บันทึกนักเรียน
               </button>
             </Link>
           </div>

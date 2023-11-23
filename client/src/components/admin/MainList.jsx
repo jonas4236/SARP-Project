@@ -4,7 +4,7 @@ import ListStudent from "./ListStudent";
 const MainList = () => {
   return (
     <>
-      <div className="p-8 bg-sky-500 bg-opacity-50 rounded-lg">
+      <div className="p-8 bg-[#8b4513] bg-opacity-50 rounded-lg">
         <div className="w-full flex justify-center">
           <span className="text-[24px] text-white">
             วิชา
@@ -18,7 +18,7 @@ const MainList = () => {
             รายชื่อนักเรียน
           </span>
           <span className="flex justify-center text-[24px] my-4 font-medium text-white">
-            ผู้ตรวจ:<span className="ml-2">TTTTTTTTTTTTTTTT</span>
+            ผู้ตรวจ:<span className="ml-2">อาจารย์ <span>นิพล แก้วเกิด</span></span>
           </span>
           <ListStudent />
         </div>

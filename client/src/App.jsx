@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import Admin from "./components/admin/Dashboard";
 import Login from "./components/Login";
 import Dashboard from "./components/admin/Dashboard";
+import DashboardAdmin from "./components/Added/DashboardAdmin";
 
 const Layout = () => {
   return (
@@ -31,8 +32,8 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/dashboard",
-        element: <Admin />,
+        path: "/add",
+        element: <DashboardAdmin />,
       },
       {
         path: "/schedule/:slug/:slug",

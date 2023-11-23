@@ -12,6 +12,8 @@ const Dashboard = () => {
             <span className="text-[36px] ml-4 text-sky-500 drop-shadow-lg font-bold">
               วันจันทร์
             </span>
+            <span className="text-[36px] ml-4 text-sky-500 drop-shadow-lg font-bold">ที่</span>
+            <span className="text-[36px] ml-4 text-sky-500 drop-shadow-lg font-bold">31/10/2023</span>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-8">
             <MainList />
