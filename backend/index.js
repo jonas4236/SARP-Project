@@ -42,7 +42,7 @@ app.get("/api/checklist", (req, res) => {
 });
 
 // ROUTE SINGLE CHECKLIST
-app.get("/api/checklist/:year/:month/:day", (req, res) => {
+app.get("/api/checklist/:day-:month-:year", (req, res) => {
   const { year, month, day } = req.params;
   const formattedDate = `${year}/${month}/${day}`;
   const sql = "SELECT * FROM checklist WHERE Date = ?";

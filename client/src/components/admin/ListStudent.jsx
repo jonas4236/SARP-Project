@@ -1,10 +1,10 @@
 import React from "react";
 import DetailsStudents from '../DetailsStudents'
 
-const ListStudent = () => {
+const ListStudent = ({ status }) => {
   return (
     <>
-     <DetailsStudents />
+     <DetailsStudents status={status} />
     </>
   );
 };
