@@ -15,10 +15,13 @@ const MainList = () => {
         </div>
         <div className="w-full">
           <span className="flex justify-center text-[24px] my-4 font-medium text-white">
-            รายชื่อนักเรียน
+            ผู้ตรวจ:
+            <span className="ml-2">
+              อาจารย์ <span>นิพล แก้วเกิด</span>
+            </span>
           </span>
           <span className="flex justify-center text-[24px] my-4 font-medium text-white">
-            ผู้ตรวจ:<span className="ml-2">อาจารย์ <span>นิพล แก้วเกิด</span></span>
+            รายชื่อนักเรียน
           </span>
           <ListStudent />
         </div>

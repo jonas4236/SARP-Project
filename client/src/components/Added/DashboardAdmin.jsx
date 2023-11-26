@@ -1,71 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListAdmin from "../admin/ListAdmin";
-
-const teachers = [
-  {
-    id: 1,
-    name: "none",
-  },
-  {
-    id: 2,
-    name: "นิพล แก้วเกิด",
-  },
-  {
-    id: 3,
-    name: "ศิวกร บุญอุ้ม",
-  },
-  {
-    id: 4,
-    name: "นิพล แก้วเกิด",
-  },
-  {
-    id: 5,
-    name: "นิพล แก้วเกิด",
-  },
-];
-
-const subjects = [
-  {
-    id: 1,
-    name: "30000-1101 ทักษะภาษาไทยเชิงวิชาชีพ",
-  },
-  {
-    id: 2,
-    name: "30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน",
-  },
-  {
-    id: 3,
-    name: "30000-1404 แคลคูลัส 1",
-  },
-  {
-    id: 4,
-    name: "30000-1501 ชีวิตกับสังคมไทย",
-  },
-  {
-    id: 5,
-    name: "30000-1608 กาออกกำลังกายเพื่อสุขภาพ",
-  },
-  {
-    id: 6,
-    name: "30000-2002 การใช้งานใมโครคอนโทรลเลอร์",
-  },
-  {
-    id: 7,
-    name: "30000-2004 ระบบเครือข่ายคอมพิวเตอร์",
-  },
-  {
-    id: 8,
-    name: "30000-2202 การวิเคราะห์และออกแบบระบบ",
-  },
-];
-
+import axios from "axios";
+import Api from "../../helpers/Api";
 
 const DashboardAdmin = () => {
-  const [teacher, setTeacher] = useState([])
-  const [subject, setSubject] = useState([])
-  
-    console.log("TeacherName: ", teacher)
-    console.log("SubjectName: ", subject)
+  const [teacher, setTeacher] = useState([]);
+  const [subject, setSubject] = useState([]);
+  const [date, setDate] = useState([]);
+
+  const [dataSubjects, setDataSubjects] = useState([]);
+  const [dataTeachers, setDataTeacher] = useState([]);
+
+  useEffect(() => {
+    const fetchSubjects = async () => {
+      try {
+        const res = await axios.get(`${Api}/subjects`);
+
+        setDataSubjects(res.data);
+      } catch (err) {
+        console.log("error: ", err);
+      }
+    };
+
+    fetchSubjects();
+  }, []);
+
+  useEffect(() => {
+    const fetchSubjects = async () => {
+      try {
+        const res = await axios.get(`${Api}/teachers`);
+
+        setDataTeacher(res.data);
+      } catch (err) {
+        console.log("error: ", err);
+      }
+    };
+
+    fetchSubjects();
+  }, []);
+
+  // console.log("DATA Subjects: ", dataSubjects);
+  // console.log("DATA Teachers: ", dataTeachers);
+
+  console.log("TeacherName: ", teacher);
+  console.log("SubjectName: ", subject);
+  console.log("Date: ", date);
   return (
     <>
       <div className="w-[1170px] mx-auto">
@@ -93,7 +72,12 @@ const DashboardAdmin = () => {
                   >
                     วันที่
                   </label>
-                  <input type="date" name="" id="date" />
+                  <input
+                    type="date"
+                    name=""
+                    id="date"
+                    onChange={(event) => setDate(event.target.value)}
+                  />
                 </div>
                 <div className="flex flex-col mt-4">
                   <label
@@ -102,9 +86,12 @@ const DashboardAdmin = () => {
                   >
                     วิชา
                   </label>
-                  <select id="teacherId" onChange={(event) => setSubject(event.target.value)}>
-                    {subjects.map((teach) => {
-                      return <option key={teach.id}>{teach.name}</option>;
+                  <select
+                    id="teacherId"
+                    onChange={(event) => setSubject(event.target.value)}
+                  >
+                    {dataSubjects.map((sub) => {
+                      return <option key={sub.subId}>{sub.sub_name}</option>;
                     })}
                   </select>
                 </div>
@@ -115,11 +102,19 @@ const DashboardAdmin = () => {
                   >
                     ผู้ตรวจ
                   </label>
-                  <select id="teacherId" onChange={(event) => setTeacher(event.target.value)}>
-                    {teachers.map((teach) => {
-                      return <option key={teach.id}>{teach.name}</option>;
+                  <select
+                    id="teacherId"
+                    onChange={(event) => setTeacher(event.target.value)}
+                  >
+                    {dataTeachers.map((teach) => {
+                      return <option key={teach.id}>{teach.teacher_name}</option>;
                     })}
                   </select>
+                </div>
+                <div className="w-full flex justify-center">
+                  <button className="bg-sky-500 text-white mt-4 w-full py-2 rounded-lg font-medium hover:bg-sky-600">
+                    บันทึก
+                  </button>
                 </div>
               </div>
             </div>

@@ -5,8 +5,6 @@ const ListStudent = () => {
   return (
     <>
      <DetailsStudents />
-     <DetailsStudents />
-     <DetailsStudents />
     </>
   );
 };

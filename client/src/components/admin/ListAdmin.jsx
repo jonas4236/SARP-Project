@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+import Api from "../../helpers/Api";
 
 const ListAdmin = () => {
   const [checkbox, setCheckbox] = useState([]);
@@ -12,54 +15,47 @@ const ListAdmin = () => {
   const [checkbox9, setCheckbox9] = useState([]);
   const [checkbox10, setCheckbox10] = useState([]);
 
-  console.log("test: ", checkbox);
-  console.log("test2: ", checkbox2);
-  console.log("test3: ", checkbox3);
-  console.log("test4: ", checkbox4);
-  console.log("test5: ", checkbox5);
-  console.log("test6: ", checkbox6);
-  console.log("test7: ", checkbox7);
-  console.log("test8: ", checkbox8);
-  console.log("test9: ", checkbox9);
-  console.log("test10: ", checkbox10);
+  const [students, setStudents] = useState([]);
 
-  const handleCheckBox = () => {};
+  // console.log("test: ", checkbox);
+  // console.log("test2: ", checkbox2);
+  // console.log("test3: ", checkbox3);
+  // console.log("test4: ", checkbox4);
+  // console.log("test5: ", checkbox5);
+  // console.log("test6: ", checkbox6);
+  // console.log("test7: ", checkbox7);
+  // console.log("test8: ", checkbox8);
+  // console.log("test9: ", checkbox9);
+  // console.log("test10: ", checkbox10);
+
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        const res = await axios.get(`${Api}/students`);
+
+        setStudents(res.data);
+      } catch (err) {
+        console.log("error: ", err);
+      }
+    };
+
+    fetchStudents();
+  }, []);
+
+  // console.log("DATA: ", students);
+
   return (
     <>
       <div className="my-2">
         <div className="flex">
           <div className="flex-[1]">
             <div className="flex flex-col mt-[17px]">
-              <span className="my-2 font-bold" value="1">
-                1.นายธนากร แสงมี
-              </span>
-              <span className="my-2 font-bold" value="2">
-                2.นายธนากร แสงมี
-              </span>
-              <span className="my-2 font-bold" value="3">
-                3.นายธนากร แสงมี
-              </span>
-              <span className="my-2 font-bold" value="4">
-                4.นายธนากร แสงมี
-              </span>
-              <span className="my-2 font-bold" value="5">
-                5.นายธนากร แสงมี
-              </span>
-              <span className="my-2 font-bold" value="6">
-                6.นายธนากร แสงมี
-              </span>
-              <span className="my-2 font-bold" value="7">
-                7.นายธนากร แสงมี
-              </span>
-              <span className="my-2 font-bold" value="8">
-                8.นายธนากร แสงมี
-              </span>
-              <span className="my-2 font-bold" value="9">
-                9.นายธนากร แสงมี
-              </span>
-              <span className="my-2 font-bold" value="10">
-                10.นายธนากร แสงมี
-              </span>
+              {students.map((stu) => (
+                <span className="my-2 font-bold" key={stu.stuId}>
+                  {stu.stuId}. {stu.stuName}
+                </span>
+              ))}
+            
             </div>
           </div>
           <div className="flex flex-[1] gap-2">
