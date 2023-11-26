@@ -17,16 +17,16 @@ const ListAdmin = () => {
 
   const [students, setStudents] = useState([]);
 
-  console.log("test: ", checkbox);
-  console.log("test2: ", checkbox2);
-  console.log("test3: ", checkbox3);
-  console.log("test4: ", checkbox4);
-  console.log("test5: ", checkbox5);
-  console.log("test6: ", checkbox6);
-  console.log("test7: ", checkbox7);
-  console.log("test8: ", checkbox8);
-  console.log("test9: ", checkbox9);
-  console.log("test10: ", checkbox10);
+  // console.log("test: ", checkbox);
+  // console.log("test2: ", checkbox2);
+  // console.log("test3: ", checkbox3);
+  // console.log("test4: ", checkbox4);
+  // console.log("test5: ", checkbox5);
+  // console.log("test6: ", checkbox6);
+  // console.log("test7: ", checkbox7);
+  // console.log("test8: ", checkbox8);
+  // console.log("test9: ", checkbox9);
+  // console.log("test10: ", checkbox10);
 
   useEffect(() => {
     const fetchStudents = async () => {

@@ -23,13 +23,18 @@ function calendar() {
     // const days = clickedDate.toISOString().slice(0, 2);
 
     window.location.href = `/schedule/${dayOfWeek}/${day}-${month}-${year}`;
+    // window.location.href = `/schedule/${dayOfWeek}/${year}/${month}/${day}`;
 
-    console.log("Day: ", day);
-    console.log("month: ", month);
-    console.log("year: ", year);
+    // console.log("Day: ", day);
+    // console.log("month: ", month);
+    // console.log("year: ", year);
 
-    console.log("TEST: ", dayOfWeek);
-    console.log("TEST2: ", formattedDate);
+    const DataDate = `${year}/${month}/${day}`;
+
+    console.log("DataDate: ", DataDate)
+
+    // console.log("TEST: ", dayOfWeek);
+    // console.log("TEST2: ", formattedDate);
 
     // console.log("days: ", days)
   };

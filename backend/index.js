@@ -13,10 +13,8 @@ if (db) {
   console.log("Database status: BAD");
 }
 
-// app.get("/", (req, res) => {
-//   res.json({ message: "Hello World"});
-// });
 
+// ROUTE ALL SUBJECTS
 app.get("/api/subjects", (req, res) => {
   const sql = "SELECT * FROM subjects";
   db.query(sql, (err, results) => {
@@ -25,8 +23,9 @@ app.get("/api/subjects", (req, res) => {
   });
 });
 
-app.get("/api/schedule/:weekday_id/12-12-1234", (req, res) => {
-  const { weekday_id } = req.params
+// ROUTE SINGLE DAY
+app.get("/api/schedule/:weekday_id", (req, res) => {
+  const { weekday_id } = req.params;
   const sql = "SELECT * FROM subjects WHERE weekday_id = ?";
   db.query(sql, [weekday_id], (err, results) => {
     if (err) console.err("Error querying database: ", err);
@@ -34,6 +33,7 @@ app.get("/api/schedule/:weekday_id/12-12-1234", (req, res) => {
   });
 });
 
+// ROUTE ALL CHECKLISTS
 app.get("/api/checklist", (req, res) => {
   const sql = "SELECT * FROM checklist";
   db.query(sql, (err, results) => {
@@ -42,6 +42,19 @@ app.get("/api/checklist", (req, res) => {
   });
 });
 
+// ROUTE SINGLE CHECKLIST
+app.get("/api/checklist/:year/:month/:day", (req, res) => {
+  const { year, month, day } = req.params;
+  const formattedDate = `${year}/${month}/${day}`;
+  const sql = "SELECT * FROM checklist WHERE Date = ?";
+  db.query(sql, [formattedDate], (err, results) => {
+    if (err) console.err("Error querying database: ", err);
+    res.json(results);
+  });
+});
+
+
+// ROUTE ALL STUDENTS
 app.get("/api/students", (req, res) => {
   const sql = "SELECT * FROM students";
   db.query(sql, (err, results) => {
@@ -50,6 +63,7 @@ app.get("/api/students", (req, res) => {
   });
 });
 
+// ROUTE ALL WEEKDAYS
 app.get("/api/weekday", (req, res) => {
   const sql = "SELECT * FROM weekday";
   db.query(sql, (err, results) => {
@@ -58,6 +72,7 @@ app.get("/api/weekday", (req, res) => {
   });
 });
 
+// ROUTE ALL TEACHERS
 app.get("/api/teachers", (req, res) => {
   const sql = "SELECT * FROM teachers";
   db.query(sql, (err, results) => {

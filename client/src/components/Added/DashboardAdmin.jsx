@@ -42,9 +42,19 @@ const DashboardAdmin = () => {
   // console.log("DATA Subjects: ", dataSubjects);
   // console.log("DATA Teachers: ", dataTeachers);
 
+  const PullDay = date.slice(8, 10);
+  const PullMonth = date.slice(5, 7);
+  const PullYear = date.slice(0, 4);
+
+  const formattedDMY = `${PullYear}/${PullMonth}/${PullDay}`
+
+  // console.log("PullWEEK: ", PullDay)
+  // console.log("PullMonth: ", PullMonth)
+  // console.log("PullYear: ", PullYear)
+
   console.log("TeacherName: ", teacher);
   console.log("SubjectName: ", subject);
-  console.log("Date: ", date);
+  console.log("Date: ", formattedDMY);
   return (
     <>
       <div className="w-[1170px] mx-auto">

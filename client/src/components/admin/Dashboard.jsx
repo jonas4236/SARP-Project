@@ -5,8 +5,18 @@ import { useParams } from "react-router-dom";
 
 const Dashboard = () => {
   const { slugWEEK } = useParams()
+  const { slugDMY } = useParams()
 
   console.log("slugWEEK: ",slugWEEK)
+  console.log("slugDMY: ",slugDMY)
+
+  const PullDay = slugDMY.slice(0, 2);
+  const PullMonth = slugDMY.slice(3, 5);
+  const PullYear = slugDMY.slice(6, 10);
+
+  console.log("PullWEEK: ", PullDay)
+  console.log("PullMonth: ", PullMonth)
+  console.log("PullYear: ", PullYear)
   return (
     <>
       <div className="py-16">
@@ -17,7 +27,7 @@ const Dashboard = () => {
               {slugWEEK}
             </span>
             <span className="text-[36px] ml-4 text-sky-500 drop-shadow-lg font-bold">ที่</span>
-            <span className="text-[36px] ml-4 text-sky-500 drop-shadow-lg font-bold">31/10/2023</span>
+            <span className="text-[36px] ml-4 text-sky-500 drop-shadow-lg font-bold">{`${PullDay}/${PullMonth}/${PullYear}`}</span>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-8">
             <MainList />
