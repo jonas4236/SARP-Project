@@ -25,7 +25,7 @@ app.get("/api/subjects", (req, res) => {
   });
 });
 
-app.get("/api/subjects/:weekday_id/12-12-1234", (req, res) => {
+app.get("/api/schedule/:weekday_id/12-12-1234", (req, res) => {
   const { weekday_id } = req.params
   const sql = "SELECT * FROM subjects WHERE weekday_id = ?";
   db.query(sql, [weekday_id], (err, results) => {

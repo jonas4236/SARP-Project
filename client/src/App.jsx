@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         element: <DashboardAdmin />,
       },
       {
-        path: "/schedule/:slug/:slug",
+        path: "/schedule/:slugWEEK/:slugDMY",
         element: <Dashboard />,
       },
       {
