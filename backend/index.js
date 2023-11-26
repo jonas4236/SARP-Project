@@ -13,7 +13,6 @@ if (db) {
   console.log("Database status: BAD");
 }
 
-
 // ROUTE ALL SUBJECTS
 app.get("/api/subjects", (req, res) => {
   const sql = "SELECT * FROM subjects";
@@ -53,7 +52,6 @@ app.get("/api/checklist/:year/:month/:day", (req, res) => {
   });
 });
 
-
 // ROUTE ALL STUDENTS
 app.get("/api/students", (req, res) => {
   const sql = "SELECT * FROM students";
@@ -79,6 +77,49 @@ app.get("/api/teachers", (req, res) => {
     if (err) console.err("Error querying database: ", err);
     res.json(results);
   });
+});
+
+// ROUTE ADD STUDENT TO DATABASE
+app.post("/api/create", (req, res) => {
+  const Date = req.body.Date;
+  const teacher = req.body.teacher;
+  const subject = req.body.subject
+  const Stu1 = req.body.Stu1;
+  const Stu2 = req.body.Stu2;
+  const Stu3 = req.body.Stu3;
+  const Stu4 = req.body.Stu4;
+  const Stu5 = req.body.Stu5;
+  const Stu6 = req.body.Stu6;
+  const Stu7 = req.body.Stu7;
+  const Stu8 = req.body.Stu8;
+  const Stu9 = req.body.Stu9;
+  const Stu10 = req.body.Stu10;
+
+  const sql =
+    "INSERT INTO checklist (Date,teacher, subject, Stu1, Stu2, Stu3, Stu4, Stu5, Stu6, Stu7, Stu8, Stu9, Stu10) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+  db.query(
+    sql,
+    [
+      Date,
+      teacher,
+      subject,
+      Stu1,
+      Stu2,
+      Stu3,
+      Stu4,
+      Stu5,
+      Stu6,
+      Stu7,
+      Stu8,
+      Stu9,
+      Stu10,
+    ],
+    (err, results) => {
+      if (err) console.log("Error adding checklist: ", err);
+      res.json(results);
+    }
+  );
 });
 
 app.listen(port, () => {

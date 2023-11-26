@@ -4,29 +4,18 @@ import axios from "axios";
 import Api from "../../helpers/Api";
 
 const ListAdmin = () => {
-  const [checkbox, setCheckbox] = useState([]);
-  const [checkbox2, setCheckbox2] = useState([]);
-  const [checkbox3, setCheckbox3] = useState([]);
-  const [checkbox4, setCheckbox4] = useState([]);
-  const [checkbox5, setCheckbox5] = useState([]);
-  const [checkbox6, setCheckbox6] = useState([]);
-  const [checkbox7, setCheckbox7] = useState([]);
-  const [checkbox8, setCheckbox8] = useState([]);
-  const [checkbox9, setCheckbox9] = useState([]);
-  const [checkbox10, setCheckbox10] = useState([]);
+  const [Stu, setStu] = useState([]);
+  const [Stu2, setStu2] = useState([]);
+  const [Stu3, setStu3] = useState([]);
+  const [Stu4, setStu4] = useState([]);
+  const [Stu5, setStu5] = useState([]);
+  const [Stu6, setStu6] = useState([]);
+  const [Stu7, setStu7] = useState([]);
+  const [Stu8, setStu8] = useState([]);
+  const [Stu9, setStu9] = useState([]);
+  const [Stu10, setStu10] = useState([]);
 
   const [students, setStudents] = useState([]);
-
-  // console.log("test: ", checkbox);
-  // console.log("test2: ", checkbox2);
-  // console.log("test3: ", checkbox3);
-  // console.log("test4: ", checkbox4);
-  // console.log("test5: ", checkbox5);
-  // console.log("test6: ", checkbox6);
-  // console.log("test7: ", checkbox7);
-  // console.log("test8: ", checkbox8);
-  // console.log("test9: ", checkbox9);
-  // console.log("test10: ", checkbox10);
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -42,7 +31,24 @@ const ListAdmin = () => {
     fetchStudents();
   }, []);
 
-  // console.log("DATA: ", students);
+    const AddedCheckList = async () => {
+      try {
+        await axios.post(`${Api}/create`, {
+          Stu1: Stu,
+          Stu2: Stu2,
+          Stu3: Stu3,
+          Stu4: Stu4,
+          Stu5: Stu5,
+          Stu6: Stu6,
+          Stu7: Stu7,
+          Stu8: Stu8,
+          Stu9: Stu9,
+          Stu10: Stu10,
+        });
+      } catch (err) {
+        console.log("Error: ", err);
+      }
+    };
 
   return (
     <>
@@ -55,7 +61,6 @@ const ListAdmin = () => {
                   {stu.stuId}. {stu.stuName}
                 </span>
               ))}
-            
             </div>
           </div>
           <div className="flex flex-[1] gap-2">
@@ -68,7 +73,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="1"
                   id="1"
-                  onClick={() => setCheckbox(1)}
+                  onClick={() => setStu(1)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -76,7 +81,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="2"
                   id=""
-                  onClick={() => setCheckbox2(1)}
+                  onClick={() => setStu2(1)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -84,7 +89,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="3"
                   id=""
-                  onClick={() => setCheckbox3(1)}
+                  onClick={() => setStu3(1)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -92,7 +97,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="4"
                   id=""
-                  onClick={() => setCheckbox4(1)}
+                  onClick={() => setStu4(1)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -100,7 +105,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="5"
                   id=""
-                  onClick={() => setCheckbox5(1)}
+                  onClick={() => setStu5(1)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -108,7 +113,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="6"
                   id=""
-                  onClick={() => setCheckbox6(1)}
+                  onClick={() => setStu6(1)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -116,7 +121,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="7"
                   id=""
-                  onClick={() => setCheckbox7(1)}
+                  onClick={() => setStu7(1)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -124,7 +129,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="8"
                   id=""
-                  onClick={() => setCheckbox8(1)}
+                  onClick={() => setStu8(1)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -132,7 +137,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="9"
                   id=""
-                  onClick={() => setCheckbox9(1)}
+                  onClick={() => setStu9(1)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -140,7 +145,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="10"
                   id=""
-                  onClick={() => setCheckbox10(1)}
+                  onClick={() => setStu10(1)}
                 />
               </div>
             </div>
@@ -153,7 +158,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="1"
                   id=""
-                  onClick={() => setCheckbox(2)}
+                  onClick={() => setStu(2)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -161,7 +166,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="2"
                   id=""
-                  onClick={() => setCheckbox2(2)}
+                  onClick={() => setStu2(2)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -169,7 +174,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="3"
                   id=""
-                  onClick={() => setCheckbox3(2)}
+                  onClick={() => setStu3(2)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -177,7 +182,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="4"
                   id=""
-                  onClick={() => setCheckbox4(2)}
+                  onClick={() => setStu4(2)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -185,7 +190,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="5"
                   id=""
-                  onClick={() => setCheckbox5(2)}
+                  onClick={() => setStu5(2)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -193,7 +198,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="6"
                   id=""
-                  onClick={() => setCheckbox6(2)}
+                  onClick={() => setStu6(2)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -201,7 +206,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="7"
                   id=""
-                  onClick={() => setCheckbox7(2)}
+                  onClick={() => setStu7(2)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -209,7 +214,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="8"
                   id=""
-                  onClick={() => setCheckbox8(2)}
+                  onClick={() => setStu8(2)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -217,7 +222,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="9"
                   id=""
-                  onClick={() => setCheckbox9(2)}
+                  onClick={() => setStu9(2)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -225,7 +230,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="10"
                   id=""
-                  onClick={() => setCheckbox10(2)}
+                  onClick={() => setStu10(2)}
                 />
               </div>
             </div>
@@ -238,7 +243,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="1"
                   id=""
-                  onClick={() => setCheckbox(3)}
+                  onClick={() => setStu(3)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -246,7 +251,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="3"
                   id=""
-                  onClick={() => setCheckbox2(3)}
+                  onClick={() => setStu2(3)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -254,7 +259,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="3"
                   id=""
-                  onClick={() => setCheckbox3(3)}
+                  onClick={() => setStu3(3)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -262,7 +267,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="4"
                   id=""
-                  onClick={() => setCheckbox4(3)}
+                  onClick={() => setStu4(3)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -270,7 +275,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="5"
                   id=""
-                  onClick={() => setCheckbox5(3)}
+                  onClick={() => setStu5(3)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -278,7 +283,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="6"
                   id=""
-                  onClick={() => setCheckbox6(3)}
+                  onClick={() => setStu6(3)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -286,7 +291,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="7"
                   id=""
-                  onClick={() => setCheckbox7(3)}
+                  onClick={() => setStu7(3)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -294,7 +299,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="8"
                   id=""
-                  onClick={() => setCheckbox8(3)}
+                  onClick={() => setStu8(3)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -302,7 +307,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="9"
                   id=""
-                  onClick={() => setCheckbox9(3)}
+                  onClick={() => setStu9(3)}
                 />
               </div>
               <div className="flex justify-center mt-6">
@@ -310,7 +315,7 @@ const ListAdmin = () => {
                   type="checkbox"
                   name="10"
                   id=""
-                  onClick={() => setCheckbox10(3)}
+                  onClick={() => setStu10(3)}
                 />
               </div>
             </div>
