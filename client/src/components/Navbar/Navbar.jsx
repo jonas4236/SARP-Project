@@ -14,7 +14,7 @@ const Navbar = () => {
               alt="SARP_LOGO"
             />
           </Link>
-          <div class="flex md:order-2">
+          <div class="flex">
             <Link to={"/login"}>
               <button
                 type="button"
