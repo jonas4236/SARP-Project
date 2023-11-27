@@ -2,71 +2,104 @@ import React from "react";
 import Status from "./Status";
 
 const DetailsStudents = ({ status }) => {
+  const handleStatus = (val) => {
+    switch (val) {
+      case 1:
+        return <span className="text-green-500">มาเรียนปกติ</span>;
+      case 2:
+        return <span className="text-yellow-500">ลา</span>;
+      case 3:
+        return <span className="text-red-500">ขาด</span>;
+      default:
+        return "ยังไม่มีสถานะ";
+    }
+  };
+
   return (
     <>
-      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg">
+      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
         <span className="text-sky-600 font-bold">1. นายกฤษนัย โถมสันเทียะ</span>{" "}
         | <span className="text-red-500">สถานะ</span>
         <span className="mx-2">:</span>
-        <span className="text-green-500 font-medium">{status?.Stu1}</span>
+        <span className="text-green-500 font-medium">
+          {handleStatus(status?.Stu1)}
+        </span>
       </li>
-      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg">
+      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
         <span className="text-sky-600 font-bold">2. นายธนากร แสงมี</span> |{" "}
         <span className="text-red-500">สถานะ</span>
         <span className="mx-2">:</span>
-        <span className="text-green-500 font-medium">{status?.Stu2}</span>
+        <span className="text-green-500 font-medium">
+          {handleStatus(status?.Stu2)}
+        </span>
       </li>
-      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg">
+      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
         <span className="text-sky-600 font-bold">
           3. นายนันทวัฒน์ นันทวิสาร
         </span>{" "}
         | <span className="text-red-500">สถานะ</span>
         <span className="mx-2">:</span>
-        <span className="text-green-500 font-medium">{status?.Stu3}</span>
+        <span className="text-green-500 font-medium">
+          {handleStatus(status?.Stu3)}
+        </span>
       </li>
-      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg">
+      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
         <span className="text-sky-600 font-bold">
           4. นางสาวนิชาพร ชื่นกลิ่น
         </span>{" "}
         | <span className="text-red-500">สถานะ</span>
         <span className="mx-2">:</span>
-        <span className="text-green-500 font-medium">{status?.Stu4}</span>
+        <span className="text-green-500 font-medium">
+          {handleStatus(status?.Stu4)}
+        </span>
       </li>
-      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg">
+      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
         <span className="text-sky-600 font-bold">5. นายวุฒธิพงษ์ ยันพิมาย</span>{" "}
         | <span className="text-red-500">สถานะ</span>
         <span className="mx-2">:</span>
-        <span className="text-green-500 font-medium">{status?.Stu5}</span>
+        <span className="text-green-500 font-medium">
+          {handleStatus(status?.Stu5)}
+        </span>
       </li>
-      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg">
+      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
         <span className="text-sky-600 font-bold">6. นางสาวสุชญา พงษ์แพทย์</span>{" "}
         | <span className="text-red-500">สถานะ</span>
         <span className="mx-2">:</span>
-        <span className="text-green-500 font-medium">{status?.Stu6}</span>
+        <span className="text-green-500 font-medium">
+          {handleStatus(status?.Stu6)}
+        </span>
       </li>
-      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg">
+      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
         <span className="text-sky-600 font-bold">7. นายเอกวุฒิ ละมุดเทศ</span> |{" "}
         <span className="text-red-500">สถานะ</span>
         <span className="mx-2">:</span>
-        <span className="text-green-500 font-medium">{status?.Stu7}</span>
+        <span className="text-green-500 font-medium">
+          {handleStatus(status?.Stu7)}
+        </span>
       </li>
-      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg">
+      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
         <span className="text-sky-600 font-bold">8. นางสาวกฤติยา จันโลมา</span>{" "}
         | <span className="text-red-500">สถานะ</span>
         <span className="mx-2">:</span>
-        <span className="text-green-500 font-medium">{status?.Stu8}</span>
+        <span className="text-green-500 font-medium">
+          {handleStatus(status?.Stu8)}
+        </span>
       </li>
-      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg">
+      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
         <span className="text-sky-600 font-bold">9. นายถิระพงศ์ ทิพยมลฑล</span>{" "}
         | <span className="text-red-500">สถานะ</span>
         <span className="mx-2">:</span>
-        <span className="text-green-500 font-medium">{status?.Stu9}</span>
+        <span className="text-green-500 font-medium">
+          {handleStatus(status?.Stu9)}
+        </span>
       </li>
-      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg">
+      <li className="my-2 text-[18px] bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
         <span className="text-sky-600 font-bold">10. นายธนกฤต แดงพยนต์</span> |{" "}
         <span className="text-red-500">สถานะ</span>
         <span className="mx-2">:</span>
-        <span className="text-green-500 font-medium">{status?.Stu10}</span>
+        <span className="text-green-500 font-medium">
+          {handleStatus(status?.Stu10)}
+        </span>
       </li>
     </>
   );

@@ -63,12 +63,12 @@ const Dashboard = () => {
       <div className="py-16">
         <div className="w-[1170px] mx-auto">
           <div className="flex w-full justify-center">
-            <span className="text-[36px]">ตารางเรียน</span>
-            <span className="text-[36px] ml-4 text-sky-500 drop-shadow-lg font-bold">
+            <span className="text-[36px] text-sky-700 drop-shadow-lg font-bold">ตารางเรียน</span>
+            <span className="text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">
               {slugWEEK}
             </span>
-            <span className="text-[36px] ml-4 text-sky-500 drop-shadow-lg font-bold">ที่</span>
-            <span className="text-[36px] ml-4 text-sky-500 drop-shadow-lg font-bold">{`${PullDay}/${PullMonth}/${PullYear}`}</span>
+            <span className="text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">ที่</span>
+            <span className="text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">{`${PullDay}/${PullMonth}/${PullYear}`}</span>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-8">
             <MainList data={checklist} />

@@ -113,7 +113,7 @@ const DashboardAdmin = () => {
                   <span>รายชื่อนักเรียน</span>
                 </div>
                 <div className="">
-                  {/* <ListAdmin /> */}/{" "}
+                  {/* <ListAdmin /> */}{" "}
                   <div className="my-2">
                     <div className="flex">
                       <div className="flex-[1]">
