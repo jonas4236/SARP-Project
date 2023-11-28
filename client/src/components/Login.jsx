@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import Api from "../helpers/Api";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  axios.defaults.withCredentials = true;
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSummit = (e) => {
+    e.preventDefault();
+
+    axios.post(`${Api}/login`, { email, password }).then((result) => {
+      console.log("result: ", result);
+      if (result.data.status === "success") {
+        navigate("/");
+      } else {
+        alert("Incorrect email or password! Please try again.");
+      }
+    });
+  };
   return (
     <>
       <div className="h-[80vh] w-[1170px] rounded-lg my-16 mx-auto bg-[url('../../public/images/bg-login.png')] bg-no-repeat">
@@ -20,12 +41,17 @@ const Login = () => {
 
                   <div className="mt-4">
                     <div className="">
-                      <form className="flex flex-col px-24">
-                        <label htmlFor="username">Username</label>
+                      <form
+                        onSubmit={handleSummit}
+                        className="flex flex-col px-24"
+                      >
+                        <label htmlFor="email">Email</label>
                         <input
                           className="px-4 rounded-lg"
                           type="text"
-                          placeholder="username"
+                          placeholder="email"
+                          onChange={(event) => setEmail(event.target.value)}
+                          required
                         />
                         <label className="mt-2" htmlFor="password">
                           Password
@@ -34,6 +60,8 @@ const Login = () => {
                           className="px-4 rounded-lg"
                           type="password"
                           placeholder="password"
+                          onChange={(event) => setPassword(event.target.value)}
+                          required
                         />
                         <button className="mt-4 py-2 bg-sky-600 text-white rounded-lg">
                           LOGIN

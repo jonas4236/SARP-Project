@@ -1,17 +1,47 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./database");
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
 const port = 4444;
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    methods: ["POST, GET"],
+    credentials: true,
+  })
+);
 app.use(express.json());
+app.use(cookieParser());
 
 if (db) {
   console.log("Database status: GOOD");
 } else {
   console.log("Database status: BAD");
 }
+
+const verifyUser = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.json({ Error: "Your are not authenticated" });
+  } else {
+    jwt.verify(token, "jwt-secret-key"),
+      (err, decoded) => {
+        if (err) {
+          return res.json({ Error: "Token is not ok" });
+        } else {
+          req.username = decoded.username;
+          next();
+        }
+      };
+  }
+};
+
+app.get("/", verifyUser, (req, res) => {
+  return res.json({ Status: "Success", username: req.username });
+});
 
 // ROUTE ALL SUBJECTS
 app.get("/api/subjects", (req, res) => {
@@ -83,7 +113,7 @@ app.get("/api/teachers", (req, res) => {
 app.post("/api/create", (req, res) => {
   const Date = req.body.Date;
   const teacher = req.body.teacher;
-  const subject = req.body.subject
+  const subject = req.body.subject;
   const Stu1 = req.body.Stu1;
   const Stu2 = req.body.Stu2;
   const Stu3 = req.body.Stu3;
@@ -120,6 +150,30 @@ app.post("/api/create", (req, res) => {
       res.json(results);
     }
   );
+});
+
+app.post("/api/login", (req, res) => {
+  const { email, password } = req.body;
+
+  const sql = "SELECT * FROM staff WHERE email = ?";
+
+  db.query(sql, [email], (err, results) => {
+    if (err) return res.json({ Error: "login failed to server!" });
+    if (results.length === 0) {
+      return res.json({ Error: "Invalid email or password." });
+    }
+
+    if (password === results[0].password) {
+      const username = results[0].username;
+      const token = jwt.sign({ username }, "jwt-secret-key", {
+        expiresIn: "1h",
+      });
+      res.cookie("ac-token", token);
+      return res.json({ status: "success" });
+    } else {
+      return res.json({ error: "Invalid email or password!" });
+    }
+  });
 });
 
 app.listen(port, () => {

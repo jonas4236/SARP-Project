@@ -6,8 +6,8 @@ import axios from "axios";
 import Api from "../../helpers/Api";
 
 const Dashboard = () => {
-  const { slugWEEK } = useParams()
-  const { slugDMY } = useParams()
+  const { slugWEEK } = useParams();
+  const { slugDMY } = useParams();
 
   // console.log("slugWEEK: ",slugWEEK)
   // console.log("slugDMY: ",slugDMY)
@@ -23,7 +23,7 @@ const Dashboard = () => {
   const [students, setStudents] = useState([]);
   const [checklist, setChecklist] = useState([]);
 
-  console.log("SLUG: ", checklist)
+  console.log("SLUG: ", checklist);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,7 +47,7 @@ const Dashboard = () => {
         const res = await axios.get(`${Api}/checklist/${slugDMY}`);
 
         setChecklist(res.data);
-        console.log("SLUG: ", checklist)
+        console.log("SLUG: ", checklist);
       } catch (err) {
         console.log("error: ", err);
       }
@@ -56,21 +56,31 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  console.log("TEST: ", checklist)
+  console.log("TEST: ", checklist);
 
   return (
     <>
       <div className="py-16">
-        <div className="w-[1170px] mx-auto">
-          <div className="flex w-full justify-center">
-            <span className="text-[36px] text-sky-700 drop-shadow-lg font-bold">ตารางเรียน</span>
+        <div className="w-[1170px] flex flex-wrap justify-center mx-auto">
+          <div className="flex lg:w-full md:w-full justify-center">
+            <span className="text-[36px] text-sky-700 drop-shadow-lg font-bold flex flex-wrap ml-16">
+              ตารางเรียน
+            </span>
             <span className="text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">
               {slugWEEK}
             </span>
-            <span className="text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">ที่</span>
+            <span className="text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">
+              ที่
+            </span>
             <span className="text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">{`${PullDay}/${PullMonth}/${PullYear}`}</span>
           </div>
-          <div className="mt-8 grid grid-cols-2 gap-8">
+          <div
+            className={`mt-8 grid ${
+              checklist.length === 1
+                ? "grid-cols-1"
+                : "md:grid-cols-1 xl:grid-cols-2"
+            } gap-8`}
+          >
             <MainList data={checklist} />
           </div>
         </div>
