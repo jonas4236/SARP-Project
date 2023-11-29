@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Api from "../helpers/Api";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   axios.defaults.withCredentials = true;
@@ -15,9 +16,18 @@ const Login = () => {
 
     axios.post(`${Api}/login`, { email, password }).then((result) => {
       if (result.data.status === "success") {
+        Swal.fire({
+          title: "Login successfully!",
+          text: "you can add the schedule students now!",
+          icon: "success",
+        });
         navigate("/");
       } else {
-        alert("Incorrect email or password! Please try again.");
+        // alert("Incorrect email or password! Please try again.");
+        Swal.fire({
+          text: "Incorrect email or password! Please try again.",
+          icon: "error",
+        });
       }
     });
   };

@@ -170,7 +170,7 @@ app.post("/api/login", (req, res) => {
       res.cookie("ac-token", token);
       return res.json({ status: "success" });
     } else {
-      return res.status(400).json({ error: "Invalid email or password!" });
+      return res.json({ error: "Invalid email or password!" });
     }
   });
 });
