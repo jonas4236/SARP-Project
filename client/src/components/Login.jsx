@@ -14,7 +14,6 @@ const Login = () => {
     e.preventDefault();
 
     axios.post(`${Api}/login`, { email, password }).then((result) => {
-      console.log("result: ", result);
       if (result.data.status === "success") {
         navigate("/");
       } else {
@@ -22,6 +21,7 @@ const Login = () => {
       }
     });
   };
+
   return (
     <>
       <div className="h-[80vh] w-[1170px] rounded-lg my-16 mx-auto bg-[url('../../public/images/bg-login.png')] bg-no-repeat">

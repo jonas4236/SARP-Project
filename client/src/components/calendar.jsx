@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Fullcalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import axios from "axios";
 
 function calendar() {
   const handleDateClick = (arg) => {
@@ -31,7 +32,7 @@ function calendar() {
 
     const DataDate = `${year}/${month}/${day}`;
 
-    console.log("DataDate: ", DataDate)
+    // console.log("DataDate: ", DataDate)
 
     // console.log("TEST: ", dayOfWeek);
     // console.log("TEST2: ", formattedDate);

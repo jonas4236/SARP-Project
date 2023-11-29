@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LOGO from "../../../public/images/SARP-LOGO.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Api from "../../helpers/Api";
 
 const Navbar = () => {
+  const [auth, setAuth] = useState(false);
+  const [message, setMessage] = useState("");
+  const [name, setName] = useState("");
+  const navigate = useNavigate();
+
+  axios.defaults.withCredentials = true;
+  useEffect(() => {
+    axios.get(`http://localhost:4444`).then((res) => {
+      if (res.data.status === "success") {
+        setAuth(true);
+        setName(res.data.username);
+      } else {
+        setAuth(false);
+        setMessage(res.data.error || "Authentication failed");
+      }
+    });
+  }, []);
+
+  const handleDelete = () => {
+    axios
+      .get(`${Api}/logout`)
+      .then((res) => {
+        location.reload(true);
+      })
+      .catch((err) => console.log("error logout: ", err));
+  };
+
+  console.log("SECURE: ", auth);
+  console.log("Message: ", message);
+  console.log("Name: ", name);
+
   return (
     <>
       <nav class="bg-white dark:bg-gray-900 w-full border-b border-gray-200 dark:border-gray-600">
@@ -15,22 +48,34 @@ const Navbar = () => {
             />
           </Link>
           <div class="flex md:order-2">
-            <Link to={"/login"}>
-              <button
-                type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600"
-              >
-                Login
-              </button>
-            </Link>
-            <Link to={"/add"}>
-              <button
-                type="button"
-                class="text-white bg-red-600 hover:bg-red-900 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0  dark:focus:ring-blue-800 ml-4"
-              >
-                บันทึกนักเรียน
-              </button>
-            </Link>
+            {auth ? (
+              <>
+                <button
+                  type="button"
+                  class="text-white bg-red-500 hover:bg-red-700  focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600"
+                  onClick={handleDelete}
+                >
+                  Logout
+                </button>
+                <Link to={"/add"}>
+                  <button
+                    type="button"
+                    class="text-white bg-green-500 hover:bg-green-600 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0  dark:focus:ring-blue-800 ml-4"
+                  >
+                    บันทึกนักเรียน
+                  </button>
+                </Link>
+              </>
+            ) : (
+              <Link to={"/login"}>
+                <button
+                  type="button"
+                  class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600"
+                >
+                  Login
+                </button>
+              </Link>
+            )}
           </div>
           <div
             class="items-center justify-between w-full md:flex md:w-auto md:order-1"

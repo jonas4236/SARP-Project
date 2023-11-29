@@ -94,9 +94,9 @@ const DashboardAdmin = () => {
     }
   };
 
-  console.log("TeacherName: ", teacher);
-  console.log("SubjectName: ", subject);
-  console.log("Date: ", formattedDMY);
+  // console.log("TeacherName: ", teacher);
+  // console.log("SubjectName: ", subject);
+  // console.log("Date: ", formattedDMY);
   return (
     <>
       <div className="w-[1170px] mx-auto">

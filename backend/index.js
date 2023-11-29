@@ -9,7 +9,7 @@ const app = express();
 app.use(
   cors({
     origin: ["http://localhost:5173"],
-    methods: ["POST, GET"],
+    methods: ["POST", "GET"],
     credentials: true,
   })
 );
@@ -25,22 +25,21 @@ if (db) {
 const verifyUser = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
-    return res.json({ Error: "Your are not authenticated" });
+    return res.json({ Error: "You are not authenticated" });
   } else {
-    jwt.verify(token, "jwt-secret-key"),
-      (err, decoded) => {
-        if (err) {
-          return res.json({ Error: "Token is not ok" });
-        } else {
-          req.username = decoded.username;
-          next();
-        }
-      };
+    jwt.verify(token, "jwt-secret-key", (err, decoded) => {
+      if (err) {
+        return res.json({ Error: "Token is not valid" });
+      } else {
+        req.username = decoded.username;
+        next();
+      }
+    });
   }
 };
 
 app.get("/", verifyUser, (req, res) => {
-  return res.json({ Status: "Success", username: req.username });
+  return res.json({ status: "success", username: req.username });
 });
 
 // ROUTE ALL SUBJECTS
@@ -171,9 +170,14 @@ app.post("/api/login", (req, res) => {
       res.cookie("ac-token", token);
       return res.json({ status: "success" });
     } else {
-      return res.json({ error: "Invalid email or password!" });
+      return res.status(400).json({ error: "Invalid email or password!" });
     }
   });
+});
+
+app.get("/api/logout", (req, res) => {
+  res.clearCookie("ac-token");
+  return res.status(200).json({ status: "success" });
 });
 
 app.listen(port, () => {

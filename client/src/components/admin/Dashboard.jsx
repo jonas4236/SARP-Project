@@ -23,7 +23,7 @@ const Dashboard = () => {
   const [students, setStudents] = useState([]);
   const [checklist, setChecklist] = useState([]);
 
-  console.log("SLUG: ", checklist);
+  // console.log("SLUG: ", checklist);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,7 +47,7 @@ const Dashboard = () => {
         const res = await axios.get(`${Api}/checklist/${slugDMY}`);
 
         setChecklist(res.data);
-        console.log("SLUG: ", checklist);
+        // console.log("SLUG: ", checklist);
       } catch (err) {
         console.log("error: ", err);
       }
@@ -56,7 +56,7 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  console.log("TEST: ", checklist);
+  // console.log("TEST: ", checklist);
 
   return (
     <>
