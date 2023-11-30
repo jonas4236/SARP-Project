@@ -4,7 +4,7 @@
 
 # Preview Add information
 
-![Alt text](https://res.cloudinary.com/jonasdev/image/upload/e_improve,w_300,h_600,c_thumb,g_auto/v1701347159/editing_jlfgyp.png)
+![Alt text](https://res.cloudinary.com/jonasdev/image/upload/v1701347159/editing_jlfgyp.png)
 
 # Preview Details
 
