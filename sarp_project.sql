@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2023 at 11:44 AM
+-- Generation Time: Nov 30, 2023 at 01:32 PM
 -- Server version: 8.0.34
 -- PHP Version: 8.2.4
 
@@ -50,9 +50,12 @@ CREATE TABLE `checklist` (
 
 INSERT INTO `checklist` (`cId`, `Date`, `teacher`, `subject`, `Stu1`, `Stu2`, `Stu3`, `Stu4`, `Stu5`, `Stu6`, `Stu7`, `Stu8`, `Stu9`, `Stu10`) VALUES
 (6, '2023/11/26', 'ภีรนีย์ ประทุมพวง', '30000-1501 ชีวิตกับสังคมไทย', 1, 2, 1, 2, 1, 1, 1, 2, 1, 1),
-(7, '2023/11/26', 'กนกรัตน์ อินขุนทด', '30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-(9, '2023/11/27', 'ภีรนีย์ ประทุมพวง', '30000-1501 ชีวิตกับสังคมไทย', 1, 1, 1, 3, 3, 3, 3, 2, 2, 2),
-(10, '2023/11/27', 'กนกรัตน์ อินขุนทด', '30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน', 1, 1, 1, 1, 3, 1, 1, 1, 1, 1);
+(12, '2023/11/27', 'กนกรัตน์ อินขุนทด', '30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน', 1, 1, 1, 1, 3, 1, 1, 1, 1, 1),
+(13, '2023/11/27', 'ภีรนีย์ ประทุมพวง', '30000-1501 ชีวิตกับสังคมไทย', 1, 1, 1, 2, 3, 1, 1, 2, 2, 1),
+(14, '2023/11/28', 'จุฑามาศ ศิริโสม', '30000-1404 แคลคูลัส 1', 1, 1, 1, 1, 1, 1, 1, 1, 3, 1),
+(15, '2023/11/28', 'อมรรัตน์ ทิมงาม', '30000-1101 ทักษะภาษาไทยเชิงวิชาชีพ', 1, 1, 1, 1, 1, 1, 1, 1, 3, 1),
+(16, '2023/11/29', 'สุชาติ ทาทอง', '30000-1608 การออกกำลังกายเพื่อสุขภาพ', 2, 1, 1, 1, 1, 1, 1, 1, 2, 1),
+(17, '2023/11/29', 'รัชฎาเนตร สุรำไพ', '30000-2202 การวิเคราะห์และออกแบบระบบ', 2, 1, 1, 1, 1, 1, 1, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -62,9 +65,18 @@ INSERT INTO `checklist` (`cId`, `Date`, `teacher`, `subject`, `Stu1`, `Stu2`, `S
 
 CREATE TABLE `staff` (
   `id` int NOT NULL,
+  `email` text COLLATE utf8mb4_general_ci NOT NULL,
   `username` text COLLATE utf8mb4_general_ci NOT NULL,
   `password` text COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`id`, `email`, `username`, `password`) VALUES
+(1, 'staff1@sarp.co', 'STAFF1', 'staff1.co'),
+(2, 'staff2@sarp.co', 'STAFF2', 'staff2.co');
 
 -- --------------------------------------------------------
 
@@ -115,7 +127,7 @@ INSERT INTO `subjects` (`subId`, `sub_name`, `weekday_id`) VALUES
 (6, '30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน', 'วันจันทร์'),
 (9, '30000-1404 แคลคูลัส 1', 'วันอังคาร'),
 (10, '30000-1101 ทักษะภาษาไทยเชิงวิชาชีพ', 'วันอังคาร'),
-(13, '30000-1608 กาออกกำลังกายเพื่อสุขภาพ', 'วันพุธ'),
+(13, '30000-1608 การออกกำลังกายเพื่อสุขภาพ', 'วันพุธ'),
 (14, '30000-2202 การวิเคราะห์และออกแบบระบบ', 'วันพุธ'),
 (17, '30000-2004 ระบบเครือข่ายคอมพิวเตอร์', 'วันพฤหัสบดี'),
 (18, '30000-2002 การใช้งานใมโครคอนโทรลเลอร์', 'วันศุกร์');
@@ -222,13 +234,13 @@ ALTER TABLE `weekday`
 -- AUTO_INCREMENT for table `checklist`
 --
 ALTER TABLE `checklist`
-  MODIFY `cId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `cId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `students`
