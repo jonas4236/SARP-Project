@@ -25,11 +25,11 @@ if (db) {
 const verifyUser = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
-    return res.json({ Error: "You are not authenticated" });
+    return res.json({ error: "You are not authenticated" });
   } else {
     jwt.verify(token, "jwt-secret-key", (err, decoded) => {
       if (err) {
-        return res.json({ Error: "Token is not valid" });
+        return res.json({ error: "Token is not valid" });
       } else {
         req.username = decoded.username;
         next();
@@ -167,7 +167,7 @@ app.post("/api/login", (req, res) => {
       const token = jwt.sign({ username }, "jwt-secret-key", {
         expiresIn: "1h",
       });
-      res.cookie("ac-token", token);
+      res.cookie("token", token);
       return res.json({ status: "success" });
     } else {
       return res.json({ error: "Invalid email or password!" });
@@ -176,7 +176,7 @@ app.post("/api/login", (req, res) => {
 });
 
 app.get("/api/logout", (req, res) => {
-  res.clearCookie("ac-token");
+  res.clearCookie("token");
   return res.status(200).json({ status: "success" });
 });
 

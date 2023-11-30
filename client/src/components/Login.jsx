@@ -20,8 +20,10 @@ const Login = () => {
           title: "Login successfully!",
           text: "you can add the schedule students now!",
           icon: "success",
+        }).then(() => {
+          navigate("/");
+          location.reload(true);
         });
-        navigate("/");
       } else {
         // alert("Incorrect email or password! Please try again.");
         Swal.fire({

@@ -18,7 +18,7 @@ const Navbar = () => {
         setName(res.data.username);
       } else {
         setAuth(false);
-        setMessage(res.data.error || "Authentication failed");
+        setMessage(res.data.error);
       }
     });
   }, []);
