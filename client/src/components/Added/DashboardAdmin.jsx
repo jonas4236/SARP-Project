@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ListAdmin from "../admin/ListAdmin";
 import axios from "axios";
 import Api from "../../helpers/Api";
+import { AuthContext } from "../../auth/AuthContext";
 
 const DashboardAdmin = () => {
   const [teacher, setTeacher] = useState([]);
@@ -23,6 +24,7 @@ const DashboardAdmin = () => {
   const [Stu10, setStu10] = useState([]);
 
   const [students, setStudents] = useState([]);
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -94,357 +96,389 @@ const DashboardAdmin = () => {
     }
   };
 
+  // Example client-side code using Fetch API
+  fetch("/add")
+    .then((response) => {
+      if (response.status === 401) {
+        return response.json();
+      }
+      return response.json(); // Handle other status codes if needed
+    })
+    .then((data) => {
+      if (data && data.redirectTo) {
+        // Redirect to the specified path
+        window.location.href = data.redirectTo;
+      } else {
+        // Process the response data as needed
+        console.log(data);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
   // console.log("TeacherName: ", teacher);
   // console.log("SubjectName: ", subject);
   // console.log("Date: ", formattedDMY);
   return (
     <>
-      <div className="w-[1170px] mx-auto">
-        <div className="my-16 flex justify-center">
-          <span className="text-[36px] text-blue-600 drop-shadow-lg font-bold">
-            บันทึกการเข้าเรียน
-          </span>
-        </div>
-        <div className="">
-          <form className="mx-auto">
-            <div className="flex gap-16">
-              <div className="flex-[2]">
-                <div className="w-full flex justify-center bg-sky-500 py-2 text-white font-bold text-[18px]">
-                  <span>รายชื่อนักเรียน</span>
-                </div>
-                <div className="">
-                  {/* <ListAdmin /> */}{" "}
-                  <div className="my-2">
-                    <div className="flex">
-                      <div className="flex-[1]">
-                        <div className="flex flex-col mt-[17px]">
-                          {students.map((stu) => (
-                            <span className="my-2 font-bold" key={stu.stuId}>
-                              {stu.stuId}. {stu.stuName}
-                            </span>
-                          ))}
-                        </div>
+      <div className="">
+        {currentUser ? (
+          <>
+            <div className="w-[1170px] mx-auto">
+              <div className="my-16 flex justify-center">
+                <span className="text-[36px] text-blue-600 drop-shadow-lg font-bold">
+                  บันทึกการเข้าเรียน
+                </span>
+              </div>
+              <div className="">
+                <form className="mx-auto">
+                  <div className="flex gap-16">
+                    <div className="flex-[2]">
+                      <div className="w-full flex justify-center bg-sky-500 py-2 text-white font-bold text-[18px]">
+                        <span>รายชื่อนักเรียน</span>
                       </div>
-                      <div className="flex flex-[1] gap-2">
-                        <div className="flex-[1] ">
-                          <div className="flex justify-center font-bold">
-                            <span>มาเรียน</span>
-                          </div>
-                          <div className="flex justify-center mt-1">
-                            <input
-                              type="checkbox"
-                              name="1"
-                              id="1"
-                              onClick={() => setStu(1)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="2"
-                              id=""
-                              onClick={() => setStu2(1)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="3"
-                              id=""
-                              onClick={() => setStu3(1)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="4"
-                              id=""
-                              onClick={() => setStu4(1)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="5"
-                              id=""
-                              onClick={() => setStu5(1)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="6"
-                              id=""
-                              onClick={() => setStu6(1)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="7"
-                              id=""
-                              onClick={() => setStu7(1)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="8"
-                              id=""
-                              onClick={() => setStu8(1)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="9"
-                              id=""
-                              onClick={() => setStu9(1)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="10"
-                              id=""
-                              onClick={() => setStu10(1)}
-                            />
-                          </div>
-                        </div>
-                        <div className="flex-[1]">
-                          <div className="flex justify-center font-bold">
-                            <span>ลา</span>
-                          </div>
-                          <div className="flex justify-center mt-1">
-                            <input
-                              type="checkbox"
-                              name="1"
-                              id=""
-                              onClick={() => setStu(2)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="2"
-                              id=""
-                              onClick={() => setStu2(2)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="3"
-                              id=""
-                              onClick={() => setStu3(2)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="4"
-                              id=""
-                              onClick={() => setStu4(2)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="5"
-                              id=""
-                              onClick={() => setStu5(2)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="6"
-                              id=""
-                              onClick={() => setStu6(2)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="7"
-                              id=""
-                              onClick={() => setStu7(2)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="8"
-                              id=""
-                              onClick={() => setStu8(2)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="9"
-                              id=""
-                              onClick={() => setStu9(2)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="10"
-                              id=""
-                              onClick={() => setStu10(2)}
-                            />
-                          </div>
-                        </div>
-                        <div className="flex-[1]">
-                          <div className="flex justify-center font-bold">
-                            <span>ขาดเรียน</span>
-                          </div>
-                          <div className="flex justify-center mt-1">
-                            <input
-                              type="checkbox"
-                              name="1"
-                              id=""
-                              onClick={() => setStu(3)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="3"
-                              id=""
-                              onClick={() => setStu2(3)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="3"
-                              id=""
-                              onClick={() => setStu3(3)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="4"
-                              id=""
-                              onClick={() => setStu4(3)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="5"
-                              id=""
-                              onClick={() => setStu5(3)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="6"
-                              id=""
-                              onClick={() => setStu6(3)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="7"
-                              id=""
-                              onClick={() => setStu7(3)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="8"
-                              id=""
-                              onClick={() => setStu8(3)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="9"
-                              id=""
-                              onClick={() => setStu9(3)}
-                            />
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <input
-                              type="checkbox"
-                              name="10"
-                              id=""
-                              onClick={() => setStu10(3)}
-                            />
+                      <div className="">
+                        {/* <ListAdmin /> */}{" "}
+                        <div className="my-2">
+                          <div className="flex">
+                            <div className="flex-[1]">
+                              <div className="flex flex-col mt-[17px]">
+                                {students.map((stu) => (
+                                  <span
+                                    className="my-2 font-bold"
+                                    key={stu.stuId}
+                                  >
+                                    {stu.stuId}. {stu.stuName}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                            <div className="flex flex-[1] gap-2">
+                              <div className="flex-[1] ">
+                                <div className="flex justify-center font-bold">
+                                  <span>มาเรียน</span>
+                                </div>
+                                <div className="flex justify-center mt-1">
+                                  <input
+                                    type="checkbox"
+                                    name="1"
+                                    id="1"
+                                    onClick={() => setStu(1)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="2"
+                                    id=""
+                                    onClick={() => setStu2(1)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="3"
+                                    id=""
+                                    onClick={() => setStu3(1)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="4"
+                                    id=""
+                                    onClick={() => setStu4(1)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="5"
+                                    id=""
+                                    onClick={() => setStu5(1)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="6"
+                                    id=""
+                                    onClick={() => setStu6(1)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="7"
+                                    id=""
+                                    onClick={() => setStu7(1)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="8"
+                                    id=""
+                                    onClick={() => setStu8(1)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="9"
+                                    id=""
+                                    onClick={() => setStu9(1)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="10"
+                                    id=""
+                                    onClick={() => setStu10(1)}
+                                  />
+                                </div>
+                              </div>
+                              <div className="flex-[1]">
+                                <div className="flex justify-center font-bold">
+                                  <span>ลา</span>
+                                </div>
+                                <div className="flex justify-center mt-1">
+                                  <input
+                                    type="checkbox"
+                                    name="1"
+                                    id=""
+                                    onClick={() => setStu(2)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="2"
+                                    id=""
+                                    onClick={() => setStu2(2)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="3"
+                                    id=""
+                                    onClick={() => setStu3(2)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="4"
+                                    id=""
+                                    onClick={() => setStu4(2)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="5"
+                                    id=""
+                                    onClick={() => setStu5(2)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="6"
+                                    id=""
+                                    onClick={() => setStu6(2)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="7"
+                                    id=""
+                                    onClick={() => setStu7(2)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="8"
+                                    id=""
+                                    onClick={() => setStu8(2)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="9"
+                                    id=""
+                                    onClick={() => setStu9(2)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="10"
+                                    id=""
+                                    onClick={() => setStu10(2)}
+                                  />
+                                </div>
+                              </div>
+                              <div className="flex-[1]">
+                                <div className="flex justify-center font-bold">
+                                  <span>ขาดเรียน</span>
+                                </div>
+                                <div className="flex justify-center mt-1">
+                                  <input
+                                    type="checkbox"
+                                    name="1"
+                                    id=""
+                                    onClick={() => setStu(3)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="3"
+                                    id=""
+                                    onClick={() => setStu2(3)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="3"
+                                    id=""
+                                    onClick={() => setStu3(3)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="4"
+                                    id=""
+                                    onClick={() => setStu4(3)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="5"
+                                    id=""
+                                    onClick={() => setStu5(3)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="6"
+                                    id=""
+                                    onClick={() => setStu6(3)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="7"
+                                    id=""
+                                    onClick={() => setStu7(3)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="8"
+                                    id=""
+                                    onClick={() => setStu8(3)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="9"
+                                    id=""
+                                    onClick={() => setStu9(3)}
+                                  />
+                                </div>
+                                <div className="flex justify-center mt-6">
+                                  <input
+                                    type="checkbox"
+                                    name="10"
+                                    id=""
+                                    onClick={() => setStu10(3)}
+                                  />
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <div className="flex-[1]">
+                      <div className="flex flex-col">
+                        <label
+                          htmlFor="date"
+                          className="text-[20px] text-sky-600 font-bold"
+                        >
+                          วันที่
+                        </label>
+                        <input
+                          type="date"
+                          name=""
+                          id="date"
+                          onChange={(event) => setDate(event.target.value)}
+                        />
+                      </div>
+                      <div className="flex flex-col mt-4">
+                        <label
+                          htmlFor="TeacherNmae"
+                          className="text-[20px] text-sky-600 font-bold"
+                        >
+                          วิชา
+                        </label>
+                        <select
+                          id="teacherId"
+                          onChange={(event) => setSubject(event.target.value)}
+                        >
+                          {dataSubjects.map((sub) => (
+                            <option key={sub.subId}>{sub.sub_name}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="flex flex-col mt-4">
+                        <label
+                          htmlFor="TeacherNmae"
+                          className="text-[20px] text-sky-600 font-bold"
+                        >
+                          ผู้ตรวจ
+                        </label>
+                        <select
+                          id="teacherId"
+                          onChange={(event) => setTeacher(event.target.value)}
+                        >
+                          {dataTeachers.map((teach) => (
+                            <option key={teach.id}>{teach.teacher_name}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="w-full flex justify-center">
+                        <button
+                          onClick={AddedCheckList}
+                          className="bg-sky-500 text-white mt-4 w-full py-2 rounded-lg font-medium hover:bg-sky-600"
+                        >
+                          บันทึก
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="flex-[1]">
-                <div className="flex flex-col">
-                  <label
-                    htmlFor="date"
-                    className="text-[20px] text-sky-600 font-bold"
-                  >
-                    วันที่
-                  </label>
-                  <input
-                    type="date"
-                    name=""
-                    id="date"
-                    onChange={(event) => setDate(event.target.value)}
-                  />
-                </div>
-                <div className="flex flex-col mt-4">
-                  <label
-                    htmlFor="TeacherNmae"
-                    className="text-[20px] text-sky-600 font-bold"
-                  >
-                    วิชา
-                  </label>
-                  <select
-                    id="teacherId"
-                    onChange={(event) => setSubject(event.target.value)}
-                  >
-                    {dataSubjects.map((sub) => (
-                      <option key={sub.subId}>{sub.sub_name}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="flex flex-col mt-4">
-                  <label
-                    htmlFor="TeacherNmae"
-                    className="text-[20px] text-sky-600 font-bold"
-                  >
-                    ผู้ตรวจ
-                  </label>
-                  <select
-                    id="teacherId"
-                    onChange={(event) => setTeacher(event.target.value)}
-                  >
-                    {dataTeachers.map((teach) => (
-                      <option key={teach.id}>{teach.teacher_name}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="w-full flex justify-center">
-                  <button
-                    onClick={AddedCheckList}
-                    className="bg-sky-500 text-white mt-4 w-full py-2 rounded-lg font-medium hover:bg-sky-600"
-                  >
-                    บันทึก
-                  </button>
-                </div>
+                </form>
               </div>
             </div>
-          </form>
-        </div>
+          </>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

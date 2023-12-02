@@ -3,14 +3,14 @@ import LOGO from "../../../public/images/SARP-LOGO.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../auth/AuthContext";
+import secureLocalStorage from "react-secure-storage";
 
 const Navbar = () => {
   const [name, setName] = useState("");
 
   const { currentUser, logout } = useContext(AuthContext);
-
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(currentUser));
+    secureLocalStorage.setItem("user", JSON.stringify(currentUser));
     setName(currentUser?.results.username);
   }, [currentUser]);
 

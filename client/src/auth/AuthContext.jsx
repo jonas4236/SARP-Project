@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import Api from "../helpers/Api";
 import Swal from "sweetalert2";
+import secureLocalStorage from "react-secure-storage";
 
 axios.defaults.withCredentials = true;
 
@@ -9,7 +10,7 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null
+    JSON.parse(secureLocalStorage.getItem("user")) || null
   );
 
   const login = async (email, password) => {
@@ -47,7 +48,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(currentUser));
+    secureLocalStorage.setItem("user", JSON.stringify(currentUser));
   }, [currentUser]);
 
   return (

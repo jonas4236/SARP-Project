@@ -10,12 +10,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const { currentUser, login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const handleSummit = async (e) => {
     e.preventDefault();
     await login({ email, password }).then((result) => {
-      console.log("currentUser: ", result.status);
+      // console.log("currentUser: ", result.status);
 
       if (result.status === "success") {
         navigate("/").then(() => {
