@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
-import Api from "../helpers/Api";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import { AuthContext } from "../auth/AuthContext";
 
 const Login = () => {
   axios.defaults.withCredentials = true;
@@ -11,25 +10,19 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSummit = (e) => {
-    e.preventDefault();
+  const { currentUser, login } = useContext(AuthContext);
 
-    axios.post(`${Api}/login`, { email, password }).then((result) => {
-      if (result.data.status === "success") {
-        Swal.fire({
-          title: "Login successfully!",
-          text: "you can add the schedule students now!",
-          icon: "success",
-        }).then(() => {
-          navigate("/");
+  const handleSummit = async (e) => {
+    e.preventDefault();
+    await login({ email, password }).then((result) => {
+      console.log("currentUser: ", result.status);
+
+      if (result.status === "success") {
+        navigate("/").then(() => {
           location.reload(true);
         });
       } else {
-        // alert("Incorrect email or password! Please try again.");
-        Swal.fire({
-          text: "Incorrect email or password! Please try again.",
-          icon: "error",
-        });
+        navigate("/login");
       }
     });
   };

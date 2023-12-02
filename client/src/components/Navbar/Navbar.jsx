@@ -1,40 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LOGO from "../../../public/images/SARP-LOGO.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import Api from "../../helpers/Api";
+import { AuthContext } from "../../auth/AuthContext";
 
 const Navbar = () => {
-  const [auth, setAuth] = useState(false);
-  const [message, setMessage] = useState("");
   const [name, setName] = useState("");
-  const navigate = useNavigate();
+
+  const { currentUser, logout } = useContext(AuthContext);
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(currentUser));
+    setName(currentUser?.results.username);
+  }, [currentUser]);
 
   axios.defaults.withCredentials = true;
-  useEffect(() => {
-    axios.get(`http://localhost:4444`).then((res) => {
-      if (res.data.status === "success") {
-        setAuth(true);
-        setName(res.data.username);
-      } else {
-        setAuth(false);
-        setMessage(res.data.error);
-      }
-    });
-  }, []);
-
-  const handleDelete = () => {
-    axios
-      .get(`${Api}/logout`)
-      .then((res) => {
-        location.reload(true);
-      })
-      .catch((err) => console.log("error logout: ", err));
-  };
-
-  console.log("SECURE: ", auth);
-  console.log("Message: ", message);
-  console.log("Name: ", name);
 
   return (
     <>
@@ -48,12 +28,17 @@ const Navbar = () => {
             />
           </Link>
           <div class="flex md:order-2">
-            {auth ? (
+            {currentUser ? (
               <>
+                <div className="flex items-center mr-4">
+                  <span>
+                    User: <span className="text-blue-500">{name}</span>
+                  </span>
+                </div>
                 <button
                   type="button"
                   class="text-white bg-red-500 hover:bg-red-700  focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600"
-                  onClick={handleDelete}
+                  onClick={logout}
                 >
                   Logout
                 </button>

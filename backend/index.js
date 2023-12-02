@@ -157,18 +157,20 @@ app.post("/api/login", (req, res) => {
   const sql = "SELECT * FROM staff WHERE email = ?";
 
   db.query(sql, [email], (err, results) => {
-    if (err) return res.json({ Error: "login failed to server!" });
+    if (err) return res.json({ Error: "Login failed to the server!" });
     if (results.length === 0) {
       return res.json({ Error: "Invalid email or password." });
     }
 
-    if (password === results[0].password) {
-      const username = results[0].username;
+    const user = results[0]; // Corrected variable name
+
+    if (password === user.password) {
+      const username = user.username;
       const token = jwt.sign({ username }, "jwt-secret-key", {
         expiresIn: "1h",
       });
       res.cookie("token", token);
-      return res.json({ status: "success" });
+      return res.status(200).json({ results: user, status: "success" });
     } else {
       return res.json({ error: "Invalid email or password!" });
     }
