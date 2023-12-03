@@ -69,7 +69,7 @@ const Login = () => {
                                   >
                                     <input
                                       className="flip-card__input"
-                                      type="text"
+                                      type="email"
                                       placeholder="email"
                                       onChange={(event) =>
                                         setEmail(event.target.value)

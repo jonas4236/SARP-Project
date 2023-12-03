@@ -7,9 +7,6 @@ import secureLocalStorage from "react-secure-storage";
 
 const Navbar = () => {
   const [name, setName] = useState("");
-  const [auth, setAuth] = useState(false);
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
 
   axios.defaults.withCredentials = true;
   // useEffect(() => {
@@ -32,6 +29,8 @@ const Navbar = () => {
     secureLocalStorage.setItem("user", JSON.stringify(currentUser));
     setName(currentUser?.results.username);
   }, [currentUser]);
+
+  console.log("RESULTS: ", name)
 
   axios.defaults.withCredentials = true;
 

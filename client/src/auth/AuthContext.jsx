@@ -12,12 +12,17 @@ export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(secureLocalStorage.getItem("user")) || null
   );
+  const [username, setUsername] = useState(
+    JSON.parse(localStorage.getItem("a_name")) || null
+  );
 
   const login = async (email, password) => {
     try {
       const res = await axios.post(`${Api}/login`, email, password);
       if (res.data.status === "success") {
         const result = res.data;
+        const name = result.results.username;
+        setUsername(name);
         setCurrentUser(result);
         Swal.fire({
           title: "Login successfully!",
@@ -26,6 +31,7 @@ export const AuthContextProvider = ({ children }) => {
         });
       } else {
         setCurrentUser(null);
+        setUsername(null);
         Swal.fire({
           text: "Invalid email or password!",
           icon: "error",
@@ -42,6 +48,8 @@ export const AuthContextProvider = ({ children }) => {
     try {
       await axios.get(`${Api}/logout`);
       setCurrentUser(null);
+      setUsername(null);
+      location.reload(true);
     } catch (err) {
       console.log("Logout error:", err);
     }
@@ -51,8 +59,12 @@ export const AuthContextProvider = ({ children }) => {
     secureLocalStorage.setItem("user", JSON.stringify(currentUser));
   }, [currentUser]);
 
+  useEffect(() => {
+    localStorage.setItem("a_name", JSON.stringify(username));
+  }, [username]);
+
   return (
-    <AuthContext.Provider value={{ currentUser, login, logout }}>
+    <AuthContext.Provider value={{ username, currentUser, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
