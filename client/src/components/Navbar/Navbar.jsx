@@ -1,12 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
 import LOGO from "../../../public/images/SARP-LOGO.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../auth/AuthContext";
 import secureLocalStorage from "react-secure-storage";
 
 const Navbar = () => {
   const [name, setName] = useState("");
+  const [auth, setAuth] = useState(false);
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
+  axios.defaults.withCredentials = true;
+  // useEffect(() => {
+  //   axios.get(`http://localhost:4444/`).then((res) => {
+  //     if (res.data.status === "success") {
+  //       setAuth(true);
+  //     } else {
+  //       setAuth(false);
+  //       setMessage(res.data.error);
+  //     }
+  //   });
+  // }, []);
+
+  // console.log("Auth: ",auth)
+  // console.log("Name: ",name)
+
 
   const { currentUser, logout } = useContext(AuthContext);
   useEffect(() => {

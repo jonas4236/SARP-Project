@@ -4,8 +4,12 @@ const db = require("./database");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const port = 4444;
+const ProtectAuth = require("./middlewares/ProtectAuth");
+const ProtectAdd = require("./middlewares/ProtectAdd")
 
 const app = express();
+app.use(express.json());
+app.use(cookieParser());
 app.use(
   cors({
     origin: ["http://localhost:5173"],
@@ -13,8 +17,6 @@ app.use(
     credentials: true,
   })
 );
-app.use(express.json());
-app.use(cookieParser());
 
 if (db) {
   console.log("Database status: GOOD");
@@ -22,24 +24,60 @@ if (db) {
   console.log("Database status: BAD");
 }
 
-const verifyUser = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.json({ error: "You are not authenticated" });
-  } else {
-    jwt.verify(token, "jwt-secret-key", (err, decoded) => {
-      if (err) {
-        return res.json({ error: "Token is not valid" });
-      } else {
-        req.username = decoded.username;
-        next();
-      }
-    });
-  }
-};
+// const verifyUser = (req, res, next) => {
+//   const token = req.cookies.ac_token;
+//   // console.log("ac_token: ", token);
+//   if (!token) {
+//     return res.json({ redirectTo: "/login" });
+//   } else {
+//     jwt.verify(token, "jwt-secret-key", (err, decoded) => {
+//       if (err) {
+//         return res.json({ error: "Token is not valid" });
+//       } else {
+//         req.username = decoded.username;
+//         next();
+//       }
+//     });
+//   }
+// };
 
-app.get("/", verifyUser, (req, res) => {
-  return res.json({ status: "success", username: req.username });
+app.get("/add", ProtectAdd, (req, res, next) => {
+  res.send("Redirected to main page");
+});
+
+app.get("/login", ProtectAuth, (req, res, next) => {
+  res.send("Redirected to main page");
+});
+
+app.post("/api/login", (req, res) => {
+  const { email, password } = req.body;
+
+  const sql = "SELECT * FROM staff WHERE email = ?";
+
+  db.query(sql, [email], (err, results) => {
+    if (err) return res.json({ Error: "Login failed to the server!" });
+    if (results.length === 0) {
+      return res.json({ Error: "Invalid email or password." });
+    }
+
+    const user = results[0]; // Corrected variable name
+
+    if (password === user.password) {
+      const username = user.username;
+      const token = jwt.sign({ username }, "jwt-secret-key", {
+        expiresIn: "1h",
+      });
+      res.cookie("ac_token", token);
+      return res.status(200).json({ results: user, status: "success" });
+    } else {
+      return res.json({ error: "Invalid email or password!" });
+    }
+  });
+});
+
+app.get("/api/logout", (req, res) => {
+  res.clearCookie("ac_token");
+  return res.status(200).json({ status: "success" });
 });
 
 // ROUTE ALL SUBJECTS
@@ -149,37 +187,6 @@ app.post("/api/create", (req, res) => {
       res.json(results);
     }
   );
-});
-
-app.post("/api/login", (req, res) => {
-  const { email, password } = req.body;
-
-  const sql = "SELECT * FROM staff WHERE email = ?";
-
-  db.query(sql, [email], (err, results) => {
-    if (err) return res.json({ Error: "Login failed to the server!" });
-    if (results.length === 0) {
-      return res.json({ Error: "Invalid email or password." });
-    }
-
-    const user = results[0]; // Corrected variable name
-
-    if (password === user.password) {
-      const username = user.username;
-      const token = jwt.sign({ username }, "jwt-secret-key", {
-        expiresIn: "1h",
-      });
-      res.cookie("token", token);
-      return res.status(200).json({ results: user, status: "success" });
-    } else {
-      return res.json({ error: "Invalid email or password!" });
-    }
-  });
-});
-
-app.get("/api/logout", (req, res) => {
-  res.clearCookie("token");
-  return res.status(200).json({ status: "success" });
 });
 
 app.listen(port, () => {

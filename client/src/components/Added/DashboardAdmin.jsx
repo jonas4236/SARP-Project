@@ -96,26 +96,13 @@ const DashboardAdmin = () => {
     }
   };
 
-  // Example client-side code using Fetch API
-  fetch("/add")
-    .then((response) => {
-      if (response.status === 401) {
-        return response.json();
+  useEffect(() => {
+    axios.get("http://localhost:4444/add").then((res) => {
+      if (res.data.redirectTo) {
+        window.location.href = res.data.redirectTo;
       }
-      return response.json(); // Handle other status codes if needed
-    })
-    .then((data) => {
-      if (data && data.redirectTo) {
-        // Redirect to the specified path
-        window.location.href = data.redirectTo;
-      } else {
-        // Process the response data as needed
-        console.log(data);
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
     });
+  }, []);
 
   // console.log("TeacherName: ", teacher);
   // console.log("SubjectName: ", subject);
