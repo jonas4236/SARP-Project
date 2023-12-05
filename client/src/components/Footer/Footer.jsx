@@ -1,6 +1,7 @@
 import React from "react";
 import LOGO from "../../../public/images/SARP-LOGO.png";
 import { FaFacebookF, FaGithub } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,9 +9,9 @@ const Footer = () => {
       <div class="mx-auto w-[1170px] p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" class="flex items-center">
+            <Link to={"/"}>
               <img src={LOGO} class="h-16 w-16 mr-3" alt="FlowBite Logo" />
-            </a>
+            </Link>
           </div>
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
