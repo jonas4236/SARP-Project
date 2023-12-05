@@ -8,6 +8,9 @@ import HomePage from "./pages/HomePage";
 import Login from "./components/Login";
 import Dashboard from "./components/admin/Dashboard";
 import DashboardAdmin from "./components/Added/DashboardAdmin";
+import About from "./pages/About";
+import Creator from "./pages/creator";
+import Help from "./pages/help";
 
 const Layout = () => {
   return (
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/creator",
+        element: <Creator />,
+      },
+      {
+        path: "/help",
+        element: <Help />,
       },
       {
         path: "/add",

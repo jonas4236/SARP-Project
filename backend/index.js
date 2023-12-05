@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const port = 4444;
 const ProtectAuth = require("./middlewares/ProtectAuth");
-const ProtectAdd = require("./middlewares/ProtectAdd")
+const ProtectAdd = require("./middlewares/ProtectAdd");
 
 const app = express();
 app.use(express.json());

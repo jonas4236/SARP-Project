@@ -76,21 +76,25 @@ const DashboardAdmin = () => {
 
   const AddedCheckList = async () => {
     try {
-      await axios.post(`${Api}/create`, {
-        Date: formattedDMY,
-        teacher: teacher,
-        subject: subject,
-        Stu1: Stu,
-        Stu2: Stu2,
-        Stu3: Stu3,
-        Stu4: Stu4,
-        Stu5: Stu5,
-        Stu6: Stu6,
-        Stu7: Stu7,
-        Stu8: Stu8,
-        Stu9: Stu9,
-        Stu10: Stu10,
-      });
+      await axios
+        .post(`${Api}/create`, {
+          Date: formattedDMY,
+          teacher: teacher,
+          subject: subject,
+          Stu1: Stu,
+          Stu2: Stu2,
+          Stu3: Stu3,
+          Stu4: Stu4,
+          Stu5: Stu5,
+          Stu6: Stu6,
+          Stu7: Stu7,
+          Stu8: Stu8,
+          Stu9: Stu9,
+          Stu10: Stu10,
+        })
+        .then(() => {
+          window.location.href = "/add";
+        });
     } catch (err) {
       console.log("Error: ", err);
     }
@@ -109,7 +113,7 @@ const DashboardAdmin = () => {
   // console.log("Date: ", formattedDMY);
   return (
     <>
-      <div className="">
+      <div className="mb-32">
         {currentUser ? (
           <>
             <div className="w-[1170px] mx-auto">
@@ -130,13 +134,13 @@ const DashboardAdmin = () => {
                         <div className="my-2">
                           <div className="flex">
                             <div className="flex-[1]">
-                              <div className="flex flex-col mt-[17px]">
+                              <div className="flex flex-col mt-[32px]">
                                 {students.map((stu) => (
                                   <span
                                     className="my-2 font-bold"
                                     key={stu.stuId}
                                   >
-                                    {stu.stuId}. {stu.stuName}
+                                  <span className="text-red-500">{stu.stuId}.</span> {stu.stuName}
                                   </span>
                                 ))}
                               </div>
@@ -144,7 +148,7 @@ const DashboardAdmin = () => {
                             <div className="flex flex-[1] gap-2">
                               <div className="flex-[1] ">
                                 <div className="flex justify-center font-bold">
-                                  <span>มาเรียน</span>
+                                  <span className="mb-4">มาเรียน</span>
                                 </div>
                                 <div className="flex justify-center mt-1">
                                   <input
@@ -229,7 +233,7 @@ const DashboardAdmin = () => {
                               </div>
                               <div className="flex-[1]">
                                 <div className="flex justify-center font-bold">
-                                  <span>ลา</span>
+                                  <span className="mb-4">ลา</span>
                                 </div>
                                 <div className="flex justify-center mt-1">
                                   <input
@@ -314,7 +318,7 @@ const DashboardAdmin = () => {
                               </div>
                               <div className="flex-[1]">
                                 <div className="flex justify-center font-bold">
-                                  <span>ขาดเรียน</span>
+                                  <span className="mb-4">ขาดเรียน</span>
                                 </div>
                                 <div className="flex justify-center mt-1">
                                   <input
