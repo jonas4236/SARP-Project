@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../auth/AuthContext";
 import secureLocalStorage from "react-secure-storage";
+import { IoClose } from "react-icons/io5";
 
 const Navbar = () => {
   const [name, setName] = useState("");
@@ -44,7 +45,7 @@ const Navbar = () => {
               alt="SARP_LOGO"
             />
           </Link>
-          <div class="flex md:order-2 sm:hidden md:block lg:block xl:block">
+          <div class="flex md:order-2 sm:block md:block lg:block xl:block">
             {currentUser ? (
               <>
                 <div className="flex items-center mr-4">
@@ -72,7 +73,7 @@ const Navbar = () => {
               <Link to={"/login"}>
                 <button
                   type="button"
-                  class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center  lg:mr-0 dark:bg-blue-600"
+                  class="text-white bg-blue-700 sm:hidden md:block lg:block xl:block 2xl:block hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center  lg:mr-0 dark:bg-blue-600"
                 >
                   Login
                 </button>
@@ -111,6 +112,11 @@ const Navbar = () => {
                     ติดต่อ/แจ้งปัญหา
                   </button>
                 </Link>
+              </li>
+              <li>
+                <div className="sm:block md:hidden lg:hidden xl:hidden 2xl:hidden">
+                  <IoClose />
+                </div>
               </li>
             </ul>
           </div>
