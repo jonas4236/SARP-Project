@@ -26,7 +26,7 @@ const help = () => {
             </p>
             <p className="mt-4">
               ขอบคุณที่ใช้บริการ SARP -
-              คำตอบที่คุณคาดหวังสำหรับการติดตามการเข้าเรียนของลูกของคุณ!
+              คำตอบที่คุณคาดหวังสำหรับการติดตามการเข้าเรียนของบุตรหลานของคุณ!
             </p>
             <p>Thank you for using SARP - the answer you've been expecting for tracking your child's school attendance!</p>
           </div>

@@ -35,8 +35,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav class="bg-white dark:bg-gray-900 w-full border-b border-gray-200 dark:border-gray-600 sticky top-[-10px] z-[999]">
-        <div class="w-[1170px] flex flex-wrap items-center justify-between mx-auto p-4 z-[55]">
+      <nav class="bg-white w-full border-b border-gray-200 sticky top-[-10px] z-[999]">
+        <div class="xl:w-[1170px] flex items-center justify-between mx-auto p-4 z-[55]">
           <Link to={"/"}>
             <img
               src={LOGO}
@@ -72,7 +72,7 @@ const Navbar = () => {
               <Link to={"/login"}>
                 <button
                   type="button"
-                  class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600"
+                  class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 lg:mr-0 dark:bg-blue-600"
                 >
                   Login
                 </button>
@@ -83,26 +83,23 @@ const Navbar = () => {
             class="items-center justify-between w-full md:flex md:w-auto md:order-1"
             id="navbar-sticky"
           >
-            <ul class="flex flex-col p-4 md:w-full sm:w-[auto] xl:w-full md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul class="flex flex-col p-4 xl:w-full md:p-0 mt-4 font-medium border border-gray-100 rounded-lg xl:flex-row xl:space-x-8 xl:mt-0 xl:border-0 md:hidden xl:flex">
               <li>
                 <Link to={"/"}>
-                  <button
-                    class="block py-2 pl-3 pr-4 text-black hover:text-blue-700 focus:text-blue-700 bg-blue-700 rounded md:bg-transparent md:p-0 md:dark:text-blue-500"
-                    aria-current="page"
-                  >
+                  <button class="block py-2 pl-3 pr-4 text-black hover:text-blue-700 focus:text-blue-700 rounded  xl:p-0">
                     หน้าหลัก
                   </button>
                 </Link>
               </li>
               <li>
                 <Link to={"/about"}>
-                  <button class="block py-2 pl-3 pr-4 text-gray-900 rounded focus:text-blue-700 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                  <button class="block py-2 pl-3 pr-4 text-gray-900 rounded focus:text-blue-700 md:hover:text-blue-700 xl:p-0">
                     เกี่ยวกับ
                   </button>
                 </Link>
               </li>
               <li>
-              <Link to={"/creator"}>
+                <Link to={"/creator"}>
                   <button class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 focus:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                     ผู้จัดทำ
                   </button>
