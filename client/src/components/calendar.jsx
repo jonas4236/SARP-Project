@@ -41,7 +41,7 @@ function calendar() {
   };
 
   return (
-    <div className="xl:w-[1170px] mx-auto my-16">
+    <div className="xl:w-[1170px] mx-auto px-4 my-16">
       <div className="bg-[#F5F5F5] p-8 rounded-lg">
         <Fullcalendar
           plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
