@@ -35,7 +35,7 @@ const Navbar = () => {
           <Link to={"/"}>
             <img
               src={LOGO}
-              className="h-16 w-16 mr-3 cursor-pointer"
+              className="h-16 w-16 mr-3 object-contain cursor-pointer"
               alt="SARP_LOGO"
             />
           </Link>
