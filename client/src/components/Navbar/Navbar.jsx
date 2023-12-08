@@ -113,7 +113,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="sm:block md:hidden lg:hidden xl:hidden 2xl:hidden">
-            <span onClick={toggleNav}>{isOpen ? <IoClose size={30} /> : <MdMenu size={30} />}</span>
+            <span className="cursor-pointer" onClick={toggleNav}>{isOpen ? <IoClose size={30} /> : <MdMenu size={30} />}</span>
           </div>
         </div>
         {isOpen && <ResponsiveNav />}
