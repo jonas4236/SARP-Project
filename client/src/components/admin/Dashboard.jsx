@@ -61,18 +61,18 @@ const Dashboard = () => {
   return (
     <>
       <div className="py-16">
-        <div className="w-[1170px] flex flex-wrap justify-center mx-auto">
-          <div className="flex lg:w-full md:w-full justify-center">
-            <span className="text-[36px] text-sky-700 drop-shadow-lg font-bold flex flex-wrap ml-16">
+        <div className="xl:w-[1170px] flex flex-wrap justify-center mx-auto">
+          <div className="flex lg:w-full sm:w-full md:w-full items-center justify-center">
+            <span className="text-[20px] lg:text-[28px] xl:text-[36px] text-sky-700 drop-shadow-lg font-bold flex flex-wrap lg:ml-16 xl:ml-16">
               ตารางเรียน
             </span>
-            <span className="text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">
+            <span className="text-[20px] lg:text-[28px] xl:text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">
               {slugWEEK}
             </span>
-            <span className="text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">
+            <span className="text-[20px] lg:text-[28px] xl:text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">
               ที่
             </span>
-            <span className="text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">{`${PullDay}/${PullMonth}/${PullYear}`}</span>
+            <span className="text-[20px] lg:text-[28px] xl:text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">{`${PullDay}/${PullMonth}/${PullYear}`}</span>
           </div>
           <div
             className={`mt-8 grid ${
