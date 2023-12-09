@@ -12,11 +12,15 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["https://sarp.vercel.app/", "http://localhost:5173/"],
+    origin: [
+      "http://localhost:5173",
+      "https://sarp-a8dff5e6e541.herokuapp.com",
+    ],
     methods: ["POST", "GET"],
     credentials: true,
   })
 );
+app.options("*", cors());
 
 if (db) {
   console.log("Database status: GOOD");
