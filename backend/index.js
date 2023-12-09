@@ -16,7 +16,7 @@ app.use(
       "http://localhost:5173",
       "https://sarp-a8dff5e6e541.herokuapp.com",
       "https://sarp-a8dff5e6e541.herokuapp.com/api",
-      "https://sarp.vercel.app",
+      "https://sarp-project.vercel.app",
     ],
     methods: ["POST", "GET"],
     credentials: true,
