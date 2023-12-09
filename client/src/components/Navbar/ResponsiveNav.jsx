@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ResponsiveNav = () => {
+const ResponsiveNav = ({ currentUser }) => {
   return (
     <>
       <div
@@ -38,6 +38,20 @@ const ResponsiveNav = () => {
               </button>
             </Link>
           </li>
+          {currentUser ? (
+            ""
+          ) : (
+            <li>
+              <Link to={"/login"}>
+                <button
+                  type="button"
+                  className="text-white bg-blue-700 block md:block lg:block xl:block 2xl:block hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center mb-4 lg:mr-0 dark:bg-blue-600"
+                >
+                  Login
+                </button>
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </>
