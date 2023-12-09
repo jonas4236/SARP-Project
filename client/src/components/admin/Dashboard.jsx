@@ -61,7 +61,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="py-16">
-        <div className="xl:w-[full] flex flex-wrap justify-center mx-auto">
+        <div className="xl:w-[1170px] flex flex-wrap justify-center mx-auto">
           <div className="flex lg:w-full sm:w-full md:w-full items-center justify-center">
             <span className="text-[20px] lg:text-[28px] xl:text-[36px] text-sky-700 drop-shadow-lg font-bold flex flex-wrap lg:ml-16 xl:ml-16">
               ตารางเรียน
