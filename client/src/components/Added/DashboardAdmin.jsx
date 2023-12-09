@@ -116,7 +116,7 @@ const DashboardAdmin = () => {
       <div className="mb-32">
         {currentUser ? (
           <>
-            <div className="w-[1170px] mx-auto">
+            <div className="lg:w-[1170px] xl:w-[1170px] mx-auto">
               <div className="my-16 flex justify-center">
                 <span className="text-[36px] text-blue-600 drop-shadow-lg font-bold">
                   บันทึกการเข้าเรียน
@@ -124,7 +124,7 @@ const DashboardAdmin = () => {
               </div>
               <div className="">
                 <form className="mx-auto">
-                  <div className="flex gap-16">
+                  <div className="flex gap-16 flex-col lg:flex-row xl:flex-row">
                     <div className="flex-[2]">
                       <div className="w-full flex justify-center bg-sky-500 py-2 text-white font-bold text-[18px]">
                         <span>รายชื่อนักเรียน</span>
@@ -318,7 +318,7 @@ const DashboardAdmin = () => {
                               </div>
                               <div className="flex-[1]">
                                 <div className="flex justify-center font-bold">
-                                  <span className="mb-4">ขาดเรียน</span>
+                                  <span className="mb-4">ขาด</span>
                                 </div>
                                 <div className="flex justify-center mt-1">
                                   <input

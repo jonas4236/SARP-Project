@@ -38,16 +38,16 @@ const Login = () => {
 
   return (
     <>
-      <div className="">
+      <div className="px-4">
         {currentUser ? (
           ""
         ) : (
           <>
-            <div className="h-[80vh] w-[1170px] rounded-lg my-16 mx-auto bg-[url('../../public/images/bg-login.png')] bg-no-repeat">
+            <div className="h-[80vh] lg:w-[1170px] xl:w-[1170px] rounded-lg my-16 mx-auto bg-[url('../../public/images/bg-login.png')] bg-no-repeat">
               <div className="flex gap-4">
                 <div className="flex-[1] flex justify-center">
                   <div className="h-[80vh] flex items-center">
-                    <div className="p-8 h-max bg-opacity-75 z-50 rounded-lg w-[439px]">
+                    <div className="p-8 h-max bg-opacity-75 z-50 rounded-lg lg:w-[439px] xl:w-[439px]">
                       <div className="w-full">
                         <div className="mt-4">
                           <div className="">

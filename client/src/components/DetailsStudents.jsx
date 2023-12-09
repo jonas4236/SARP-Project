@@ -9,7 +9,7 @@ const DetailsStudents = ({ status }) => {
       case 2:
         return <span className="text-yellow-500 text-[16px]">ลา</span>;
       case 3:
-        return <span className="text-red-500 text-[16px]">ขาด</span>;
+        return <span className="text-red-500 text-[16px]">ขาดเรียน</span>;
       default:
         return "ยังไม่มีสถานะ";
     }
