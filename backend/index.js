@@ -3,7 +3,7 @@ const cors = require("cors");
 const db = require("./database");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
-const port = 4444;
+const port = process.env.PORT;
 const ProtectAuth = require("./middlewares/ProtectAuth");
 const ProtectAdd = require("./middlewares/ProtectAdd");
 
