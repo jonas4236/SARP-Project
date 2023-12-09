@@ -18,12 +18,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post(
-        `${Api}/login`,
-        { email, password },
-        { withCredentials: true }
-      );
-
+      const res = await axios.post(`${Api}/login`, email, password);
       if (res.data.status === "success") {
         const result = res.data;
         const name = result.results.username;
@@ -31,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
         setCurrentUser(result);
         Swal.fire({
           title: "Login successfully!",
-          text: "You can add the schedule for students now!",
+          text: "you can add the schedule students now!",
           icon: "success",
         });
       } else {
@@ -51,7 +46,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.get(`${Api}/logout`, { withCredentials: true });
+      await axios.get(`${Api}/logout`);
       setCurrentUser(null);
       setUsername(null);
       location.reload(true);
