@@ -4,15 +4,15 @@ const About = () => {
   return (
     <>
       <div className="">
-        <div className="w-[1170px] mx-auto py-16">
+        <div className="xl:w-[1170px] px-4 md:px-0 lg:px-0 xl:px-0 mx-auto py-16">
           <div className="w-full flex justify-center relative">
             <span className="text-[36px] font-semibold text-sky-600">
               เกี่ยวกับ
             </span>
             <div className="w-[60px] h-[5px] rounded-full bg-sky-500 absolute bottom-0"></div>
           </div>
-          <div className="w-[800px] mx-auto mt-16">
-            <div className="w-full">
+          <div className="lg:xl:w-[800px] xl:w-[800px] mx-auto mt-16">
+            <div className="xl:w-full">
               <span>
                 ยินดีต้อนรับสู่ Student Attendance Reporting Program (SARP) -
                 โปรแกรมรายงานการเข้าเรียนนักศึกษา

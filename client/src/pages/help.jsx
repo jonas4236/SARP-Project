@@ -4,14 +4,14 @@ const help = () => {
   return (
     <>
       <div className="">
-        <div className="w-[1170px] mx-auto py-8">
+        <div className="xl:w-[1170px] lg:xl:w-[1170px] px-4 md:px-0 lg:px-0 xl:px-0 mx-auto py-8">
           <div className="w-full flex justify-center relative mb-4">
             <span className="text-[36px] font-semibold text-sky-600">
               ติดต่อ/แจ้งปัญหา
             </span>
             <div className="w-[140px] h-[5px] rounded-full bg-sky-500 absolute bottom-0"></div>
           </div>
-          <div className="w-[1000px] mx-auto mt-8">
+          <div className="lg:w-[1000px] xl:w-[1000px] mx-auto mt-8">
             <span>
               หากคุณมีคำถามหรือข้อสงสัยเกี่ยวกับ SARP หรือต้องการความช่วยเหลือ
               กรุณาติดต่อทีมงานผ่านทาง อีเมล:{" "}

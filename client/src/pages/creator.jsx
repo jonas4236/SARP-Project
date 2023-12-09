@@ -6,7 +6,7 @@ const creator = () => {
   return (
     <>
       <div className="">
-        <div className="w-[1170px] mx-auto">
+        <div className="xl:w-[1170px] mx-auto">
           <section class="bg-white dark:bg-gray-900">
             <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
               <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
@@ -17,10 +17,10 @@ const creator = () => {
                   <div className="w-[100px] h-[5px] rounded-full bg-sky-500 absolute bottom-0"></div>
                 </div>
               </div>
-              <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-                <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+              <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-1 lg:grid-cols-2">
+                <div class="items-center bg-gray-50 rounded-lg shadow sm:flex">
                   <img
-                    class="w-[239px] h-[239px] object-cover rounded-lg sm:rounded-none sm:rounded-l-lg"
+                    class="xl:w-[239px] h-[239px] w-full xl:h-[239px] lg:w-[239px] lg:h-[239px] object-contain md:object-cover lg:object-cover xl:object-cover rounded-lg sm:rounded-none sm:rounded-l-lg"
                     src="https://res.cloudinary.com/jonasdev/image/upload/v1701691343/profile1_kwxaov.jpg"
                     alt="Bonnie Avatar"
                   />
@@ -67,7 +67,7 @@ const creator = () => {
                 </div>
                 <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                   <img
-                    class="w-[239px] h-[239px] object-cover rounded-lg sm:rounded-none sm:rounded-l-lg"
+                    class="xl:w-[239px] h-[239px] w-full xl:h-[239px] lg:w-[239px] lg:h-[239px] object-contain md:object-cover lg:object-cover xl:object-cover rounded-lg sm:rounded-none sm:rounded-l-lg"
                     src="https://res.cloudinary.com/jonasdev/image/upload/v1701691871/profile2_sbzdrs.jpg"
                     alt="Michael Avatar"
                   />
@@ -114,7 +114,7 @@ const creator = () => {
                 </div>
                 <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                   <img
-                    class="w-[239px] h-[239px] object-cover rounded-lg sm:rounded-none sm:rounded-l-lg"
+                    class="xl:w-[239px] h-[239px] w-full xl:h-[239px] lg:w-[239px] lg:h-[239px] object-contain md:object-cover lg:object-cover xl:object-cover rounded-lg sm:rounded-none sm:rounded-l-lg"
                     src="https://res.cloudinary.com/jonasdev/image/upload/v1701691343/profile1_kwxaov.jpg"
                     alt="Michael Avatar"
                   />
@@ -161,7 +161,7 @@ const creator = () => {
                 </div>
                 <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                   <img
-                    class="w-[239px] h-[239px] object-cover rounded-lg sm:rounded-none sm:rounded-l-lg"
+                    class="xl:w-[239px] h-[239px] w-full xl:h-[239px] lg:w-[239px] lg:h-[239px] object-contain md:object-cover lg:object-cover xl:object-cover rounded-lg sm:rounded-none sm:rounded-l-lg"
                     src="https://res.cloudinary.com/jonasdev/image/upload/v1701691871/profile2_sbzdrs.jpg"
                     alt="Michael Avatar"
                   />
