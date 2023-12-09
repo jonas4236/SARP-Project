@@ -30,13 +30,13 @@ if (db) {
   console.log("Database status: BAD");
 }
 
-app.get("/add", ProtectAdd, (req, res, next) => {
-  res.send("Redirected to main page");
-});
+// app.get("/add", ProtectAdd, (req, res, next) => {
+//   res.send("Redirected to main page");
+// });
 
-app.get("/login", ProtectAuth, (req, res, next) => {
-  res.send("Redirected to main page");
-});
+// app.get("/login", ProtectAuth, (req, res, next) => {
+//   res.send("Redirected to main page");
+// });
 
 app.post("/api/login", (req, res) => {
   const { email, password } = req.body;
