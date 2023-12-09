@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/AuthContext";
 import "./Login.css";
+import DefaultAPI from "../helpers/DefaultAPI";
 
 const Login = () => {
   axios.defaults.withCredentials = true;
@@ -29,7 +30,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:4444/login").then((res) => {
+    axios.get(`${DefaultAPI}/login`).then((res) => {
       if (res.data.redirectTo) {
         window.location.href = res.data.redirectTo;
       }

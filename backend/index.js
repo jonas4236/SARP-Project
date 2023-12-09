@@ -24,23 +24,6 @@ if (db) {
   console.log("Database status: BAD");
 }
 
-// const verifyUser = (req, res, next) => {
-//   const token = req.cookies.ac_token;
-//   // console.log("ac_token: ", token);
-//   if (!token) {
-//     return res.json({ redirectTo: "/login" });
-//   } else {
-//     jwt.verify(token, "jwt-secret-key", (err, decoded) => {
-//       if (err) {
-//         return res.json({ error: "Token is not valid" });
-//       } else {
-//         req.username = decoded.username;
-//         next();
-//       }
-//     });
-//   }
-// };
-
 app.get("/add", ProtectAdd, (req, res, next) => {
   res.send("Redirected to main page");
 });

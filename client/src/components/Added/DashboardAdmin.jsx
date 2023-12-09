@@ -3,6 +3,7 @@ import ListAdmin from "../admin/ListAdmin";
 import axios from "axios";
 import Api from "../../helpers/Api";
 import { AuthContext } from "../../auth/AuthContext";
+import DefaultAPI from "../../helpers/DefaultAPI";
 
 const DashboardAdmin = () => {
   const [teacher, setTeacher] = useState([]);
@@ -101,7 +102,7 @@ const DashboardAdmin = () => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:4444/add").then((res) => {
+    axios.get(`${DefaultAPI}/add`).then((res) => {
       if (res.data.redirectTo) {
         window.location.href = res.data.redirectTo;
       }
@@ -140,7 +141,10 @@ const DashboardAdmin = () => {
                                     className="my-2 font-bold"
                                     key={stu.stuId}
                                   >
-                                  <span className="text-red-500">{stu.stuId}.</span> {stu.stuName}
+                                    <span className="text-red-500">
+                                      {stu.stuId}.
+                                    </span>{" "}
+                                    {stu.stuName}
                                   </span>
                                 ))}
                               </div>
