@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["https://sarp.vercel.app/"],
+    origin: ["https://sarp.vercel.app/", "http://localhost:5173/"],
     methods: ["POST", "GET"],
     credentials: true,
   })

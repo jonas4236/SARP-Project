@@ -44,7 +44,7 @@ const Login = () => {
           ""
         ) : (
           <>
-            <div className="h-[80vh] lg:w-[1170px] xl:w-[1170px] rounded-lg my-16 mx-auto bg-[url('../../public/images/bg-login.png')] bg-no-repeat">
+            <div className="h-[80vh] lg:w-[1170px] xl:w-[1170px] rounded-lg my-16 mx-auto bg-[url('https://res.cloudinary.com/jonasdev/image/upload/v1702113852/bg-login_y4scnk.png')] bg-no-repeat">
               <div className="flex gap-4">
                 <div className="flex-[1] flex justify-center">
                   <div className="h-[80vh] flex items-center">
