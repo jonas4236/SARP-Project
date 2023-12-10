@@ -15,6 +15,9 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://sarp-a8dff5e6e541.herokuapp.com",
+      "https://sarp-git-main-jnasdev.vercel.app",
+      "https://sarp-r3nz8l29h-jnasdev.vercel.app",
+      "https://sarp-jnasdev.vercel.app",
       "https://sarp.vercel.app",
     ],
     methods: ["POST", "GET"],
