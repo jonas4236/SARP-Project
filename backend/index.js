@@ -20,7 +20,7 @@ app.use(
       "https://sarp-jnasdev.vercel.app",
       "https://sarp.vercel.app",
     ],
-    methods: ["POST", "GET"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
 );
