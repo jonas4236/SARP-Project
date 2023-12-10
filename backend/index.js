@@ -10,22 +10,26 @@ const ProtectAdd = require("./middlewares/ProtectAdd");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://sarp-a8dff5e6e541.herokuapp.com",
+  "https://sarp-git-main-jnasdev.vercel.app",
+  "https://sarp-r3nz8l29h-jnasdev.vercel.app",
+  "https://sarp-jnasdev.vercel.app",
+  "https://sarp.vercel.app",
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://sarp-a8dff5e6e541.herokuapp.com",
-      "https://sarp-git-main-jnasdev.vercel.app",
-      "https://sarp-r3nz8l29h-jnasdev.vercel.app",
-      "https://sarp-jnasdev.vercel.app",
-      "https://sarp.vercel.app",
-    ],
+    origin: allowedOrigins,
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
+    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
   })
 );
 
-app.options("*", cors());
+// app.options("*", cors());
 
 if (db) {
   console.log("Database status: GOOD");
