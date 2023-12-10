@@ -26,6 +26,7 @@ app.use(
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
     allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
+    exposedHeaders: ["Content-Length", "ac_token"], // เพิ่ม exposedHeaders
   })
 );
 
@@ -37,13 +38,13 @@ if (db) {
   console.log("Database status: BAD");
 }
 
-// app.get("/add", ProtectAdd, (req, res, next) => {
-//   res.send("Redirected to main page");
-// });
+app.get("/add", ProtectAdd, (req, res, next) => {
+  res.send("Redirected to main page");
+});
 
-// app.get("/login", ProtectAuth, (req, res, next) => {
-//   res.send("Redirected to main page");
-// });
+app.get("/login", ProtectAuth, (req, res, next) => {
+  res.send("Redirected to main page");
+});
 
 app.post("/api/login", (req, res) => {
   const { email, password } = req.body;
@@ -63,7 +64,7 @@ app.post("/api/login", (req, res) => {
       const token = jwt.sign({ username }, "jwt-secret-key", {
         expiresIn: "1h",
       });
-      res.cookie("ac_token", token);
+      res.cookie("ac_token", token, { sameSite: "None", secure: true });
       return res.status(200).json({ results: user, status: "success" });
     } else {
       return res.json({ error: "Invalid email or password!" });
