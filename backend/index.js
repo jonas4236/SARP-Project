@@ -30,7 +30,7 @@ app.use(
   })
 );
 
-// app.options("*", cors());
+app.options("*", cors());
 
 if (db) {
   console.log("Database status: GOOD");
@@ -38,13 +38,13 @@ if (db) {
   console.log("Database status: BAD");
 }
 
-app.get("/add", ProtectAdd, (req, res, next) => {
-  res.send("Redirected to main page");
-});
+// app.get("/add", ProtectAdd, (req, res, next) => {
+//   res.send("Redirected to main page");
+// });
 
-app.get("/login", ProtectAuth, (req, res, next) => {
-  res.send("Redirected to main page");
-});
+// app.get("/login", ProtectAuth, (req, res, next) => {
+//   res.send("Redirected to main page");
+// });
 
 app.post("/api/login", (req, res) => {
   const { email, password } = req.body;
@@ -60,11 +60,11 @@ app.post("/api/login", (req, res) => {
     const user = results[0]; // Corrected variable name
 
     if (password === user.password) {
-      const username = user.username;
-      const token = jwt.sign({ username }, "jwt-secret-key", {
-        expiresIn: "1h",
-      });
-      res.cookie("ac_token", token, { sameSite: "None", secure: true });
+      // const username = user.username;
+      // const token = jwt.sign({ username }, "jwt-secret-key", {
+      //   expiresIn: "1h",
+      // });
+      // res.cookie("ac_token", token, { sameSite: "None", secure: true });
       return res.status(200).json({ results: user, status: "success" });
     } else {
       return res.json({ error: "Invalid email or password!" });
