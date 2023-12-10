@@ -75,7 +75,9 @@ const DashboardAdmin = () => {
 
   const formattedDMY = `${PullYear}/${PullMonth}/${PullDay}`;
 
-  const AddedCheckList = async () => {
+  const AddedCheckList = async (e) => {
+    e.preventDefault();
+
     try {
       await axios
         .post(`${import.meta.env.VITE_API}/create`, {
@@ -124,7 +126,7 @@ const DashboardAdmin = () => {
                 </span>
               </div>
               <div className="">
-                <form className="mx-auto">
+                <form className="mx-auto" onSubmit={AddedCheckList}>
                   <div className="flex gap-16 flex-col lg:flex-row xl:flex-row">
                     <div className="flex-[2]">
                       <div className="w-full flex justify-center bg-sky-500 py-2 text-white font-bold text-[18px]">
@@ -427,7 +429,7 @@ const DashboardAdmin = () => {
                       </div>
                       <div className="flex flex-col mt-4">
                         <label
-                          htmlFor="TeacherNmae"
+                          htmlFor="TeacherName"
                           className="text-[20px] text-sky-600 font-bold"
                         >
                           วิชา
@@ -443,7 +445,7 @@ const DashboardAdmin = () => {
                       </div>
                       <div className="flex flex-col mt-4">
                         <label
-                          htmlFor="TeacherNmae"
+                          htmlFor="TeacherName"
                           className="text-[20px] text-sky-600 font-bold"
                         >
                           ผู้ตรวจ
@@ -458,10 +460,7 @@ const DashboardAdmin = () => {
                         </select>
                       </div>
                       <div className="w-full flex justify-center">
-                        <button
-                          onClick={AddedCheckList}
-                          className="bg-sky-500 text-white mt-4 w-full py-2 rounded-lg font-medium hover:bg-sky-600"
-                        >
+                        <button className="bg-sky-500 text-white mt-4 w-full py-2 rounded-lg font-medium hover:bg-sky-600">
                           บันทึก
                         </button>
                       </div>
