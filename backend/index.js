@@ -9,6 +9,7 @@ const ProtectAdd = require("./middlewares/ProtectAdd");
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 const allowedOrigins = [
