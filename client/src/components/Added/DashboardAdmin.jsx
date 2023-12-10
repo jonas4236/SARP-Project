@@ -30,7 +30,7 @@ const DashboardAdmin = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const res = await axios.get(`${Api}/students`);
+        const res = await axios.get(`${import.meta.env.VITE_API}/students`);
 
         setStudents(res.data);
       } catch (err) {
@@ -44,7 +44,7 @@ const DashboardAdmin = () => {
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const res = await axios.get(`${Api}/subjects`);
+        const res = await axios.get(`${import.meta.env.VITE_API}/subjects`);
 
         setDataSubjects(res.data);
       } catch (err) {
@@ -58,7 +58,7 @@ const DashboardAdmin = () => {
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const res = await axios.get(`${Api}/teachers`);
+        const res = await axios.get(`${import.meta.env.VITE_API}/teachers`);
 
         setDataTeacher(res.data);
       } catch (err) {
@@ -78,7 +78,7 @@ const DashboardAdmin = () => {
   const AddedCheckList = async () => {
     try {
       await axios
-        .post(`${Api}/create`, {
+        .post(`${import.meta.env.VITE_API}/create`, {
           Date: formattedDMY,
           teacher: teacher,
           subject: subject,

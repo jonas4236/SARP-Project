@@ -28,7 +28,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${Api}/students`);
+        const res = await axios.get(`${import.meta.env.VITE_API}/students`);
 
         setStudents(res.data);
       } catch (err) {
@@ -44,7 +44,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${Api}/checklist/${slugDMY}`);
+        const res = await axios.get(`${import.meta.env.VITE_API}/checklist/${slugDMY}`);
 
         setChecklist(res.data);
         // console.log("SLUG: ", checklist);

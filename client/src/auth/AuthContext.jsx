@@ -18,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post(`${Api}/login`, email, password);
+      const res = await axios.post(`${import.meta.env.VITE_API}/login`, email, password);
       if (res.data.status === "success") {
         const result = res.data;
         const name = result.results.username;
@@ -46,7 +46,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.get(`${Api}/logout`);
+      await axios.get(`${import.meta.env.VITE_API}/logout`);
       setCurrentUser(null);
       setUsername(null);
       location.reload(true);

@@ -39,6 +39,7 @@ function calendar() {
 
     // console.log("days: ", days)
   };
+  console.log(import.meta.env.VITE_API)
 
   return (
     <div className="xl:w-[1170px] mx-auto px-4 my-16">

@@ -20,7 +20,7 @@ const ListAdmin = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const res = await axios.get(`${Api}/students`);
+        const res = await axios.get(`${import.meta.env.VITE_API}/students`);
 
         setStudents(res.data);
       } catch (err) {
@@ -33,7 +33,7 @@ const ListAdmin = () => {
 
     const AddedCheckList = async () => {
       try {
-        await axios.post(`${Api}/create`, {
+        await axios.post(`${import.meta.env.VITE_API}/create`, {
           Stu1: Stu,
           Stu2: Stu2,
           Stu3: Stu3,
