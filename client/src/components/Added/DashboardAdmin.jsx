@@ -1,9 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import ListAdmin from "../admin/ListAdmin";
 import axios from "axios";
-import Api from "../../helpers/Api";
 import { AuthContext } from "../../auth/AuthContext";
-import DefaultAPI from "../../helpers/DefaultAPI";
 
 const DashboardAdmin = () => {
   const [teacher, setTeacher] = useState([]);
@@ -73,6 +70,28 @@ const DashboardAdmin = () => {
   const PullMonth = date.slice(5, 7);
   const PullYear = date.slice(0, 4);
 
+  var isSafari = /^((?!chrome|android).)*safari/i.test(
+    navigator.userAgent
+  );
+  if (isSafari) {
+    const PullMonth = slugDMY.slice(0, 2);
+    const PullDay = slugDMY.slice(3, 5);
+    const PullYear = slugDMY.slice(6, 10) - 543;
+    const ForSlugDMY = `${PullDay}-${PullMonth}-${PullYear}`;
+    const slugDMYForSafari = `${PullDay}-${PullMonth}-${PullYear}`;
+    // const res = await axios.get(
+    //   `${import.meta.env.VITE_API}/checklist/${slugDMYForSafari}`
+    // );
+    // setChecklist(res.data);
+    // setSlWeek(ForSlugDMY);
+  } else {
+    // const res = await axios.get(
+    //   `${import.meta.env.VITE_API}/checklist/${slugDMY}`
+    // );
+    // setChecklist(res.data);
+    // setSlWeek(slugDMY);
+  }
+
   const formattedDMY = `${PullYear}/${PullMonth}/${PullDay}`;
 
   const AddedCheckList = async (e) => {
@@ -102,6 +121,8 @@ const DashboardAdmin = () => {
       console.log("Error: ", err);
     }
   };
+
+  console.log("DATE: ", date)
 
   return (
     <>
@@ -409,6 +430,7 @@ const DashboardAdmin = () => {
                         >
                           วันที่
                         </label>
+                        <span>{date}</span>
                         <input
                           type="date"
                           name=""
