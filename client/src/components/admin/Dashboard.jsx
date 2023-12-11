@@ -37,13 +37,13 @@ const Dashboard = () => {
           const PullMonth = slugDMY.slice(0, 2);
           const PullDay = slugDMY.slice(3, 5);
           const PullYear = slugDMY.slice(6, 10) - 543;
-          const ForSlugWEEK = PullDay / PullMonth / PullYear;
+          const ForSlugDMY = `${PullDay}-${PullMonth}-${PullYear}`;
           const slugDMYForSafari = `${PullDay}-${PullMonth}-${PullYear}`;
           const res = await axios.get(
             `${import.meta.env.VITE_API}/checklist/${slugDMYForSafari}`
           );
           setChecklist(res.data);
-          setSlWeek(ForSlugWEEK);
+          setSlWeek(ForSlugDMY);
         } else {
           const res = await axios.get(
             `${import.meta.env.VITE_API}/checklist/${slugDMY}`
@@ -75,7 +75,7 @@ const Dashboard = () => {
             <span className="text-[20px] lg:text-[28px] xl:text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">
               ที่
             </span>
-            <span className="text-[20px] lg:text-[28px] xl:text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">{`${PullDay}/${PullMonth}/${PullYear}`}</span>
+            <span className="text-[20px] lg:text-[28px] xl:text-[36px] ml-4 text-sky-700 drop-shadow-lg font-bold">{slWeek}</span>
           </div>
           <div
             className={`mt-8 grid ${
