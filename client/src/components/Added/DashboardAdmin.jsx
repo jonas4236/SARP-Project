@@ -74,11 +74,11 @@ const DashboardAdmin = () => {
     navigator.userAgent
   );
   if (isSafari) {
-    const PullMonth = slugDMY.slice(0, 2);
-    const PullDay = slugDMY.slice(3, 5);
-    const PullYear = slugDMY.slice(6, 10) - 543;
-    const ForSlugDMY = `${PullDay}-${PullMonth}-${PullYear}`;
-    const slugDMYForSafari = `${PullDay}-${PullMonth}-${PullYear}`;
+    // const PullMonth = slugDMY.slice(0, 2);
+    // const PullDay = slugDMY.slice(3, 5);
+    // const PullYear = slugDMY.slice(6, 10) - 543;
+    // const ForSlugDMY = `${PullDay}-${PullMonth}-${PullYear}`;
+    // const slugDMYForSafari = `${PullDay}-${PullMonth}-${PullYear}`;
     // const res = await axios.get(
     //   `${import.meta.env.VITE_API}/checklist/${slugDMYForSafari}`
     // );
