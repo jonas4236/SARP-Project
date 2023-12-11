@@ -28,9 +28,24 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API}/students`);
-
-        setStudents(res.data);
+        var isSafari = /^((?!chrome|android).)*safari/i.test(
+          navigator.userAgent
+        );
+        if (isSafari) {
+          const PullMonth = slugDMY.slice(0, 2);
+          const PullDay = slugDMY.slice(3, 5);
+          const PullYear = slugDMY.slice(6, 10) - 543;
+          const slugDMYForSafari = `${PullDay}-${PullMonth}-${PullYear}`;
+          const res = await axios.get(
+            `https://sarp-a8dff5e6e541.herokuapp.com/api/checklist/${slugDMYForSafari}`
+          );
+          setChecklist(res.data);
+        } else {
+          const res = await axios.get(
+            `https://sarp-a8dff5e6e541.herokuapp.com/api/checklist/${slugDMY}`
+          );
+          setChecklist(res.data);
+        }
       } catch (err) {
         console.log("error: ", err);
       }
@@ -44,7 +59,9 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API}/checklist/${slugDMY}`);
+        const res = await axios.get(
+          `${import.meta.env.VITE_API}/checklist/${slugDMY}`
+        );
 
         setChecklist(res.data);
         // console.log("SLUG: ", checklist);
