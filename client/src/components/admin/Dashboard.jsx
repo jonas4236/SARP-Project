@@ -12,6 +12,8 @@ const Dashboard = () => {
   // console.log("slugWEEK: ",slugWEEK)
   // console.log("slugDMY: ",slugDMY)
 
+  const [slWeek, setSlWeek] = useState(null);
+
   const PullDay = slugDMY.slice(0, 2);
   const PullMonth = slugDMY.slice(3, 5);
   const PullYear = slugDMY.slice(6, 10);
@@ -35,36 +37,20 @@ const Dashboard = () => {
           const PullMonth = slugDMY.slice(0, 2);
           const PullDay = slugDMY.slice(3, 5);
           const PullYear = slugDMY.slice(6, 10) - 543;
+          const ForSlugWEEK = PullDay / PullMonth / PullYear;
           const slugDMYForSafari = `${PullDay}-${PullMonth}-${PullYear}`;
           const res = await axios.get(
-            `https://sarp-a8dff5e6e541.herokuapp.com/api/checklist/${slugDMYForSafari}`
+            `${import.meta.env.VITE_API}/checklist/${slugDMYForSafari}`
           );
           setChecklist(res.data);
+          setSlWeek(ForSlugWEEK);
         } else {
           const res = await axios.get(
-            `https://sarp-a8dff5e6e541.herokuapp.com/api/checklist/${slugDMY}`
+            `${import.meta.env.VITE_API}/checklist/${slugDMY}`
           );
           setChecklist(res.data);
+          setSlWeek(slugDMY);
         }
-      } catch (err) {
-        console.log("error: ", err);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // console.log("STUDENT: ", students)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          `${import.meta.env.VITE_API}/checklist/${slugDMY}`
-        );
-
-        setChecklist(res.data);
-        // console.log("SLUG: ", checklist);
       } catch (err) {
         console.log("error: ", err);
       }
