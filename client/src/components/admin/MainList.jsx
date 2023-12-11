@@ -1,7 +1,7 @@
 import React from "react";
 import ListStudent from "./ListStudent";
 
-const MainList = ({ data }) => {
+const MainList = ({data}) => {
   return (
     <>
       {data.map((check) => (
