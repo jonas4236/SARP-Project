@@ -103,17 +103,6 @@ const DashboardAdmin = () => {
     }
   };
 
-  // useEffect(() => {
-  //   axios.get(`${DefaultAPI}/add`).then((res) => {
-  //     if (res.data.redirectTo) {
-  //       window.location.href = res.data.redirectTo;
-  //     }
-  //   });
-  // }, []);
-
-  // console.log("TeacherName: ", teacher);
-  // console.log("SubjectName: ", subject);
-  // console.log("Date: ", formattedDMY);
   return (
     <>
       <div className="mb-32">

@@ -17,7 +17,6 @@ const Login = () => {
   const handleSummit = async (e) => {
     e.preventDefault();
     await login({ email, password }).then((result) => {
-      // console.log("currentUser: ", result.status);
 
       if (result.status === "success") {
         navigate("/").then(() => {
