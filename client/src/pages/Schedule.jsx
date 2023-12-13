@@ -11,11 +11,15 @@ const Schedule = () => {
             </span>
             <div className="w-[60px] h-[5px] rounded-full bg-sky-500 absolute bottom-0"></div>
           </div>
-          <div className="mt-8 text-[16px] font-medium">
-            <span>จำลองมาจากตารางเรียนของนักเรียน นักศึกษาแผนกเทคนิคคอมพิวเตอร์ ระดับชั้น ปวส.4/1 <span className="text-red-500 font-bold">เท่านั้น</span></span>
+          <div className="ml-4 mt-8 text-[16px] font-medium">
+            <span>ตารางเรียนนักศึกษาปวส.1/1 แผนกเทคนิคคอมพิวเตอร์</span>
           </div>
           <div className="mt-8 flex justify-center">
-            <img className="object-contain" src="https://res.cloudinary.com/jonasdev/image/upload/v1702467670/image_up5vf9.png" alt="SCHEDULE" />
+            <img
+              className="object-contain"
+              src="https://res.cloudinary.com/jonasdev/image/upload/v1702467670/image_up5vf9.png"
+              alt="SCHEDULE"
+            />
           </div>
         </div>
       </div>
