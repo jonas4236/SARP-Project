@@ -38,6 +38,13 @@ const ResponsiveNav = ({ currentUser }) => {
               </button>
             </Link>
           </li>
+          <li>
+            <Link to={"/schedule"}>
+              <button className="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-transparent hover:text-blue-700 ml-4 lg:ml-0 xl:ml-0 xl:p-0 focus:text-blue-700">
+                ตารางเรียน
+              </button>
+            </Link>
+          </li>
           {currentUser ? (
             ""
           ) : (

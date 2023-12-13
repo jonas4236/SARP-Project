@@ -11,6 +11,7 @@ import DashboardAdmin from "./components/Added/DashboardAdmin";
 import About from "./pages/About";
 import Creator from "./pages/creator";
 import Help from "./pages/help";
+import Schedule from "./pages/Schedule";
 
 const Layout = () => {
   return (
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/creator",
         element: <Creator />,
+      },
+      {
+        path: "/schedule",
+        element: <Schedule />,
       },
       {
         path: "/help",

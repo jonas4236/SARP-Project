@@ -110,6 +110,13 @@ const Navbar = () => {
                   </button>
                 </Link>
               </li>
+              <li>
+                <Link to={"/schedule"}>
+                  <button className="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-transparent hover:text-blue-700 xl:p-0 focus:text-blue-700">
+                    ตารางเรียน
+                  </button>
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="sm:block md:hidden lg:hidden xl:hidden 2xl:hidden">
