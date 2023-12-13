@@ -1,5 +1,4 @@
 import React from "react";
-import LOGO from "../../../public/images/SARP-LOGO.png";
 import { FaFacebookF, FaGithub } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
@@ -10,7 +9,13 @@ const Footer = () => {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link to={"/"}>
-              <img src={LOGO} className="h-16 w-16 mr-3" alt="FlowBite Logo" />
+              <img
+                src={
+                  "https://res.cloudinary.com/jonasdev/image/upload/v1702472072/SARP-LOGO_h4qsst.png"
+                }
+                className="h-16 w-16 mr-3"
+                alt="FlowBite Logo"
+              />
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">

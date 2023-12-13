@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import LOGO from "../../../public/images/SARP-LOGO.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../auth/AuthContext";
@@ -34,7 +33,9 @@ const Navbar = () => {
         <div className="xl:w-[1170px] flex items-center justify-between mx-auto p-4 z-[55]">
           <Link to={"/"}>
             <img
-              src={LOGO}
+              src={
+                "https://res.cloudinary.com/jonasdev/image/upload/v1702472072/SARP-LOGO_h4qsst.png"
+              }
               className="h-16 w-16 mr-3 object-contain cursor-pointer"
               alt="SARP_LOGO"
             />
@@ -120,7 +121,9 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="sm:block md:hidden lg:hidden xl:hidden 2xl:hidden">
-            <span className="cursor-pointer" onClick={toggleNav}>{isOpen ? <IoClose size={30} /> : <MdMenu size={30} />}</span>
+            <span className="cursor-pointer" onClick={toggleNav}>
+              {isOpen ? <IoClose size={30} /> : <MdMenu size={30} />}
+            </span>
           </div>
         </div>
         {isOpen && <ResponsiveNav currentUser={currentUser} />}
