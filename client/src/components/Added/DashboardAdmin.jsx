@@ -426,6 +426,7 @@ const DashboardAdmin = () => {
                           id="teacherId"
                           onChange={(event) => setSubject(event.target.value)}
                         >
+                          <option>none</option>
                           {dataSubjects.map((sub) => (
                             <option key={sub.subId}>{sub.sub_name}</option>
                           ))}
@@ -442,6 +443,7 @@ const DashboardAdmin = () => {
                           id="teacherId"
                           onChange={(event) => setTeacher(event.target.value)}
                         >
+                          <option>none</option>
                           {dataTeachers.map((teach) => (
                             <option key={teach.id}>{teach.teacher_name}</option>
                           ))}

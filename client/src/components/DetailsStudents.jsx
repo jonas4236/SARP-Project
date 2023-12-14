@@ -5,11 +5,11 @@ const DetailsStudents = ({ status }) => {
   const handleStatus = (val) => {
     switch (val) {
       case 1:
-        return <span className="text-green-500 text-[16px]">มาเรียนปกติ</span>;
+        return <span className="text-green-500 text-[16px]">🟢 มาเรียนปกติ</span>;
       case 2:
-        return <span className="text-yellow-500 text-[16px]">ลา</span>;
+        return <span className="text-yellow-500 text-[16px]">🟡 ลา</span>;
       case 3:
-        return <span className="text-red-500 text-[16px]">ขาดเรียน</span>;
+        return <span className="text-red-500 text-[16px]">🔴 ขาดเรียน</span>;
       default:
         return "ยังไม่มีสถานะ";
     }
