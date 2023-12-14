@@ -7,23 +7,23 @@ const DetailsStudents = ({ status }) => {
     switch (val) {
       case 1:
         return (
-          <span className="text-green-500 text-[12px] lg:text-[16px] xl:text-[16px]">
+          <span className="text-green-500 text-[16px] lg:text-[16px] xl:text-[16px]">
             <span>🟢</span> มาเรียนปกติ
           </span>
         );
       case 2:
         return (
           <div className="">
-            <span className="text-yellow-500 text-[12px] lg:text-[16px] xl:text-[16px]">
-              <span className="mr-[52px] lg:mr-[65px] xl:mr-[65px]">🟡</span>
+            <span className="text-yellow-500 text-[16px] lg:text-[16px] xl:text-[16px]">
+              <span className="mr-[69px] lg:mr-[65px] xl:mr-[65px]">🟡</span>
             </span>
-            <span className="text-yellow-500 text-[12px] lg:text-[16px] xl:text-[16px]">ลา</span>
+            <span className="text-yellow-500 text-[16px] lg:text-[16px] xl:text-[16px]">ลา</span>
           </div>
         );
       case 3:
         return (
-          <span className="text-red-500 text-[12px] lg:text-[16px] xl:text-[16px]">
-            <span className="mr-[16px] lg:mr-[21px] xl:mr-[21px]">🔴</span> ขาดเรียน
+          <span className="text-red-500 text-[16px] lg:text-[16px] xl:text-[16px]">
+            <span className="mr-[21px] lg:mr-[21px] xl:mr-[21px]">🔴</span> ขาดเรียน
           </span>
         );
       default:

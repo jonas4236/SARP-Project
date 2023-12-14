@@ -2,10 +2,7 @@ import React from "react";
 import ListStudent from "./ListStudent";
 
 const MainList = ({ data }) => {
-  console.log("data: ", data);
 
-  const slugNumber = data?.[0]?.subject.slice(0, 10);
-  const slugNameSub = console.log("number: ", slugNumber);
   return (
     <>
       {data.map((check) => (
