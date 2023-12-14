@@ -4,6 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../../auth/AuthContext";
 import secureLocalStorage from "react-secure-storage";
 import ResponsiveNav from "./ResponsiveNav";
+import NavbarV2 from "./NavbarV2";
 
 // ICONS
 import { IoClose } from "react-icons/io5";
@@ -34,9 +35,9 @@ const Navbar = () => {
           <Link to={"/"}>
             <img
               src={
-                "https://res.cloudinary.com/jonasdev/image/upload/v1702472072/SARP-LOGO_h4qsst.png"
+                "https://res.cloudinary.com/jonasdev/image/upload/v1702523477/foot-logo_jxwegy.png"
               }
-              className="h-16 w-16 mr-3 object-contain cursor-pointer"
+              className="h-16 w-full mr-3 object-contain cursor-pointer"
               alt="SARP_LOGO"
             />
           </Link>
@@ -45,8 +46,15 @@ const Navbar = () => {
               <>
                 <div className="flex items-center mr-4">
                   <span>
-                    User: <span className="text-blue-500">{name}</span>
+                    <span>
+                      <img
+                        className="w-[20px] h-[20px] object-contain mr-2"
+                        src="https://res.cloudinary.com/jonasdev/image/upload/v1702518075/user-icon_uezyqd.png"
+                        alt=""
+                      />
+                    </span>{" "}
                   </span>
+                  <span className="text-blue-500">{name}</span>
                 </div>
                 <button
                   type="button"
@@ -67,10 +75,7 @@ const Navbar = () => {
             ) : (
               <>
                 <Link to={"/login"}>
-                  <button
-                    type="button"
-                    className="text-white bg-green-500 hidden md:block lg:block xl:block 2xl:block hover:bg-green-600 font-medium rounded-lg text-sm px-4 py-2 text-center lg:mr-0 dark:bg-blue-600"
-                  >
+                  <button className="hidden lg:inline-block xl:inline-block py-2 px-4 bg-green-400 hover:bg-green-500 text-white rounded-lg">
                     Login
                   </button>
                 </Link>
@@ -83,41 +88,7 @@ const Navbar = () => {
             id="navbar-sticky"
           >
             <ul className="xl:flex flex-col md:p-0 md:space-x-8 xl:w-full xl:p-0 font-medium rounded-lg xl:flex-row xl:space-x-8 xl:mt-0 xl:border-0 md:flex md:flex-row hidden lg:flex lg:flex-row">
-              <li>
-                <Link to={"/"}>
-                  <button className="block py-2 pl-3 pr-4 text-black hover:text-blue-700 focus:text-blue-700 rounded  xl:p-0">
-                    หน้าหลัก
-                  </button>
-                </Link>
-              </li>
-              <li>
-                <Link to={"/about"}>
-                  <button className="block py-2 pl-3 pr-4 text-gray-900 rounded focus:text-blue-700 hover:text-blue-700 xl:p-0">
-                    เกี่ยวกับ
-                  </button>
-                </Link>
-              </li>
-              <li>
-                <Link to={"/creator"}>
-                  <button className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:text-blue-700 xl:p-0 focus:text-blue-700">
-                    ผู้จัดทำ
-                  </button>
-                </Link>
-              </li>
-              <li>
-                <Link to={"/help"}>
-                  <button className="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-transparent hover:text-blue-700 xl:p-0 focus:text-blue-700">
-                    ติดต่อ/แจ้งปัญหา
-                  </button>
-                </Link>
-              </li>
-              <li>
-                <Link to={"/schedule"}>
-                  <button className="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-transparent hover:text-blue-700 xl:p-0 focus:text-blue-700">
-                    ตารางเรียน
-                  </button>
-                </Link>
-              </li>
+              <NavbarV2 />
             </ul>
           </div>
           <div className="sm:block md:hidden lg:hidden xl:hidden 2xl:hidden">

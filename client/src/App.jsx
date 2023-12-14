@@ -12,6 +12,8 @@ import About from "./pages/About";
 import Creator from "./pages/creator";
 import Help from "./pages/help";
 import Schedule from "./pages/Schedule";
+import HelpSuccess from "./pages/help-success";
+import MimiFooter from "./pages/mimiFooter";
 
 const Layout = () => {
   return (
@@ -49,6 +51,14 @@ const router = createBrowserRouter([
       {
         path: "/help",
         element: <Help />,
+      },
+      {
+        path: "/help/successfully",
+        element: <HelpSuccess />,
+      },
+      {
+        path: "/sitemap",
+        element: <MimiFooter />,
       },
       {
         path: "/add",

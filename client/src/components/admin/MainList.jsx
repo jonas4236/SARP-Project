@@ -5,7 +5,7 @@ const MainList = ({ data }) => {
   return (
     <>
       {data.map((check) => (
-        <div key={check.cId} className="p-8 mx-4 lg:mx-0 xl:mx-0 bg-[#67a7ff] bg-opacity-50 rounded-lg">
+        <div key={check.cId} className="p-8 mx-4 lg:mx-0 xl:mx-0 bg-sky-500 bg-opacity-50 rounded-lg">
           <div className="w-full flex justify-center">
             <span className="text-[20px] lg:text-[22px] xl:text-[24px] text-white drop-shadow-lg font-bold">
               วิชา

@@ -18,16 +18,9 @@ const ResponsiveNav = ({ currentUser }) => {
             </Link>
           </li>
           <li>
-            <Link to={"/about"}>
-              <button className="block py-2 pl-3 pr-4 ml-4 lg:ml-0 xl:ml-0 text-gray-900 rounded focus:text-blue-700 hover:text-blue-700 xl:p-0">
-                เกี่ยวกับ
-              </button>
-            </Link>
-          </li>
-          <li>
-            <Link to={"/creator"}>
-              <button className="block py-2 pl-3 pr-4 ml-4 lg:ml-0 xl:ml-0 text-gray-900 rounded hover:text-blue-700 xl:p-0 focus:text-blue-700">
-                ผู้จัดทำ
+            <Link to={"/schedule"}>
+              <button className="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-transparent hover:text-blue-700 ml-4 lg:ml-0 xl:ml-0 xl:p-0 focus:text-blue-700">
+                ตารางเรียน
               </button>
             </Link>
           </li>
@@ -39,26 +32,26 @@ const ResponsiveNav = ({ currentUser }) => {
             </Link>
           </li>
           <li>
-            <Link to={"/schedule"}>
-              <button className="block py-2 pl-3 pr-4 text-gray-900 rounded md:hover:bg-transparent hover:text-blue-700 ml-4 lg:ml-0 xl:ml-0 xl:p-0 focus:text-blue-700">
-                ตารางเรียน
+            <Link to={"/about"}>
+              <button className="block py-2 pl-3 pr-4 ml-4 lg:ml-0 xl:ml-0 text-gray-900 rounded focus:text-blue-700 hover:text-blue-700 xl:p-0">
+                เกี่ยวกับ
               </button>
             </Link>
           </li>
-          {currentUser ? (
-            ""
-          ) : (
-            <li>
-              <Link to={"/login"}>
-                <button
-                  type="button"
-                  className="text-white bg-blue-700 block md:block lg:block xl:block 2xl:block hover:bg-blue-800 font-medium rounded-lg text-sm px-4 ml-4 lg:ml-0 xl:ml-0 py-2 text-center mb-4 lg:mr-0 dark:bg-blue-600"
-                >
-                  Login
-                </button>
-              </Link>
-            </li>
-          )}
+
+          <div className="flex ml-[28px] mb-2 items-center">
+            {currentUser ? (
+              ""
+            ) : (
+              <>
+                <Link to={"/login"}>
+                  <button className="inline-block lg:hidden xl:hidden py-2 px-4 bg-green-400 hover:bg-green-500 text-white rounded-lg">
+                    Login
+                  </button>
+                </Link>
+              </>
+            )}
+          </div>
         </ul>
       </div>
     </>

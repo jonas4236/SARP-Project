@@ -4,6 +4,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
+import "./calendar.css"
+
 function calendar() {
   const handleDateClick = (arg) => {
     const clickedDate = arg.date;
@@ -23,9 +25,24 @@ function calendar() {
     window.location.href = `/schedule/${dayOfWeek}/${day}-${month}-${year}`;
   };
 
+  const dayRender = (info) => {
+    const today = new Date();
+    const day = info.date.getDate();
+    const month = info.date.getMonth();
+    const year = info.date.getFullYear();
+
+    if (
+      info.date.getDate() === today.getDate() &&
+      info.date.getMonth() === today.getMonth() &&
+      info.date.getFullYear() === today.getFullYear()
+    ) {
+      info.el.classList.add("current-day"); // Add your custom class
+    }
+  };
+
   return (
     <div className="xl:w-[1170px] mx-auto px-4 my-16">
-      <div className="bg-[#F5F5F5] p-8 rounded-lg">
+      <div className="bg-[#F5F7F8] p-8 rounded-lg">
         <Fullcalendar
           plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
           editable={true}
@@ -37,6 +54,7 @@ function calendar() {
             center: "title",
             end: "prev,next",
           }}
+          dayRender={dayRender}
           locale="th" // Set the locale to Thai
         />
       </div>

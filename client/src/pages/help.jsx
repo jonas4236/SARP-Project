@@ -6,36 +6,36 @@ const help = () => {
       <div className="">
         <div className="xl:w-[1170px] lg:xl:w-[1170px] px-4 md:px-0 lg:px-0 xl:px-0 mx-auto py-8">
           <div className="w-full flex justify-center relative mb-4">
-            <span className="text-[36px] font-semibold text-sky-600">
-              ติดต่อ/แจ้งปัญหา
+            <span className="text-[36px] font-medium text-black">
+              ติดต่อ และแจ้งปัญหา
             </span>
-            <div className="w-[140px] h-[5px] rounded-full bg-sky-500 absolute bottom-0"></div>
           </div>
           <div className="lg:w-[1000px] xl:w-[1000px] mx-auto mt-8">
-            <span>
-              หากคุณมีคำถามหรือข้อสงสัยเกี่ยวกับ SARP หรือต้องการความช่วยเหลือ
-              กรุณาติดต่อทีมงานผ่านทาง อีเมล:{" "}
-              <span className="text-sky-500 font-medium">
-                bossview59@gmail.com
-              </span>
+            <span className="flex items-center text-center text-[#828282]">
+              หากท่านมีคำถามหรือข้อสงสัยใดๆ เกี่ยวกับ SARP
+              หรือประสงค์ที่จะขอรับคำปรึกษาหรือความช่วยเหลือ
+              กรุณาทำการแสดงความคิดเห็นหรือติดต่อผ่านทางกล่องข้อความด้านล่างนี้เพื่อให้เราสามารถให้บริการท่านได้อย่างเต็มที่และทันท่วงที
             </span>
-            <p>
-              If you have any questions or concerns about SARP or need
-              assistance, Please contact the team via email:{" "}
-              <span className="text-sky-500 font-medium">bossview59@gmail.com</span>
+            <p className="mt-4"></p>
+            <p className="flex items-center text-center text-[#828282]">
+              If you have any questions or concerns regarding SARP, or if you
+              require assistance, please feel free to express your thoughts or
+              contact us through the comment box provided below. We are
+              committed to offering you prompt and comprehensive service.
             </p>
-            <p className="mt-4">
-              ขอบคุณที่ใช้บริการ SARP -
-              คำตอบที่คุณคาดหวังสำหรับการติดตามการเข้าเรียนของบุตรหลานของคุณ!
-            </p>
-            <p>Thank you for using SARP - the answer you've been expecting for tracking your child's school attendance!</p>
           </div>
-          <div className="mt-8">
-            <img
-              className="w-[1000px] h-full mx-auto rounded-lg"
-              src="https://images.unsplash.com/photo-1502355984-b735cb2550ce?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="IMAGE"
-            />
+          <div className="mt-8 flex flex-col items-center justify-center">
+            <textarea
+              className="w-[650px] outline-none border-[#BDBDBD] border-[3px] rounded-md resize-none"
+              placeholder="แจ้งปัญหาของคุณ..."
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+            ></textarea>
+            <button className="bg-[#2F80ED] text-white mt-4 py-2 px-16 rounded-lg">
+              แจ้งปัญหา
+            </button>
           </div>
         </div>
       </div>
