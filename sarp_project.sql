@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 03:16 AM
+-- Generation Time: Dec 14, 2023 at 03:50 PM
 -- Server version: 8.0.34
 -- PHP Version: 8.2.4
 
@@ -60,10 +60,8 @@ INSERT INTO `checklist` (`cId`, `Date`, `teacher`, `subject`, `Stu1`, `Stu2`, `S
 (25, '2023/12/01', 'นิพนธ์ แก้วเกิด', '30000-2002 การใช้งานใมโครคอนโทรลเลอร์', 2, 1, 1, 1, 1, 1, 1, 2, 2, 1),
 (26, '2023/12/04', 'ภีรนีย์ ประทุมพวง', '30000-1501 ชีวิตกับสังคมไทย', 2, 1, 1, 1, 1, 1, 2, 2, 2, 1),
 (27, '2023/12/04', 'กนกรัตน์ อินขุนทด', '30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน', 2, 1, 1, 1, 1, 1, 2, 2, 2, 1),
-(33, '//', 'รัชฎาเนตร สุรำไพ', '30000-2202 การวิเคราะห์และออกแบบระบบ', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2),
-(41, '2023/12/05', 'รัชฎาเนตร สุรำไพ', '30000-2202 การวิเคราะห์และออกแบบระบบ', 1, 2, 3, 1, 2, 3, 1, 2, 3, 1),
-(42, '2023/12/05', 'สุชาติ ทาทอง', '30000-1608 การออกกำลังกายเพื่อสุขภาพ', 1, 2, 3, 1, 2, 3, 1, 2, 3, 1),
-(43, '2023/12/05', 'กนกรัตน์ อินขุนทด', '30000-1101 ทักษะภาษาไทยเชิงวิชาชีพ', 1, 1, 1, 1, 1, 1, 1, 2, 2, 2);
+(46, '2023/12/09', 'ภีรนีย์ ประทุมพวง', '30000-1501 ชีวิตกับสังคมไทย', 3, 2, 1, 3, 2, 1, 3, 2, 1, 3),
+(47, '2023/12/14', 'ศิวกร บุญอุ้ม', '30000-2004 ระบบเครือข่ายคอมพิวเตอร์', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -75,16 +73,17 @@ CREATE TABLE `staff` (
   `id` int NOT NULL,
   `email` text COLLATE utf8mb4_general_ci NOT NULL,
   `username` text COLLATE utf8mb4_general_ci NOT NULL,
-  `password` text COLLATE utf8mb4_general_ci NOT NULL
+  `password` text COLLATE utf8mb4_general_ci NOT NULL,
+  `weekday_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`id`, `email`, `username`, `password`) VALUES
-(1, 'staff1@sarp.co', 'STAFF1', 'asd1'),
-(2, 'staff2@sarp.co', 'STAFF2', 'asd2');
+INSERT INTO `staff` (`id`, `email`, `username`, `password`, `weekday_id`) VALUES
+(1, 'sivakorn@sarp.co', 'ศิวกร บุญอุ้ม', 'sivakorn.sarp', 'วันพฤหัสบดี'),
+(2, 'amornrat@sarp.co', 'อมรรัตน์ ทิมงาม', 'amornrat.sarp', 'วันจันทร์');
 
 -- --------------------------------------------------------
 
@@ -121,24 +120,24 @@ INSERT INTO `students` (`stuId`, `stuName`) VALUES
 
 CREATE TABLE `subjects` (
   `subId` int NOT NULL,
+  `subNumber` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `sub_name` text COLLATE utf8mb4_general_ci NOT NULL,
-  `weekday_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `weekday_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`subId`, `sub_name`, `weekday_id`) VALUES
-(0, 'none', '0'),
-(5, '30000-1501 ชีวิตกับสังคมไทย', 'วันจันทร์'),
-(6, '30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน', 'วันจันทร์'),
-(9, '30000-1404 แคลคูลัส 1', 'วันอังคาร'),
-(10, '30000-1101 ทักษะภาษาไทยเชิงวิชาชีพ', 'วันอังคาร'),
-(13, '30000-1608 การออกกำลังกายเพื่อสุขภาพ', 'วันพุธ'),
-(14, '30000-2202 การวิเคราะห์และออกแบบระบบ', 'วันพุธ'),
-(17, '30000-2004 ระบบเครือข่ายคอมพิวเตอร์', 'วันพฤหัสบดี'),
-(18, '30000-2002 การใช้งานใมโครคอนโทรลเลอร์', 'วันศุกร์');
+INSERT INTO `subjects` (`subId`, `subNumber`, `sub_name`, `weekday_id`) VALUES
+(5, '30000-1501', '30000-1501 ชีวิตกับสังคมไทย', 'วันจันทร์'),
+(6, '30000-1202', '30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน', 'วันจันทร์'),
+(9, '30000-1404', '30000-1404 แคลคูลัส 1', 'วันอังคาร'),
+(10, '30000-1101', '30000-1101 ทักษะภาษาไทยเชิงวิชาชีพ', 'วันอังคาร'),
+(13, '30000-1608', '30000-1608 การออกกำลังกายเพื่อสุขภาพ', 'วันพุธ'),
+(14, '30000-2202', '30000-2202 การวิเคราะห์และออกแบบระบบ', 'วันพุธ'),
+(17, '30000-2004', '30000-2004 ระบบเครือข่ายคอมพิวเตอร์', 'วันพฤหัสบดี'),
+(18, '30000-2002', '30000-2002 การใช้งานใมโครคอนโทรลเลอร์', 'วันศุกร์');
 
 -- --------------------------------------------------------
 
@@ -156,7 +155,6 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`id`, `teacher_name`) VALUES
-(0, 'none'),
 (1, 'นิพนธ์ แก้วเกิด'),
 (2, 'ศิวกร บุญอุ้ม'),
 (3, 'อมรรัตน์ ทิมงาม'),
@@ -170,13 +168,34 @@ INSERT INTO `teachers` (`id`, `teacher_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `email` text COLLATE utf8mb4_general_ci NOT NULL,
+  `username` text COLLATE utf8mb4_general_ci NOT NULL,
+  `password` text COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `username`, `password`) VALUES
+(1, 'user1@gmail.com', 'User1', 'user1'),
+(2, 'user2@gmail.com', 'User2', 'user2');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `weekday`
 --
 
 CREATE TABLE `weekday` (
   `weekId` int NOT NULL,
   `day_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `weekday_id` text COLLATE utf8mb4_general_ci NOT NULL
+  `weekday_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -184,7 +203,6 @@ CREATE TABLE `weekday` (
 --
 
 INSERT INTO `weekday` (`weekId`, `day_name`, `weekday_id`) VALUES
-(0, 'none', '0'),
 (1, 'วันจันทร์', 'วันจันทร์'),
 (4, 'วันพฤหัสบดี', 'วันพฤหัสบดี'),
 (3, 'วันพุธ', 'วันพุธ'),
@@ -207,7 +225,8 @@ ALTER TABLE `checklist`
 -- Indexes for table `staff`
 --
 ALTER TABLE `staff`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `syce_staff_subjects` (`weekday_id`);
 
 --
 -- Indexes for table `students`
@@ -220,7 +239,7 @@ ALTER TABLE `students`
 --
 ALTER TABLE `subjects`
   ADD PRIMARY KEY (`subId`),
-  ADD KEY `sync_subjects` (`weekday_id`(255));
+  ADD KEY `sync_subjects` (`weekday_id`);
 
 --
 -- Indexes for table `teachers`
@@ -229,10 +248,16 @@ ALTER TABLE `teachers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `weekday`
 --
 ALTER TABLE `weekday`
-  ADD PRIMARY KEY (`weekday_id`(255)) USING BTREE;
+  ADD PRIMARY KEY (`weekday_id`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -242,13 +267,13 @@ ALTER TABLE `weekday`
 -- AUTO_INCREMENT for table `checklist`
 --
 ALTER TABLE `checklist`
-  MODIFY `cId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `cId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `students`
@@ -267,6 +292,22 @@ ALTER TABLE `subjects`
 --
 ALTER TABLE `teachers`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `staff`
+--
+ALTER TABLE `staff`
+  ADD CONSTRAINT `syce_staff_subjects` FOREIGN KEY (`weekday_id`) REFERENCES `subjects` (`weekday_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
