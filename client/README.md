@@ -1,8 +1,11 @@
-# React + Vite
+﻿# Preview SARP-Project
+ 
+![Alt text](https://res.cloudinary.com/jonasdev/image/upload/v1701346211/homepage_mqhu2q.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Preview Add information
 
-Currently, two official plugins are available:
+![Alt text](https://res.cloudinary.com/jonasdev/image/upload/v1701347159/editing_jlfgyp.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Preview Details
+
+![Alt text](https://res.cloudinary.com/jonasdev/image/upload/v1701346965/details_nxacwm.png)

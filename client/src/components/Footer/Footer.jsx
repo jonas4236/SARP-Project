@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="mx-auto xl:w-[1170px] md:flex-warp p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <Link to={"/"}>
+            {/* <Link to={"/"}>
               <img
                 src={
                   "https://res.cloudinary.com/jonasdev/image/upload/v1702472072/SARP-LOGO_h4qsst.png"
@@ -16,7 +16,7 @@ const Footer = () => {
                 className="h-16 w-16 mr-3"
                 alt="FlowBite Logo"
               />
-            </Link>
+            </Link> */}
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
