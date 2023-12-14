@@ -13,6 +13,7 @@ import { MdMenu } from "react-icons/md";
 const Navbar = () => {
   const [name, setName] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate(); // Add this line
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
@@ -21,10 +22,17 @@ const Navbar = () => {
   axios.defaults.withCredentials = true;
 
   const { currentUser, logout } = useContext(AuthContext);
+
   useEffect(() => {
     secureLocalStorage.setItem("user", JSON.stringify(currentUser));
     setName(currentUser?.results.username);
   }, [currentUser]);
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+  }, [currentUser, navigate]);
 
   axios.defaults.withCredentials = true;
 
@@ -44,18 +52,6 @@ const Navbar = () => {
           <div className="flex md:order-2 sm:block md:flex-row lg:flex xl:flex">
             {currentUser ? (
               <>
-                <div className="flex items-center mr-4">
-                  <span>
-                    <span>
-                      <img
-                        className="w-[20px] h-[20px] object-contain mr-2"
-                        src="https://res.cloudinary.com/jonasdev/image/upload/v1702518075/user-icon_uezyqd.png"
-                        alt=""
-                      />
-                    </span>{" "}
-                  </span>
-                  <span className="text-blue-500">{name}</span>
-                </div>
                 <button
                   type="button"
                   className="text-white bg-red-500 hover:bg-red-700  focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600"
@@ -63,23 +59,9 @@ const Navbar = () => {
                 >
                   Logout
                 </button>
-                <Link to={"/add"}>
-                  <button
-                    type="button"
-                    className="text-white bg-green-500 hover:bg-green-600 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0  dark:focus:ring-blue-800 ml-4"
-                  >
-                    บันทึกการเข้าเรียน
-                  </button>
-                </Link>
               </>
             ) : (
-              <>
-                <Link to={"/login"}>
-                  <button className="hidden lg:inline-block xl:inline-block py-2 px-4 bg-green-400 hover:bg-green-500 text-white rounded-lg">
-                    Login
-                  </button>
-                </Link>
-              </>
+              ""
             )}
           </div>
 

@@ -12,21 +12,28 @@ export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(secureLocalStorage.getItem("user")) || null
   );
+  const [currentAdmin, setCurrentAdmin] = useState(
+    JSON.parse(localStorage.getItem("staff")) || null
+  );
   const [username, setUsername] = useState(
     JSON.parse(localStorage.getItem("a_name")) || null
   );
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API}/login`, email, password);
+      const res = await axios.post(
+        `${import.meta.env.VITE_API}/login/users`,
+        email,
+        password
+      );
       if (res.data.status === "success") {
         const result = res.data;
         const name = result.results.username;
         setUsername(name);
         setCurrentUser(result);
         Swal.fire({
-          title: "Login successfully!",
-          text: "you can add the schedule students now!",
+          title: "เข้าสู่ระบบ สำเร็จแล้ว!",
+          text: "คุณคือผู้ปกครอง! คุณสามารถเช็คการเข้าเรียนของบุตรหลานท่านได้เท่านั้น",
           icon: "success",
         });
       } else {

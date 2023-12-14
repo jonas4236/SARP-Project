@@ -41,7 +41,7 @@ export default function Example() {
           {Object.keys(categories).map((category) => (
             <Link to={categories[category][0].link}>
               <Tab
-                key={category}
+                key={categories[category][0].id}
                 className={({ selected }) =>
                   classNames(
                     "w-full rounded-lg px-[70px] py-2 text-sm font-medium leading-5",

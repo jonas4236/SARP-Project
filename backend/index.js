@@ -47,7 +47,33 @@ if (db) {
 //   res.send("Redirected to main page");
 // });
 
-app.post("/api/login", (req, res) => {
+app.post("/api/login/users", (req, res) => {
+  const { email, password } = req.body;
+
+  const sql = "SELECT * FROM users WHERE email = ?";
+
+  db.query(sql, [email], (err, results) => {
+    if (err) return res.json({ Error: "Login failed to the server!" });
+    if (results.length === 0) {
+      return res.json({ Error: "Invalid email or password." });
+    }
+
+    const user = results[0]; // Corrected variable name
+
+    if (password === user.password) {
+      const username = user.username;
+      const token = jwt.sign({ username }, "jwt-secret-key", {
+        expiresIn: "1h",
+      });
+      res.cookie("ac_token", token, { sameSite: "None", secure: true });
+      return res.status(200).json({ results: user, status: "success" });
+    } else {
+      return res.json({ error: "Invalid email or password!" });
+    }
+  });
+});
+
+app.post("/api/login/staff", (req, res) => {
   const { email, password } = req.body;
 
   const sql = "SELECT * FROM staff WHERE email = ?";
@@ -93,6 +119,17 @@ app.get("/api/schedule/:weekday_id", (req, res) => {
   const sql = "SELECT * FROM subjects WHERE weekday_id = ?";
   db.query(sql, [weekday_id], (err, results) => {
     if (err) console.err("Error querying database: ", err);
+    res.json(results);
+  });
+});
+
+// This code uses a JOIN operation to combine data from the "subjects" and "staff" tables where the "weekday_id" values match. It filters the results based on the provided "username" in the URL parameter. This should give you the desired result, similar to the original MySQL query you provided.
+app.get("/api/staff/:username", (req, res) => {
+  const { username } = req.params;
+  const sql =
+    "SELECT subjects.* FROM subjects JOIN staff ON subjects.weekday_id = staff.weekday_id WHERE staff.username = ?";
+  db.query(sql, [username], (err, results) => {
+    if (err) console.error("Error querying database: ", err);
     res.json(results);
   });
 });

@@ -49,14 +49,6 @@ const router = createBrowserRouter([
         element: <Schedule />,
       },
       {
-        path: "/help",
-        element: <Help />,
-      },
-      {
-        path: "/help/successfully",
-        element: <HelpSuccess />,
-      },
-      {
         path: "/sitemap",
         element: <MimiFooter />,
       },
@@ -68,11 +60,19 @@ const router = createBrowserRouter([
         path: "/schedule/:slugWEEK/:slugDMY",
         element: <Dashboard />,
       },
-      {
-        path: "/login",
-        element: <Login />,
-      },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/help",
+    element: <Help />,
+  },
+  {
+    path: "/help/successfully",
+    element: <HelpSuccess />,
   },
 ]);
 
