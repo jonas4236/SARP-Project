@@ -49,7 +49,7 @@ const Dashboard = () => {
     <>
       <div className="py-16">
         <div className="xl:w-[1170px] flex flex-wrap justify-center mx-auto">
-          <div className="flex flex-col lg:w-full sm:w-full md:w-full items-center justify-between py-4">
+          <div className="flex flex-col lg:flex-row xl:flex-row lg:w-full sm:w-full md:w-full items-center justify-between py-4">
             <span className="text-[24px] lg:text-[36px] xl:text-[36px]">สถานะการเข้าเรียน</span>
             <span className="text-[24px] lg:text-[36px] xl:text-[36px] text-sky-500 font-bold">{slWeek}</span>
           </div>
