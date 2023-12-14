@@ -15,7 +15,7 @@ const DetailsStudents = ({ status }) => {
         return (
           <div className="">
             <span className="text-yellow-500 text-[16px] lg:text-[16px] xl:text-[16px]">
-              <span className="mr-[69px] lg:mr-[65px] xl:mr-[65px]">🟡</span>
+              <span className="mr-[69px] lg:mr-[70px] xl:mr-[70px]">🟡</span>
             </span>
             <span className="text-yellow-500 text-[16px] lg:text-[16px] xl:text-[16px]">ลา</span>
           </div>
@@ -23,7 +23,7 @@ const DetailsStudents = ({ status }) => {
       case 3:
         return (
           <span className="text-red-500 text-[16px] lg:text-[16px] xl:text-[16px]">
-            <span className="mr-[21px] lg:mr-[21px] xl:mr-[21px]">🔴</span> ขาดเรียน
+            <span className="mr-[21px] lg:mr-[22px] xl:mr-[22px]">🔴</span> ขาดเรียน
           </span>
         );
       default:
