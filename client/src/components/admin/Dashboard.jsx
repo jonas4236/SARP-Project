@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import MainList from "./MainList";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Dashboard = () => {
   const { slugWEEK } = useParams();
@@ -53,7 +54,7 @@ const Dashboard = () => {
             <span className="text-[36px] text-sky-500 font-bold">{slWeek}</span>
           </div>
           <div
-            className={`mt-8 grid ${
+            className={`w-full xl:w-max mt-8 grid ${
               checklist.length === 1
                 ? "grid-cols-1"
                 : "md:grid-cols-1 xl:grid-cols-2"
@@ -61,7 +62,19 @@ const Dashboard = () => {
           >
             <MainList data={checklist} />
           </div>
+          </div>
         </div>
+          <div className="mt-16">
+            <Link to={"/sitemap"}>
+              <div className="mt-8 flex w-full xl:w-[1170px] mx-auto justify-center items-center">
+                <span className="text-blue-600 font-medium">
+                  เรียกดูแผนผังเว็ปไซต์{" "}
+                </span>
+                <span className="text-blue-600 ml-2">
+                  <FaArrowRightLong />
+                </span>
+              </div>
+            </Link>
       </div>
     </>
   );

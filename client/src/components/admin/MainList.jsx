@@ -14,7 +14,7 @@ const MainList = ({ data }) => {
           className="mx-4 lg:mx-0 xl:mx-0 bg-opacity-50 rounded-lg"
         >
           <div className="bg-[#EEEEEF] rounded-lg p-8">
-            <div className="w-full flex justify-center">
+            <div className="w-full lg:xl:w-[510px] xl:w-[510px] flex justify-center">
               <span className="ml-4 text-[16px] lg:text-[20px] xl:text-[20px] text-[#0042A9] font-bold">
                 {check.subject.slice(0, 10)}
               </span>

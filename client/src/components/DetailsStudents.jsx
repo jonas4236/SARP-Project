@@ -1,15 +1,18 @@
 import React from "react";
 import Status from "./Status";
+import List from "./StudentsList/List";
 
 const DetailsStudents = ({ status }) => {
   const handleStatus = (val) => {
     switch (val) {
       case 1:
-        return <span className="text-green-500 text-[16px]">🟢 มาเรียนปกติ</span>;
+        return (
+          <span className="text-green-500 text-[16px]">🟢 มาเรียนปกติ</span>
+        );
       case 2:
-        return <span className="text-yellow-500 text-[16px]">🟡 ลา</span>;
+        return <span className="text-yellow-500 text-[16px]"><span className="mr-[65px]">🟡</span> ลา</span>;
       case 3:
-        return <span className="text-red-500 text-[16px]">🔴 ขาดเรียน</span>;
+        return <span className="text-red-500 text-[16px]"><span className="mr-[21px]">🔴</span> ขาดเรียน</span>;
       default:
         return "ยังไม่มีสถานะ";
     }
@@ -17,136 +20,32 @@ const DetailsStudents = ({ status }) => {
 
   return (
     <>
-      <li className="my-2 text-[18px] flex flex-col lg:flex-row xl:flex-row bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
-        <span className="text-sky-600 font-bold text-[16px]">
-          1. นายกฤษนัย โถมสันเทียะ
-        </span>{" "}
-        <div className="sm:ml-0 lg:ml-[20px] lg:block xl:block">
-          <span className="mr-1 hidden lg:inline xl:inline">|</span>
-          <span className="text-red-500 font-bold text-[16px]">สถานะ</span>
-          <span className="mx-2 font-bold">:</span>
-          <span className="text-green-500 font-bold">
-            {handleStatus(status?.Stu1)}
-          </span>
+      <div className="">
+        <div className="flex lg:xl:w-[100%] xl:w-[100%] gap-2">
+          <div className="flex-[1]">
+            <div className="w-full flex justify-center mt-8">
+              <span className="font-semibold">รายชื่อ</span>
+            </div>
+            <List />
+          </div>
+          <div className="flex justify-center items-center mt-[80px] w-[1px] h-[440px] rounded-full bg-gray-400"></div>
+          <div className="flex-[1]">
+            <div className="w-full flex justify-center mt-8">
+              <span className="font-semibold">สถานะ</span>
+            </div>
+            <div className="my-3 text-right font-bold">{handleStatus(status?.Stu1)}</div>
+            <div className="mt-[26px] text-right font-bold">{handleStatus(status?.Stu2)}</div>
+            <div className="mt-[25px] text-right font-bold">{handleStatus(status?.Stu3)}</div>
+            <div className="mt-[25px] text-right font-bold">{handleStatus(status?.Stu4)}</div>
+            <div className="mt-[25px] text-right font-bold">{handleStatus(status?.Stu5)}</div>
+            <div className="mt-[23px] text-right font-bold">{handleStatus(status?.Stu6)}</div>
+            <div className="mt-[25px] text-right font-bold">{handleStatus(status?.Stu7)}</div>
+            <div className="mt-[23px] text-right font-bold">{handleStatus(status?.Stu8)}</div>
+            <div className="mt-[24px] text-right font-bold">{handleStatus(status?.Stu9)}</div>
+            <div className="mt-[24px] text-right font-bold">{handleStatus(status?.Stu10)}</div>
+          </div>
         </div>
-      </li>
-      <li className="my-2 text-[18px] flex flex-col lg:flex-row xl:flex-row bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
-        <span className="text-sky-600 font-bold text-[16px]">
-          2. นายธนากร แสงมี
-        </span>
-        <div className="sm:ml-0 lg:ml-[64px] lg:block xl:block">
-          <span className="mr-1 hidden lg:inline xl:inline">|</span>
-          <span className="text-red-500 font-bold text-[16px]">สถานะ</span>
-          <span className="mx-2 font-bold">:</span>
-          <span className="text-green-500 font-bold">
-            {handleStatus(status?.Stu2)}
-          </span>
-        </div>
-      </li>
-      <li className="my-2 text-[18px] flex flex-col lg:flex-row xl:flex-row bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
-        <span className="text-sky-600 font-bold text-[16px]">
-          3. นายนันทวัฒน์ นันทวิสาร
-        </span>
-        <div className="sm:ml-0 lg:ml-[19px] lg:block xl:block">
-          <span className="mr-1 hidden lg:inline xl:inline">|</span>
-          <span className="text-red-500 font-bold text-[16px]">สถานะ</span>
-          <span className="mx-2 font-bold">:</span>
-          <span className="text-green-500 font-bold">
-            {handleStatus(status?.Stu3)}
-          </span>
-        </div>
-      </li>
-      <li className="my-2 text-[18px] flex flex-col lg:flex-row xl:flex-row bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
-        <span className="text-sky-600 font-bold text-[16px]">
-          4. นางสาวนิชาพร ชื่นกลิ่น
-        </span>
-        <div className="sm:ml-0 lg:ml-[27px] lg:block xl:block">
-          <span className="mr-1 hidden lg:inline xl:inline">|</span>
-          <span className="text-red-500 font-bold text-[16px]">สถานะ</span>
-          <span className="mx-2 font-bold">:</span>
-          <span className="text-green-500 font-bold">
-            {handleStatus(status?.Stu4)}
-          </span>
-        </div>
-      </li>
-      <li className="my-2 text-[18px] flex flex-col lg:flex-row xl:flex-row bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
-        <span className="text-sky-600 font-bold text-[16px]">
-          5. นายวุฒธิพงษ์ ยันพิมาย
-        </span>
-        <div className="sm:ml-0 lg:ml-[25px] lg:block xl:block">
-          <span className="mr-1 hidden lg:inline xl:inline">|</span>
-          <span className="text-red-500 font-bold text-[16px]">สถานะ</span>
-          <span className="mx-2 font-bold">:</span>
-          <span className="text-green-500 font-bold">
-            {handleStatus(status?.Stu5)}
-          </span>
-        </div>
-      </li>
-      <li className="my-2 text-[18px] flex flex-col lg:flex-row xl:flex-row bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
-        <span className="text-sky-600 font-bold text-[16px]">
-          6. นางสาวสุชญา พงษ์แพทย์
-        </span>
-        <div className="sm:ml-0 lg:ml-[7px]" lg:block xl:block>
-          <span className="mr-1 hidden lg:inline xl:inline">|</span>
-          <span className="text-red-500 font-bold text-[16px]">สถานะ</span>
-          <span className="mx-2 font-bold">:</span>
-          <span className="text-green-500 font-bold">
-            {handleStatus(status?.Stu6)}
-          </span>
-        </div>
-      </li>
-      <li className="my-2 text-[18px] flex flex-col lg:flex-row xl:flex-row bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
-        <span className="text-sky-600 font-bold text-[16px]">
-          7. นายเอกวุฒิ ละมุดเทศ
-        </span>
-        <div className="sm:ml-0 lg:ml-[36px] lg:block xl:block">
-          <span className="mr-1 hidden lg:inline xl:inline">|</span>
-          <span className="text-red-500 font-bold text-[16px]">สถานะ</span>
-          <span className="mx-2 font-bold">:</span>
-          <span className="text-green-500 font-bold">
-            {handleStatus(status?.Stu7)}
-          </span>
-        </div>
-      </li>
-      <li className="my-2 text-[18px] flex flex-col lg:flex-row xl:flex-row bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
-        <span className="text-sky-600 font-bold text-[16px]">
-          8. นางสาวกฤติยา จันโลมา
-        </span>
-        <div className="sm:ml-0 lg:ml-[23px] lg:block xl:block">
-          <span className="mr-1 hidden lg:inline xl:inline">|</span>
-          <span className="text-red-500 font-bold text-[16px]">สถานะ</span>
-          <span className="mx-2 font-bold">:</span>
-          <span className="text-green-500 font-bold">
-            {handleStatus(status?.Stu8)}
-          </span>
-        </div>
-      </li>
-      <li className="my-2 text-[18px] flex flex-col lg:flex-row xl:flex-row bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
-        <span className="text-sky-600 font-bold text-[16px]">
-          9. นายถิระพงศ์ ทิพยมลฑล
-        </span>
-        <div className="sm:ml-0 lg:ml-[18px] lg:block xl:block">
-          <span className="mr-1 hidden lg:inline xl:inline">|</span>
-          <span className="text-red-500 font-bold text-[16px]">สถานะ</span>
-          <span className="mx-2 font-bold">:</span>
-          <span className="text-green-500 font-bold">
-            {handleStatus(status?.Stu9)}
-          </span>
-        </div>
-      </li>
-      <li className="my-2 text-[18px] flex flex-col lg:flex-row xl:flex-row bg-white shadow-lg w-max py-2 px-4 rounded-lg list-none">
-        <span className="text-sky-600 font-bold text-[16px]">
-          10. นายธนกฤต แดงพยนต์
-        </span>
-        <div className="sm:ml-0 lg:ml-[13px] lg:block xl:block">
-          <span className="mr-1 hidden lg:inline xl:inline">|</span>
-          <span className="text-red-500 font-bold text-[16px]">สถานะ</span>
-          <span className="mx-2 font-bold">:</span>
-          <span className="text-green-500 font-bold">
-            {handleStatus(status?.Stu9)}
-          </span>
-        </div>
-      </li>
+      </div>
     </>
   );
 };
