@@ -7,12 +7,25 @@ const DetailsStudents = ({ status }) => {
     switch (val) {
       case 1:
         return (
-          <span className="text-green-500 text-[16px]">🟢 มาเรียนปกติ</span>
+          <span className="text-green-500 text-[12px] lg:text-[16px] xl:text-[16px]">
+            <span>🟢</span> มาเรียนปกติ
+          </span>
         );
       case 2:
-        return <span className="text-yellow-500 text-[16px]"><span className="mr-[65px]">🟡</span> ลา</span>;
+        return (
+          <div className="">
+            <span className="text-yellow-500 text-[12px] lg:text-[16px] xl:text-[16px]">
+              <span className="mr-[52px] lg:mr-[65px] xl:mr-[65px]">🟡</span>
+            </span>
+            <span className="text-yellow-500 text-[12px] lg:text-[16px] xl:text-[16px]">ลา</span>
+          </div>
+        );
       case 3:
-        return <span className="text-red-500 text-[16px]"><span className="mr-[21px]">🔴</span> ขาดเรียน</span>;
+        return (
+          <span className="text-red-500 text-[12px] lg:text-[16px] xl:text-[16px]">
+            <span className="mr-[16px] lg:mr-[21px] xl:mr-[21px]">🔴</span> ขาดเรียน
+          </span>
+        );
       default:
         return "ยังไม่มีสถานะ";
     }
@@ -33,16 +46,36 @@ const DetailsStudents = ({ status }) => {
             <div className="w-full flex justify-center mt-8">
               <span className="font-semibold">สถานะ</span>
             </div>
-            <div className="my-3 text-right font-bold">{handleStatus(status?.Stu1)}</div>
-            <div className="mt-[26px] text-right font-bold">{handleStatus(status?.Stu2)}</div>
-            <div className="mt-[25px] text-right font-bold">{handleStatus(status?.Stu3)}</div>
-            <div className="mt-[25px] text-right font-bold">{handleStatus(status?.Stu4)}</div>
-            <div className="mt-[25px] text-right font-bold">{handleStatus(status?.Stu5)}</div>
-            <div className="mt-[23px] text-right font-bold">{handleStatus(status?.Stu6)}</div>
-            <div className="mt-[25px] text-right font-bold">{handleStatus(status?.Stu7)}</div>
-            <div className="mt-[23px] text-right font-bold">{handleStatus(status?.Stu8)}</div>
-            <div className="mt-[24px] text-right font-bold">{handleStatus(status?.Stu9)}</div>
-            <div className="mt-[24px] text-right font-bold">{handleStatus(status?.Stu10)}</div>
+            <div className="my-3 text-right font-bold">
+              {handleStatus(status?.Stu1)}
+            </div>
+            <div className="mt-[26px] text-right font-bold">
+              {handleStatus(status?.Stu2)}
+            </div>
+            <div className="mt-[25px] text-right font-bold">
+              {handleStatus(status?.Stu3)}
+            </div>
+            <div className="mt-[25px] text-right font-bold">
+              {handleStatus(status?.Stu4)}
+            </div>
+            <div className="mt-[25px] text-right font-bold">
+              {handleStatus(status?.Stu5)}
+            </div>
+            <div className="mt-[23px] text-right font-bold">
+              {handleStatus(status?.Stu6)}
+            </div>
+            <div className="mt-[25px] text-right font-bold">
+              {handleStatus(status?.Stu7)}
+            </div>
+            <div className="mt-[23px] text-right font-bold">
+              {handleStatus(status?.Stu8)}
+            </div>
+            <div className="mt-[24px] text-right font-bold">
+              {handleStatus(status?.Stu9)}
+            </div>
+            <div className="mt-[24px] text-right font-bold">
+              {handleStatus(status?.Stu10)}
+            </div>
           </div>
         </div>
       </div>

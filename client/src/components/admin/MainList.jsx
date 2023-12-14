@@ -20,10 +20,10 @@ const MainList = ({ data }) => {
               </span>
             </div>
             <div className="w-full">
-              <span className="flex justify-center text-[16px] lg:text-[20px] xl:text-[20px] my-4 text-black font-bold">
+              <span className="flex justify-center text-[16px] lg:text-[20px] xl:text-[20px] text-black font-bold">
                 {check.subject.slice(11, 90)}
               </span>
-              <span className="flex justify-center text-[16px] lg:text-[16px] xl:text-[18px] mt-4 text-[#474747] font-bold">
+              <span className="flex justify-center text-[16px] lg:text-[16px] xl:text-[18px]  text-[#474747] font-bold">
                 อาจารย์ <span className="ml-2">{check.teacher}</span>
               </span>
             </div>
