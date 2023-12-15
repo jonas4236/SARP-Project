@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ResponsiveNav = ({ currentUser }) => {
+const ResponsiveNav = ({ currentUser, currentAdmin }) => {
   return (
     <>
       <div
@@ -40,7 +40,7 @@ const ResponsiveNav = ({ currentUser }) => {
           </li>
 
           <div className="flex ml-[28px] mb-2 items-center">
-            {currentUser ? (
+            {currentUser || currentAdmin ? (
               ""
             ) : (
               <>

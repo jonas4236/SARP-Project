@@ -44,7 +44,7 @@ export default function Example() {
                 key={categories[category][0].id}
                 className={({ selected }) =>
                   classNames(
-                    "w-full rounded-lg px-[70px] py-2 text-sm font-medium leading-5",
+                    "w-full rounded-lg px-[50px] py-2 text-sm font-medium leading-5",
                     "focus:outline-none",
                     selected
                       ? "bg-white text-blue-700"

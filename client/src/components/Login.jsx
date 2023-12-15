@@ -26,6 +26,12 @@ const Login = () => {
     });
   };
 
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/")
+    }
+  },[])
+
   // useEffect(() => {
   //   axios.get(`${DefaultAPI}/login`).then((res) => {
   //     if (res.data.redirectTo) {
@@ -78,13 +84,18 @@ const Login = () => {
                                 <button className="py-2 bg-gradient-to-r from-sky-500 to-emerald-300 rounded-lg text-white font-medium">
                                   เข้าสู่ระบบ
                                 </button>
-                                <Link to={"/help"}>
-                                  <div className="w-full flex justify-center mt-2">
+                                <div className="w-full flex justify-between mt-2">
+                                  <Link to={"/help"}>
                                     <button className="text-[#2F80ED] font-medium">
                                       ลืมรหัสผ่าน
                                     </button>
-                                  </div>
-                                </Link>
+                                  </Link>
+                                  <Link to={"/teacher"}>
+                                    <button className="text-[#2F80ED] font-medium">
+                                      อาจารย์
+                                    </button>
+                                  </Link>
+                                </div>
                               </div>
                             </form>
                           </div>

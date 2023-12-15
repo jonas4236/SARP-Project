@@ -5,6 +5,7 @@ import { AuthContext } from "../../auth/AuthContext";
 import secureLocalStorage from "react-secure-storage";
 import ResponsiveNav from "./ResponsiveNav";
 import NavbarV2 from "./NavbarV2";
+import NavbarAdmin from "./NavbarAdmin";
 
 // ICONS
 import { IoClose } from "react-icons/io5";
@@ -21,7 +22,7 @@ const Navbar = () => {
 
   axios.defaults.withCredentials = true;
 
-  const { currentUser, logout } = useContext(AuthContext);
+  const { currentUser, currentAdmin, logout } = useContext(AuthContext);
 
   useEffect(() => {
     secureLocalStorage.setItem("user", JSON.stringify(currentUser));
@@ -29,12 +30,19 @@ const Navbar = () => {
   }, [currentUser]);
 
   useEffect(() => {
-    if (!currentUser) {
-      navigate("/login");
-    }
-  }, [currentUser, navigate]);
+    secureLocalStorage.setItem("staff", JSON.stringify(currentAdmin));
+    setName(currentAdmin?.results.username);
+  }, [currentAdmin]);
 
-  axios.defaults.withCredentials = true;
+  useEffect(() => {
+    // หากมี currentUser หรือ currentAdmin ให้ไม่ทำการ redirect
+    if (currentUser || currentAdmin) {
+      return;
+    }
+
+    // หากไม่มี currentUser หรือ currentAdmin ให้ทำการ redirect ไปที่ "/login"
+    navigate("/login");
+  }, [currentUser, currentAdmin, navigate]);
 
   return (
     <>
@@ -54,17 +62,17 @@ const Navbar = () => {
               <>
                 <button
                   type="button"
-                  className="text-white bg-red-500 hover:bg-red-700  focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600"
+                  className="text-white w-max bg-red-500 hover:bg-red-700  focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600"
                   onClick={logout}
                 >
-                  Logout
+                  ออกจากระบบ
                 </button>
               </>
             ) : (
               ""
             )}
+            {currentAdmin ? <NavbarAdmin /> : ""}
           </div>
-
           <div
             className="items-center justify-between w-full md:flex lg:block xl:block 2xl:block md:w-auto md:order-1 sm:hidden"
             id="navbar-sticky"
@@ -79,7 +87,12 @@ const Navbar = () => {
             </span>
           </div>
         </div>
-        {isOpen && <ResponsiveNav currentUser={currentUser} />}
+        {isOpen && (
+          <ResponsiveNav
+            currentUser={currentUser}
+            currentAdmin={currentAdmin}
+          />
+        )}
       </nav>
     </>
   );

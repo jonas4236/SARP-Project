@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const DashboardAdmin = () => {
   const [teacher, setTeacher] = useState([]);
@@ -22,7 +23,10 @@ const DashboardAdmin = () => {
   const [Stu10, setStu10] = useState([]);
 
   const [students, setStudents] = useState([]);
-  const { currentUser } = useContext(AuthContext);
+  const { logout, currentAdmin, username } = useContext(AuthContext);
+
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -41,7 +45,7 @@ const DashboardAdmin = () => {
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API}/subjects`);
+        const res = await axios.get(`${import.meta.env.VITE_API}/staff/${username}`);
 
         setDataSubjects(res.data);
       } catch (err) {
@@ -51,6 +55,9 @@ const DashboardAdmin = () => {
 
     fetchSubjects();
   }, []);
+
+  console.log("subject: ", dataSubjects);
+
 
   useEffect(() => {
     const fetchSubjects = async () => {
@@ -69,7 +76,6 @@ const DashboardAdmin = () => {
   const PullDay = date.slice(8, 10);
   const PullMonth = date.slice(5, 7);
   const PullYear = date.slice(0, 4);
-
   const formattedDMY = `${PullYear}/${PullMonth}/${PullDay}`;
 
   const AddedCheckList = async (e) => {
@@ -100,12 +106,17 @@ const DashboardAdmin = () => {
     }
   };
 
-  // console.log("DATE: ", date)
+  useEffect(() => {
+    if (!currentAdmin) {
+      navigate("/teacher");
+    }
+  }, []);
 
+  // console.log("DATE: ", date)
   return (
     <>
       <div className="mb-32">
-        {currentUser ? (
+        {currentAdmin ? (
           <>
             <div className="lg:w-[1170px] xl:w-[1170px] mx-auto">
               <div className="my-16 flex justify-center">
@@ -444,9 +455,7 @@ const DashboardAdmin = () => {
                           onChange={(event) => setTeacher(event.target.value)}
                         >
                           <option>none</option>
-                          {dataTeachers.map((teach) => (
-                            <option key={teach.id}>{teach.teacher_name}</option>
-                          ))}
+                          <option>{username}</option>
                         </select>
                       </div>
                       <div className="w-full flex justify-center">
