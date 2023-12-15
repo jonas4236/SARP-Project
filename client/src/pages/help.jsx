@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const help = () => {
   return (
@@ -26,7 +27,7 @@ const help = () => {
           </div>
           <div className="mt-8 flex flex-col items-center justify-center">
             <textarea
-              className="w-[650px] outline-none border-[#BDBDBD] border-[3px] rounded-md resize-none"
+              className="w-[650px] h-[150px] outline-none border-[#BDBDBD] border-[2px] rounded-md resize-none"
               placeholder="แจ้งปัญหาของคุณ..."
               name=""
               id=""
@@ -36,6 +37,11 @@ const help = () => {
             <button className="bg-[#2F80ED] text-white mt-4 py-2 px-16 rounded-lg">
               แจ้งปัญหา
             </button>
+            <Link to={"/"}>
+              <div className="mt-4">
+                <button className="text-[#BDBDBD]">กลับสู่หน้าหลัก</button>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
