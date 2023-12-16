@@ -53,6 +53,21 @@ export const AuthContextProvider = ({ children }) => {
         });
       }
 
+      if (res.data.isAdmin === "admin") {
+        const result = res.data;
+        const name = result.results.username;
+
+        setUsername(name);
+        setCurrentUser(null);
+        updateLocalStorage(result);
+
+        Swal.fire({
+          title: "เข้าสู่ระบบ สำเร็จแล้ว!",
+          text: `สวัสดีคุณ ${name}! ยินดีต้อนรับสู่ระบบเช็คชื่อการเข้าเรียน!`,
+          icon: "success",
+        });
+      }
+
       return res.data;
     } catch (err) {
       console.log("err login: ", err);
@@ -71,7 +86,6 @@ export const AuthContextProvider = ({ children }) => {
         const name = result.results.username;
         setUsername(name);
         // เรียกใช้ callback เพื่ออัพเดท secureLocalStorage
-        updateLocalStorage(result);
         Swal.fire({
           title: "เข้าสู่ระบบ สำเร็จแล้ว!",
           text: `สวัสดีคุณ ${name}! ยินดีต้อนรับสู่ระบบเช็คชื่อการเข้าเรียน!`,

@@ -58,15 +58,18 @@ app.post("/api/login/users", (req, res) => {
       return res.json({ Error: "Invalid email or password." });
     }
 
-    const user = results[0]; // Corrected variable name
+    const user = results[0];
 
     if (password === user.password) {
       const username = user.username;
+      const isAdmin = user.isAdmin;
       const token = jwt.sign({ username }, "jwt-secret-key", {
         expiresIn: "1h",
       });
       res.cookie("ac_token", token, { sameSite: "None", secure: true });
-      return res.status(200).json({ results: user, status: "success" });
+      return res
+        .status(200)
+        .json({ results: user, isAdmin: isAdmin, status: "success" });
     } else {
       return res.json({ error: "Invalid email or password!" });
     }
@@ -127,7 +130,7 @@ app.get("/api/schedule/:weekday_id", (req, res) => {
 app.get("/api/staff/:username", (req, res) => {
   const { username } = req.params;
   const sql =
-    "SELECT subjects.* FROM subjects JOIN staff ON subjects.weekday_id = staff.weekday_id WHERE staff.username = ?";
+    "SELECT subjects.* FROM subjects JOIN users ON subjects.weekday_id = users.subject WHERE users.username = ?";
   db.query(sql, [username], (err, results) => {
     if (err) console.error("Error querying database: ", err);
     res.json(results);

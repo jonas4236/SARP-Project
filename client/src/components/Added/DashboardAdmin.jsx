@@ -108,7 +108,7 @@ const DashboardAdmin = () => {
 
   useEffect(() => {
     if (!currentAdmin) {
-      navigate("/teacher");
+      navigate("/");
     }
   }, []);
 

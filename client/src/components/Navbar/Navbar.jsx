@@ -22,16 +22,15 @@ const Navbar = () => {
 
   axios.defaults.withCredentials = true;
 
-  const { currentUser, currentAdmin, logout, username } = useContext(AuthContext);
+  const { currentUser, currentAdmin, logout, username } =
+    useContext(AuthContext);
 
   useEffect(() => {
     secureLocalStorage.setItem("user", JSON.stringify(currentUser));
-    setName(currentUser?.results.username);
   }, [currentUser]);
 
   useEffect(() => {
     secureLocalStorage.setItem("staff", JSON.stringify(currentAdmin));
-    setName(currentAdmin?.results.username);
   }, [currentAdmin]);
 
   useEffect(() => {
