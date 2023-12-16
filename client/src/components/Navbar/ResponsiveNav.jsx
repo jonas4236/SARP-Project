@@ -62,12 +62,19 @@ const ResponsiveNav = ({ currentUser, currentAdmin, logout, username }) => {
                     </span>
                     <span className="ml-2">{username}</span>
                   </div>
-                  <div className="mt-2 p-1 px-2 bg-gray-100 rounded-lg">
-                    <span className="text-[#27AE60]">บันทึกการเข้าเรียน</span>
-                  </div>
-                  <div className="mt-2 p-1 px-2 bg-gray-100 rounded-lg">
+
+                  <Link to={"/add"}>
+                    <div className="mt-2 p-1 px-2 bg-gray-100 rounded-lg">
+                      <span className="text-[#27AE60]">บันทึกการเข้าเรียน</span>
+                    </div>
+                  </Link>
+
+                  <button
+                    onClick={logout}
+                    className="mt-2 p-1 px-2 bg-gray-100 rounded-lg"
+                  >
                     <span className="text-[#FF4015]">ออกจากระบบ</span>
-                  </div>
+                  </button>
                 </div>
               </>
             ) : (
