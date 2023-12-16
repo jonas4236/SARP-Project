@@ -55,7 +55,7 @@ const ResponsiveNav = ({ currentUser, currentAdmin, logout, username }) => {
             )}
             {currentAdmin ? (
               <>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col">
                   <div className="flex items-center p-1 px-2 bg-gray-100 rounded-lg">
                     <span className="">
                       <FaUserGraduate />
