@@ -39,9 +39,11 @@ export default function Example() {
       <Tab.Group>
         <Tab.List className="flex space-x-3 rounded-xl bg-[#7676801F] p-1">
           {Object.keys(categories).map((category) => (
-            <Link to={categories[category][0].link}>
+            <Link
+              to={categories[category][0].link}
+              key={categories[category][0].id}
+            >
               <Tab
-                key={categories[category][0].id}
                 className={({ selected }) =>
                   classNames(
                     "w-full rounded-lg px-[50px] py-2 text-sm font-medium leading-5",

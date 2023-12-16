@@ -8,7 +8,7 @@ const { logout, username } = useContext(AuthContext)
 
   return (
     <Tab.Group>
-      <Tab.List className={"flex space-x-3 rounded-xl bg-[#7676801F] p-1 ml-2"}>
+      <Tab.List className={"space-x-3 rounded-xl hidden md:inline-flex lg:inline-flex xl:inline-flex bg-[#7676801F] p-1 ml-2"}>
         <Tab
           className={
             "w-max rounded-lg px-[10px] py-2 text-sm font-medium leading-5 focus:outline-none"

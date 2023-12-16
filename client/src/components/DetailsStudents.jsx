@@ -7,7 +7,7 @@ const DetailsStudents = ({ status }) => {
     switch (val) {
       case 1:
         return (
-          <span className="text-green-500 text-[16px] lg:text-[16px] xl:text-[16px]">
+          <span className="text-green-500 text-[14px] lg:text-[16px] xl:text-[16px]">
             <span>🟢</span> มาเรียนปกติ
           </span>
         );
@@ -15,16 +15,23 @@ const DetailsStudents = ({ status }) => {
         return (
           <div className="">
             <span className="text-yellow-500 text-[16px] lg:text-[16px] xl:text-[16px]">
-              <span className="mr-[69px] lg:mr-[0px] xl:mr-[0px]">🟡</span>
+              <span className="mr-[0px] lg:mr-[0px] xl:mr-[0px] text-[14px] md:text-[16px] lg:text-[16px] xl:text-[16px]">🟡</span>
             </span>
-            <span className="text-yellow-500 text-[16px] lg:text-[16px] xl:text-[16px] xl:mr-[66px] xl:ml-[5px]">ลา</span>
+            <span className="text-yellow-500 mr-[57px] ml-[4px] md:mr-[55px] lg:mr-[66px] text-[14px] lg:text-[16px] xl:text-[16px] xl:mr-[65px] xl:ml-[5px]">
+              ลา
+            </span>
           </div>
         );
       case 3:
         return (
-          <span className="text-red-500 text-[16px] lg:text-[16px] xl:mr-[22px] xl:text-[16px]">
-            <span className="mr-[21px] lg:mr-[22px] xl:mr-[1px]">🔴</span> ขาดเรียน
-          </span>
+          <div className="">
+            <span className="text-red-500 mr-[19px] text-[14px] lg:text-[16px] md:mr-[18px] lg:mr-[22px] xl:mr-[22px] xl:text-[16px]">
+              <span className="mr-[3px] md:mr-[5px] lg:mr-[4px] xl:mr-[1px]">
+                🔴
+              </span>
+              <span className="xl:ml-[3px]">ขาดเรียน</span>
+            </span>
+          </div>
         );
       default:
         return "ยังไม่มีสถานะ";

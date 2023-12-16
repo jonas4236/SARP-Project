@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaUserGraduate } from "react-icons/fa";
 
-const ResponsiveNav = ({ currentUser, currentAdmin, logout }) => {
+const ResponsiveNav = ({ currentUser, currentAdmin, logout, username }) => {
   return (
     <>
       <div
@@ -48,6 +49,26 @@ const ResponsiveNav = ({ currentUser, currentAdmin, logout }) => {
                 >
                   ออกจากระบบ
                 </button>
+              </>
+            ) : (
+              ""
+            )}
+            {currentAdmin ? (
+              <>
+                <div className="flex flex-col items-center">
+                  <div className="flex items-center p-1 px-2 bg-gray-100 rounded-lg">
+                    <span className="">
+                      <FaUserGraduate />
+                    </span>
+                    <span className="ml-2">{username}</span>
+                  </div>
+                  <div className="mt-2 p-1 px-2 bg-gray-100 rounded-lg">
+                    <span className="text-[#27AE60]">บันทึกการเข้าเรียน</span>
+                  </div>
+                  <div className="mt-2 p-1 px-2 bg-gray-100 rounded-lg">
+                    <span className="text-[#FF4015]">ออกจากระบบ</span>
+                  </div>
+                </div>
               </>
             ) : (
               ""
