@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const HelpSuccess = () => {
   return (
     <div className="">
-      <div className="xl:w-[1170px] lg:xl:w-[1170px] px-4 md:px-0 lg:px-0 xl:px-0 mx-auto py-8">
+      <div className="xl:w-[1170px] flex flex-col justify-center lg:xl:w-[1170px] h-[100vh] px-4 md:px-0 lg:px-0 xl:px-0 mx-auto py-8">
         <div className="w-full flex justify-center relative mb-4">
           <span className="text-[36px] font-medium text-black">
             ขอขอบคุณที่ใช้บริการ

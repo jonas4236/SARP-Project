@@ -5,7 +5,7 @@ const help = () => {
   return (
     <>
       <div className="">
-        <div className="xl:w-[1170px] lg:xl:w-[1170px] px-4 md:px-0 lg:px-0 xl:px-0 mx-auto py-8">
+        <div className="xl:w-[1170px] flex flex-col justify-center lg:xl:w-[1170px] h-[100vh] px-4 md:px-0 lg:px-0 xl:px-0 mx-auto py-8">
           <div className="w-full flex justify-center relative mb-4">
             <span className="text-[36px] font-medium text-black">
               ติดต่อ และแจ้งปัญหา
@@ -27,7 +27,7 @@ const help = () => {
           </div>
           <div className="mt-8 flex flex-col items-center justify-center">
             <textarea
-              className="w-[650px] h-[150px] outline-none border-[#BDBDBD] border-[2px] rounded-md resize-none"
+              className="lg:w-[650px] xl:w-[650px] w-full h-[150px] outline-none border-[#BDBDBD] border-[2px] rounded-md resize-none"
               placeholder="แจ้งปัญหาของคุณ..."
               name=""
               id=""

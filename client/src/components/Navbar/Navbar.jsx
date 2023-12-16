@@ -58,19 +58,6 @@ const Navbar = () => {
             />
           </Link>
           <div className="flex md:order-2 sm:block md:flex-row lg:flex xl:flex">
-            {currentUser ? (
-              <>
-                <button
-                  type="button"
-                  className="text-white w-max bg-red-500 hover:bg-red-700  focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600"
-                  onClick={logout}
-                >
-                  ออกจากระบบ
-                </button>
-              </>
-            ) : (
-              ""
-            )}
             {currentAdmin ? <NavbarAdmin /> : ""}
           </div>
           <div
@@ -91,6 +78,7 @@ const Navbar = () => {
           <ResponsiveNav
             currentUser={currentUser}
             currentAdmin={currentAdmin}
+            logout={logout}
           />
         )}
       </nav>

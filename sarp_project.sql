@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2023 at 03:50 PM
+-- Generation Time: Dec 16, 2023 at 04:16 AM
 -- Server version: 8.0.34
 -- PHP Version: 8.2.4
 
@@ -61,7 +61,8 @@ INSERT INTO `checklist` (`cId`, `Date`, `teacher`, `subject`, `Stu1`, `Stu2`, `S
 (26, '2023/12/04', 'ภีรนีย์ ประทุมพวง', '30000-1501 ชีวิตกับสังคมไทย', 2, 1, 1, 1, 1, 1, 2, 2, 2, 1),
 (27, '2023/12/04', 'กนกรัตน์ อินขุนทด', '30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน', 2, 1, 1, 1, 1, 1, 2, 2, 2, 1),
 (46, '2023/12/09', 'ภีรนีย์ ประทุมพวง', '30000-1501 ชีวิตกับสังคมไทย', 3, 2, 1, 3, 2, 1, 3, 2, 1, 3),
-(47, '2023/12/14', 'ศิวกร บุญอุ้ม', '30000-2004 ระบบเครือข่ายคอมพิวเตอร์', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+(47, '2023/12/14', 'ศิวกร บุญอุ้ม', '30000-2004 ระบบเครือข่ายคอมพิวเตอร์', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+(48, '2023/09/16', 'อมรรัตน์ ทิมงาม', '30000-1101 ทักษะภาษาไทยเชิงวิชาชีพ', 1, 1, 1, 1, 2, 1, 1, 3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -82,8 +83,8 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id`, `email`, `username`, `password`, `weekday_id`) VALUES
-(1, 'sivakorn@sarp.co', 'ศิวกร บุญอุ้ม', 'sivakorn.sarp', 'วันพฤหัสบดี'),
-(2, 'amornrat@sarp.co', 'อมรรัตน์ ทิมงาม', 'amornrat.sarp', 'วันจันทร์');
+(1, 'sivakorn@sarp.co', 'ศิวกร บุญอุ้ม', '1234', 'Sivakorn'),
+(2, 'amornrat@sarp.co', 'อมรรัตน์ ทิมงาม', '1234', 'Amornrat');
 
 -- --------------------------------------------------------
 
@@ -130,14 +131,14 @@ CREATE TABLE `subjects` (
 --
 
 INSERT INTO `subjects` (`subId`, `subNumber`, `sub_name`, `weekday_id`) VALUES
-(5, '30000-1501', '30000-1501 ชีวิตกับสังคมไทย', 'วันจันทร์'),
-(6, '30000-1202', '30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน', 'วันจันทร์'),
-(9, '30000-1404', '30000-1404 แคลคูลัส 1', 'วันอังคาร'),
-(10, '30000-1101', '30000-1101 ทักษะภาษาไทยเชิงวิชาชีพ', 'วันอังคาร'),
-(13, '30000-1608', '30000-1608 การออกกำลังกายเพื่อสุขภาพ', 'วันพุธ'),
-(14, '30000-2202', '30000-2202 การวิเคราะห์และออกแบบระบบ', 'วันพุธ'),
-(17, '30000-2004', '30000-2004 ระบบเครือข่ายคอมพิวเตอร์', 'วันพฤหัสบดี'),
-(18, '30000-2002', '30000-2002 การใช้งานใมโครคอนโทรลเลอร์', 'วันศุกร์');
+(5, '30000-1501', '30000-1501 ชีวิตกับสังคมไทย', 'Peeranee'),
+(6, '30000-1202', '30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน', 'Kanokrat'),
+(9, '30000-1404', '30000-1404 แคลคูลัส 1', 'Jutamas'),
+(10, '30000-1101', '30000-1101 ทักษะภาษาไทยเชิงวิชาชีพ', 'Amornrat'),
+(13, '30000-1608', '30000-1608 การออกกำลังกายเพื่อสุขภาพ', 'Suchat'),
+(14, '30000-2202', '30000-2202 การวิเคราะห์และออกแบบระบบ', 'Ratchadanate'),
+(17, '30000-2004', '30000-2004 ระบบเครือข่ายคอมพิวเตอร์', 'Sivakorn'),
+(18, '30000-2002', '30000-2002 การใช้งานใมโครคอนโทรลเลอร์', 'Nipon');
 
 -- --------------------------------------------------------
 
@@ -226,7 +227,7 @@ ALTER TABLE `checklist`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `syce_staff_subjects` (`weekday_id`);
+  ADD KEY `sync_subject` (`weekday_id`);
 
 --
 -- Indexes for table `students`
@@ -238,8 +239,8 @@ ALTER TABLE `students`
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
-  ADD PRIMARY KEY (`subId`),
-  ADD KEY `sync_subjects` (`weekday_id`);
+  ADD PRIMARY KEY (`subId`) USING BTREE,
+  ADD UNIQUE KEY `sync_subjects` (`weekday_id`);
 
 --
 -- Indexes for table `teachers`
@@ -267,7 +268,7 @@ ALTER TABLE `weekday`
 -- AUTO_INCREMENT for table `checklist`
 --
 ALTER TABLE `checklist`
-  MODIFY `cId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `cId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -307,7 +308,7 @@ ALTER TABLE `users`
 -- Constraints for table `staff`
 --
 ALTER TABLE `staff`
-  ADD CONSTRAINT `syce_staff_subjects` FOREIGN KEY (`weekday_id`) REFERENCES `subjects` (`weekday_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `sync_subjects` FOREIGN KEY (`weekday_id`) REFERENCES `subjects` (`weekday_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

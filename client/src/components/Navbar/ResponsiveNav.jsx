@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ResponsiveNav = ({ currentUser, currentAdmin }) => {
+const ResponsiveNav = ({ currentUser, currentAdmin, logout }) => {
   return (
     <>
       <div
@@ -38,18 +38,19 @@ const ResponsiveNav = ({ currentUser, currentAdmin }) => {
               </button>
             </Link>
           </li>
-
           <div className="flex ml-[28px] mb-2 items-center">
-            {currentUser || currentAdmin ? (
-              ""
-            ) : (
+            {currentUser ? (
               <>
-                <Link to={"/login"}>
-                  <button className="inline-block lg:hidden xl:hidden py-2 px-4 bg-green-400 hover:bg-green-500 text-white rounded-lg">
-                    Login
-                  </button>
-                </Link>
+                <button
+                  type="button"
+                  className="text-white w-max bg-red-500 hover:bg-red-700  focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600"
+                  onClick={logout}
+                >
+                  ออกจากระบบ
+                </button>
               </>
+            ) : (
+              ""
             )}
           </div>
         </ul>
