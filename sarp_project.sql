@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2023 at 04:16 AM
+-- Generation Time: Dec 16, 2023 at 11:31 AM
 -- Server version: 8.0.34
 -- PHP Version: 8.2.4
 
@@ -62,7 +62,8 @@ INSERT INTO `checklist` (`cId`, `Date`, `teacher`, `subject`, `Stu1`, `Stu2`, `S
 (27, '2023/12/04', 'กนกรัตน์ อินขุนทด', '30000-1202 ภาษาอังกฤษสำหรับการปฏิบัติงาน', 2, 1, 1, 1, 1, 1, 2, 2, 2, 1),
 (46, '2023/12/09', 'ภีรนีย์ ประทุมพวง', '30000-1501 ชีวิตกับสังคมไทย', 3, 2, 1, 3, 2, 1, 3, 2, 1, 3),
 (47, '2023/12/14', 'ศิวกร บุญอุ้ม', '30000-2004 ระบบเครือข่ายคอมพิวเตอร์', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-(48, '2023/09/16', 'อมรรัตน์ ทิมงาม', '30000-1101 ทักษะภาษาไทยเชิงวิชาชีพ', 1, 1, 1, 1, 2, 1, 1, 3, 3, 1);
+(48, '2023/09/16', 'อมรรัตน์ ทิมงาม', '30000-1101 ทักษะภาษาไทยเชิงวิชาชีพ', 1, 1, 1, 1, 2, 1, 1, 3, 3, 1),
+(49, '2023/11/03', 'รัชฎาเนตร สุรำไพ', '30000-2202 การวิเคราะห์และออกแบบระบบ', 1, 1, 2, 3, 1, 2, 3, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -176,16 +177,20 @@ CREATE TABLE `users` (
   `id` int NOT NULL,
   `email` text COLLATE utf8mb4_general_ci NOT NULL,
   `username` text COLLATE utf8mb4_general_ci NOT NULL,
-  `password` text COLLATE utf8mb4_general_ci NOT NULL
+  `password` text COLLATE utf8mb4_general_ci NOT NULL,
+  `isAdmin` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `password`) VALUES
-(1, 'user1@gmail.com', 'User1', 'user1'),
-(2, 'user2@gmail.com', 'User2', 'user2');
+INSERT INTO `users` (`id`, `email`, `username`, `password`, `isAdmin`, `subject`) VALUES
+(1, 'suchat@sarp.co', 'สุชาติ ทาทอง', '1234', 'admin', 'Suchat'),
+(2, 'ratchadanate@sarp.co', 'รัชฎาเนตร สุรำไพ', '1234', 'admin', 'Ratchadanate'),
+(9, 'user1@gmail.com', 'User1', '1234', NULL, NULL),
+(10, 'user2@gmail.com', 'User2', '1234', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -252,7 +257,8 @@ ALTER TABLE `teachers`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sync_subject` (`subject`);
 
 --
 -- Indexes for table `weekday`
@@ -268,7 +274,7 @@ ALTER TABLE `weekday`
 -- AUTO_INCREMENT for table `checklist`
 --
 ALTER TABLE `checklist`
-  MODIFY `cId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `cId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -298,7 +304,7 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
@@ -309,6 +315,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `staff`
   ADD CONSTRAINT `sync_subjects` FOREIGN KEY (`weekday_id`) REFERENCES `subjects` (`weekday_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `sync_subject` FOREIGN KEY (`subject`) REFERENCES `subjects` (`weekday_id`) ON DELETE CASCADE ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
