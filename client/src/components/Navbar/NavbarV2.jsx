@@ -16,19 +16,19 @@ export default function Example() {
     ],
     ตารางเรียน: [
       {
-        id: 1,
+        id: 2,
         link: "/schedule",
       },
     ],
     ติดต่อแจ้งปัญหา: [
       {
-        id: 1,
+        id: 3,
         link: "/help",
       },
     ],
     เกี่ยวกับ: [
       {
-        id: 1,
+        id: 4,
         link: "/about",
       },
     ],

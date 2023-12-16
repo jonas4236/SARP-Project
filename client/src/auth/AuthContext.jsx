@@ -107,6 +107,21 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
+  const helping = async (day, message) => {
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API}/support`,
+        day,
+        message
+      );
+      const result = res.data;
+
+      return result;
+    } catch (err) {
+      console.log("error: ", err);
+    }
+  };
+
   const logout = async () => {
     try {
       await axios.get(`${import.meta.env.VITE_API}/logout`);
@@ -133,7 +148,15 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ username, currentUser, currentAdmin, login, loginAdmin, logout }}
+      value={{
+        username,
+        currentUser,
+        currentAdmin,
+        helping,
+        login,
+        loginAdmin,
+        logout,
+      }}
     >
       {children}
     </AuthContext.Provider>

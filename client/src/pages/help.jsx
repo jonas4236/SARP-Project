@@ -1,7 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../auth/AuthContext";
 
 const help = () => {
+  const [day, setDay] = useState(null);
+  const [message, setMessage] = useState(null);
+
+  const { helping } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const today = new Date();
+
+  const month = today.getMonth() + 1;
+  const year = today.getFullYear();
+  const date = today.getDate();
+  const currentDate = `${year}/${month}/${date}`;
+
+  useEffect(() => {
+    // console.log("day", currentDate);
+    setDay(currentDate);
+  }, []);
+
+  const handleSummitHelp = async (e) => {
+    e.preventDefault();
+    await helping({ day, message }).then((result) => {
+      navigate("/help/successfully").then(() => {
+        location.reload(true);
+      });
+    });
+  };
   return (
     <>
       <div className="">
@@ -25,10 +52,14 @@ const help = () => {
               committed to offering you prompt and comprehensive service.
             </p>
           </div>
-          <div className="mt-8 flex flex-col items-center justify-center">
+          <form
+            onSubmit={handleSummitHelp}
+            className="mt-8 flex flex-col items-center justify-center"
+          >
             <textarea
               className="lg:w-[650px] xl:w-[650px] w-full h-[150px] outline-none border-[#BDBDBD] border-[2px] rounded-md resize-none"
               placeholder="แจ้งปัญหาของคุณ..."
+              onChange={(e) => setMessage(e.target.value)}
               name=""
               id=""
               cols="30"
@@ -42,7 +73,7 @@ const help = () => {
                 <button className="text-[#BDBDBD]">กลับสู่หน้าหลัก</button>
               </div>
             </Link>
-          </div>
+          </form>
         </div>
       </div>
     </>

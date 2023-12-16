@@ -132,7 +132,16 @@ app.get("/api/staff/:username", (req, res) => {
   const sql =
     "SELECT subjects.* FROM subjects JOIN users ON subjects.weekday_id = users.subject WHERE users.username = ?";
   db.query(sql, [username], (err, results) => {
-    if (err) console.error("Error querying database: ", err);
+    if (err) console.log("Error querying database: ", err);
+    res.json({ status: "success", results: results });
+  });
+});
+
+app.post("/api/support", (req, res) => {
+  const { day, message } = req.body;
+  const sql = "INSERT INTO help (date, message) VALUES (?, ?)";
+  db.query(sql, [day, message], (err, results) => {
+    if (err) console.log("err added help: ", err);
     res.json(results);
   });
 });

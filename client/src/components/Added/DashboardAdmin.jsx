@@ -56,7 +56,7 @@ const DashboardAdmin = () => {
     fetchSubjects();
   }, []);
 
-  console.log("subject: ", dataSubjects);
+  console.log("subject: ", dataSubjects.results);
 
 
   useEffect(() => {
@@ -438,7 +438,7 @@ const DashboardAdmin = () => {
                           onChange={(event) => setSubject(event.target.value)}
                         >
                           <option>none</option>
-                          {dataSubjects.map((sub) => (
+                          {dataSubjects?.results?.map((sub) => (
                             <option key={sub.subId}>{sub.sub_name}</option>
                           ))}
                         </select>

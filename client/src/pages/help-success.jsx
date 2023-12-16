@@ -1,7 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom';
+
 
 const HelpSuccess = () => {
+
   return (
     <div className="">
       <div className="xl:w-[1170px] flex flex-col justify-center lg:xl:w-[1170px] h-[100vh] px-4 md:px-0 lg:px-0 xl:px-0 mx-auto py-8">

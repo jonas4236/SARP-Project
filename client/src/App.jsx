@@ -14,7 +14,6 @@ import Help from "./pages/help";
 import Schedule from "./pages/Schedule";
 import HelpSuccess from "./pages/help-success";
 import MimiFooter from "./pages/mimiFooter";
-import LoginAdmin from "./pages/LoginAdmin";
 
 const Layout = () => {
   return (
