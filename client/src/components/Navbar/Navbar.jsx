@@ -6,6 +6,7 @@ import secureLocalStorage from "react-secure-storage";
 import ResponsiveNav from "./ResponsiveNav";
 import NavbarV2 from "./NavbarV2";
 import NavbarAdmin from "./NavbarAdmin";
+import NavbarAdminstrator from "./NavbarAdminstrator";
 
 // ICONS
 import { IoClose } from "react-icons/io5";
@@ -22,7 +23,7 @@ const Navbar = () => {
 
   axios.defaults.withCredentials = true;
 
-  const { currentUser, currentAdmin, logout, username } =
+  const { currentUser, currentAdmin, logout, username, adminstrator } =
     useContext(AuthContext);
 
   useEffect(() => {
@@ -34,14 +35,18 @@ const Navbar = () => {
   }, [currentAdmin]);
 
   useEffect(() => {
+    secureLocalStorage.setItem("adminstrator", JSON.stringify(adminstrator));
+  }, [adminstrator]);
+
+  useEffect(() => {
     // หากมี currentUser หรือ currentAdmin ให้ไม่ทำการ redirect
-    if (currentUser || currentAdmin) {
+    if (currentUser || currentAdmin || adminstrator) {
       return;
     }
 
     // หากไม่มี currentUser หรือ currentAdmin ให้ทำการ redirect ไปที่ "/login"
     navigate("/login");
-  }, [currentUser, currentAdmin, navigate]);
+  }, [currentUser, currentAdmin, adminstrator, navigate]);
 
   return (
     <>
@@ -71,6 +76,7 @@ const Navbar = () => {
               ""
             )}
             {currentAdmin ? <NavbarAdmin /> : ""}
+            {adminstrator ? <NavbarAdminstrator /> : ""}
           </div>
           <div
             className="items-center justify-between w-full md:flex lg:block xl:block 2xl:block md:w-auto md:order-1 sm:hidden"

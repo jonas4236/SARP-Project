@@ -63,13 +63,14 @@ app.post("/api/login/users", (req, res) => {
     if (password === user.password) {
       const username = user.username;
       const isAdmin = user.isAdmin;
+      const adminstrator = user.isAdminstrator;
       const token = jwt.sign({ username }, "jwt-secret-key", {
         expiresIn: "1h",
       });
       res.cookie("ac_token", token, { sameSite: "None", secure: true });
       return res
         .status(200)
-        .json({ results: user, isAdmin: isAdmin, status: "success" });
+        .json({ results: user, isAdmin: isAdmin, isAdminstrator: adminstrator, status: "success" });
     } else {
       return res.json({ error: "Invalid email or password!" });
     }

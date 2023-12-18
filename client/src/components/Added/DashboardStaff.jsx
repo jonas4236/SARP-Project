@@ -3,7 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const DashboardAdmin = () => {
+const DashboardStaff = () => {
   const [teacher, setTeacher] = useState([]);
   const [subject, setSubject] = useState([]);
   const [date, setDate] = useState([]);
@@ -23,8 +23,7 @@ const DashboardAdmin = () => {
   const [Stu10, setStu10] = useState([]);
 
   const [students, setStudents] = useState([]);
-  const { logout, currentAdmin, username } = useContext(AuthContext);
-
+  const { adminstrator } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -45,7 +44,7 @@ const DashboardAdmin = () => {
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API}/staff/${username}`);
+        const res = await axios.get(`${import.meta.env.VITE_API}/subjects`);
 
         setDataSubjects(res.data);
       } catch (err) {
@@ -56,8 +55,7 @@ const DashboardAdmin = () => {
     fetchSubjects();
   }, []);
 
-  // console.log("subject: ", dataSubjects.results);
-
+  console.log("subject: ", dataSubjects);
 
   useEffect(() => {
     const fetchTeachers = async () => {
@@ -72,7 +70,8 @@ const DashboardAdmin = () => {
 
     fetchTeachers();
   }, []);
-  
+
+  console.log("teachers: ", dataTeachers);
 
   const PullDay = date.slice(8, 10);
   const PullMonth = date.slice(5, 7);
@@ -108,7 +107,7 @@ const DashboardAdmin = () => {
   };
 
   useEffect(() => {
-    if (!currentAdmin) {
+    if (!adminstrator) {
       navigate("/");
     }
   }, []);
@@ -117,12 +116,13 @@ const DashboardAdmin = () => {
   return (
     <>
       <div className="mb-32">
-        {currentAdmin ? (
+        {adminstrator ? (
           <>
             <div className="lg:w-[1170px] xl:w-[1170px] mx-auto">
               <div className="my-16 flex justify-center">
                 <span className="text-[36px] text-blue-600 drop-shadow-lg font-bold">
-                  บันทึกการเข้าเรียน
+                  บันทึกการเข้าเรียน{" "}
+                  <span className="text-red-500">(Staff)</span>
                 </span>
               </div>
               <div className="">
@@ -439,7 +439,7 @@ const DashboardAdmin = () => {
                           onChange={(event) => setSubject(event.target.value)}
                         >
                           <option>none</option>
-                          {dataSubjects?.results?.map((sub) => (
+                          {dataSubjects?.map((sub) => (
                             <option key={sub.subId}>{sub.sub_name}</option>
                           ))}
                         </select>
@@ -456,7 +456,9 @@ const DashboardAdmin = () => {
                           onChange={(event) => setTeacher(event.target.value)}
                         >
                           <option>none</option>
-                          <option>{username}</option>
+                          {dataTeachers?.map((teach) => (
+                            <option key={teach.id}>{teach.teacher_name}</option>
+                          ))}
                         </select>
                       </div>
                       <div className="w-full flex justify-center">
@@ -478,4 +480,4 @@ const DashboardAdmin = () => {
   );
 };
 
-export default DashboardAdmin;
+export default DashboardStaff;

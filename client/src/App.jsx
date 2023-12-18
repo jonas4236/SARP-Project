@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import Login from "./components/Login";
 import Dashboard from "./components/admin/Dashboard";
 import DashboardAdmin from "./components/Added/DashboardAdmin";
+import DashboardStaff from "./components/Added/DashboardStaff";
 import About from "./pages/About";
 import Creator from "./pages/creator";
 import Help from "./pages/help";
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/add",
         element: <DashboardAdmin />,
+      },
+      {
+        path: "/staff/add",
+        element: <DashboardStaff />,
       },
       {
         path: "/schedule/:slugWEEK/:slugDMY",

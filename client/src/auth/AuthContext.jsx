@@ -19,6 +19,11 @@ export const AuthContextProvider = ({ children }) => {
     JSON.parse(secureLocalStorage.getItem("a_name")) || null
   );
 
+  // for adminstrator
+  const [adminstrator, setAdminstrator] = useState(
+    JSON.parse(secureLocalStorage.getItem("adminstrator")) || null
+  );
+
   const updateLocalStorage = (admin) => {
     setCurrentAdmin(admin);
     secureLocalStorage.setItem("staff", JSON.stringify(admin));
@@ -53,7 +58,7 @@ export const AuthContextProvider = ({ children }) => {
         });
       }
 
-      if (res.data.isAdmin === "admin") {
+      if (res.data.status === "success" && res.data.isAdmin === "admin") {
         const result = res.data;
         const name = result.results.username;
 
@@ -64,6 +69,24 @@ export const AuthContextProvider = ({ children }) => {
         Swal.fire({
           title: "เข้าสู่ระบบ สำเร็จแล้ว!",
           text: `สวัสดีคุณ ${name}! ยินดีต้อนรับสู่ระบบเช็คชื่อการเข้าเรียน!`,
+          icon: "success",
+        });
+      }
+
+      if (
+        res.data.status === "success" &&
+        res.data.isAdminstrator === "adminstrator"
+      ) {
+        const result = res.data;
+        const name = result.results.username;
+
+        setUsername(name);
+        setCurrentUser(null);
+        setAdminstrator(result);
+        setCurrentAdmin(null);
+        Swal.fire({
+          title: "เข้าสู่ระบบ สำเร็จแล้ว!",
+          text: `สวัสดีคุณคือ ${name}! ยินดีต้อนรับสู่ระบบเช็คชื่อการเข้าเรียน!`,
           icon: "success",
         });
       }
@@ -128,6 +151,7 @@ export const AuthContextProvider = ({ children }) => {
       setCurrentUser(null);
       setUsername(null);
       setCurrentAdmin(null);
+      setAdminstrator(null);
       location.reload(true);
     } catch (err) {
       console.log("Logout error:", err);
@@ -143,6 +167,10 @@ export const AuthContextProvider = ({ children }) => {
   }, [currentAdmin]);
 
   useEffect(() => {
+    secureLocalStorage.setItem("adminstrator", JSON.stringify(adminstrator));
+  }, [adminstrator]);
+
+  useEffect(() => {
     secureLocalStorage.setItem("a_name", JSON.stringify(username));
   }, [username]);
 
@@ -152,6 +180,7 @@ export const AuthContextProvider = ({ children }) => {
         username,
         currentUser,
         currentAdmin,
+        adminstrator,
         helping,
         login,
         loginAdmin,
