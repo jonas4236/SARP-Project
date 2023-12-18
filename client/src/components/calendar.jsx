@@ -9,6 +9,9 @@ import { AuthContext } from "../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function calendar() {
+  const { currentUser, currentAdmin, adminstrator } =
+    useContext(AuthContext);
+
   const handleDateClick = (arg) => {
     const clickedDate = arg.date;
 
@@ -26,6 +29,16 @@ function calendar() {
 
     window.location.href = `/schedule/${dayOfWeek}/${day}-${month}-${year}`;
   };
+
+  useEffect(() => {
+    // หากมี currentUser หรือ currentAdmin ให้ไม่ทำการ redirect
+    if (currentUser || currentAdmin || adminstrator) {
+      return;
+    }
+
+    // หากไม่มี currentUser หรือ currentAdmin ให้ทำการ redirect ไปที่ "/login"
+    navigate("/login");
+  }, [currentUser, currentAdmin, adminstrator, navigate]);
 
   return (
     <div className="xl:w-[1170px] mx-auto px-4 my-16">
