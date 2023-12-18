@@ -6,7 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 
 import "./calendar.css";
 import { AuthContext } from "../auth/AuthContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function calendar() {
   const { currentUser, currentAdmin, adminstrator } = useContext(AuthContext);
@@ -39,7 +39,7 @@ function calendar() {
 
     // หากไม่มี currentUser หรือ currentAdmin ให้ทำการ redirect ไปที่ "/login"
     navigate("/login");
-  }, [currentUser, currentAdmin, adminstrator, Navigate]);
+  }, [currentUser, currentAdmin, adminstrator, navigate]);
 
   return (
     <div className="xl:w-[1170px] mx-auto px-4 my-16">
