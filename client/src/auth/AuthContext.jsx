@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import Api from "../helpers/Api";
 import Swal from "sweetalert2";
 import secureLocalStorage from "react-secure-storage";
 

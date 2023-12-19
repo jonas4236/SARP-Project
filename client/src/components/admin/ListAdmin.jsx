@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import Api from "../../helpers/Api";
-
 const ListAdmin = () => {
   const [Stu, setStu] = useState([]);
   const [Stu2, setStu2] = useState([]);

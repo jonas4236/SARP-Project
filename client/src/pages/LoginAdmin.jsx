@@ -25,14 +25,6 @@ const LoginAdmin = () => {
     });
   };
 
-  // useEffect(() => {
-  //   axios.get(`${DefaultAPI}/login`).then((res) => {
-  //     if (res.data.redirectTo) {
-  //       window.location.href = res.data.redirectTo;
-  //     }
-  //   });
-  // }, []);
-
   return (
     <>
       <div className="px-4">
