@@ -1,8 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaUserGraduate } from "react-icons/fa";
+import NavbarAdminstrator from "./NavbarAdminstrator";
 
-const ResponsiveNav = ({ currentUser, currentAdmin, logout, username }) => {
+const ResponsiveNav = ({
+  currentUser,
+  currentAdmin,
+  adminstrator,
+  logout,
+  username,
+}) => {
   return (
     <>
       <div
@@ -64,6 +71,34 @@ const ResponsiveNav = ({ currentUser, currentAdmin, logout, username }) => {
                   </div>
 
                   <Link to={"/add"}>
+                    <div className="mt-2 p-1 px-2 bg-gray-100 rounded-lg">
+                      <span className="text-[#27AE60]">บันทึกการเข้าเรียน</span>
+                    </div>
+                  </Link>
+
+                  <button
+                    onClick={logout}
+                    className="mt-2 p-1 px-2 bg-gray-100 rounded-lg"
+                  >
+                    <span className="text-[#FF4015]">ออกจากระบบ</span>
+                  </button>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
+
+            {adminstrator ? (
+              <>
+                <div className="flex flex-col">
+                  <div className="flex items-center p-1 px-2 bg-gray-100 rounded-lg">
+                    <span className="">
+                      <FaUserGraduate />
+                    </span>
+                    <span className="ml-2">{username}</span>
+                  </div>
+
+                  <Link to={"/staff/add"}>
                     <div className="mt-2 p-1 px-2 bg-gray-100 rounded-lg">
                       <span className="text-[#27AE60]">บันทึกการเข้าเรียน</span>
                     </div>

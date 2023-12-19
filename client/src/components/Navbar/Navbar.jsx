@@ -98,6 +98,7 @@ const Navbar = () => {
             currentAdmin={currentAdmin}
             username={username}
             logout={logout}
+            adminstrator={adminstrator}
           />
         )}
       </nav>

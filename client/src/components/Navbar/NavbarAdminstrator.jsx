@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../auth/AuthContext";
 
-const NavbarAdmin = () => {
+const NavbarAdminstrator = () => {
   const { logout, username } = useContext(AuthContext);
 
   return (
@@ -42,4 +42,4 @@ const NavbarAdmin = () => {
   );
 };
 
-export default NavbarAdmin;
+export default NavbarAdminstrator;
