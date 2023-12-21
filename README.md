@@ -8,6 +8,4 @@
 
 ![Alt text](https://res.cloudinary.com/jonasdev/image/upload/v1702724065/5_kzv6oy.jpg)
 
-![Alt text](https://res.cloudinary.com/jonasdev/image/upload/v1702724065/4_hx9drj.jpg)
-
 ![Alt text](https://res.cloudinary.com/jonasdev/image/upload/v1702724066/3_xwgcya.jpg)
