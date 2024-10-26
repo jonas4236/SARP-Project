@@ -15,6 +15,7 @@ import Help from "./pages/help";
 import Schedule from "./pages/Schedule";
 import HelpSuccess from "./pages/help-success";
 import MimiFooter from "./pages/mimiFooter";
+import ChartStudent from "./pages/ChartStudent";
 
 const Layout = () => {
   return (
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/schedule/:slugWEEK/:slugDMY",
         element: <Dashboard />,
+      },
+      {
+        path: "/students/data",
+        element: <ChartStudent />,
       },
     ],
   },

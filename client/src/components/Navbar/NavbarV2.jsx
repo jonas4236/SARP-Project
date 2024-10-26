@@ -20,10 +20,10 @@ export default function Example() {
         link: "/schedule",
       },
     ],
-    ติดต่อแจ้งปัญหา: [
+    ข้อมูลการมาเรียน: [
       {
         id: 3,
-        link: "/help",
+        link: "/students/data",
       },
     ],
     เกี่ยวกับ: [

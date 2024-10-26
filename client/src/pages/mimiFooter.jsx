@@ -21,8 +21,8 @@ const mimiFooter = () => {
                 <Link to={"/schedule"}>
                   <li className="text-[#828282]">ตารางเรียน</li>
                 </Link>
-                <Link to={"/help"}>
-                  <li className="text-[#828282]">ติดต่อแจ้งปัญหา</li>
+                <Link to={"/students/data"}>
+                  <li className="text-[#828282]">ข้อมูลการมาเรียน</li>
                 </Link>
                 <Link to={"/about"}>
                   <li className="text-[#828282] mb-4 md:md-0 lg:md-0 xl:md-0">เกี่ยวกับ</li>
