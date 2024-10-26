@@ -2,36 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-
-const DashboardAdmin = () => {
-  const [teacher, setTeacher] = useState([]);
-  const [subject, setSubject] = useState([]);
-  const [date, setDate] = useState([]);
-=======
 import Swal from "sweetalert2";
 
 const DashboardAdmin = () => {
   const [teacher, setTeacher] = useState("");
   const [subject, setSubject] = useState("");
   const [date, setDate] = useState("");
->>>>>>> 5db11bd (feat: starting doing SARP 2.0)
 
   const [dataSubjects, setDataSubjects] = useState([]);
   const [dataTeachers, setDataTeacher] = useState([]);
 
-<<<<<<< HEAD
-  const [Stu, setStu] = useState([]);
-  const [Stu2, setStu2] = useState([]);
-  const [Stu3, setStu3] = useState([]);
-  const [Stu4, setStu4] = useState([]);
-  const [Stu5, setStu5] = useState([]);
-  const [Stu6, setStu6] = useState([]);
-  const [Stu7, setStu7] = useState([]);
-  const [Stu8, setStu8] = useState([]);
-  const [Stu9, setStu9] = useState([]);
-  const [Stu10, setStu10] = useState([]);
-=======
   const [Stu, setStu] = useState("");
   const [Stu2, setStu2] = useState("");
   const [Stu3, setStu3] = useState("");
@@ -42,15 +22,10 @@ const DashboardAdmin = () => {
   const [Stu8, setStu8] = useState("");
   const [Stu9, setStu9] = useState("");
   const [Stu10, setStu10] = useState("");
->>>>>>> 5db11bd (feat: starting doing SARP 2.0)
 
   const [students, setStudents] = useState([]);
   const { logout, currentAdmin, username } = useContext(AuthContext);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 5db11bd (feat: starting doing SARP 2.0)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -70,13 +45,9 @@ const DashboardAdmin = () => {
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-<<<<<<< HEAD
-        const res = await axios.get(`${import.meta.env.VITE_API}/staff/${username}`);
-=======
         const res = await axios.get(
           `${import.meta.env.VITE_API}/staff/${username}`
         );
->>>>>>> 5db11bd (feat: starting doing SARP 2.0)
 
         setDataSubjects(res.data);
       } catch (err) {
@@ -88,11 +59,7 @@ const DashboardAdmin = () => {
   }, []);
 
   // console.log("subject: ", dataSubjects.results);
-<<<<<<< HEAD
-
-=======
   // console.log(Stu);
->>>>>>> 5db11bd (feat: starting doing SARP 2.0)
 
   useEffect(() => {
     const fetchTeachers = async () => {
@@ -107,10 +74,6 @@ const DashboardAdmin = () => {
 
     fetchTeachers();
   }, []);
-<<<<<<< HEAD
-  
-=======
->>>>>>> 5db11bd (feat: starting doing SARP 2.0)
 
   const PullDay = date.slice(8, 10);
   const PullMonth = date.slice(5, 7);
@@ -138,9 +101,6 @@ const DashboardAdmin = () => {
           Stu10: Stu10,
         })
         .then(() => {
-<<<<<<< HEAD
-          window.location.href = "/add";
-=======
           Swal.fire(
             "Successfully!",
             "บันทึกการเข้าเรียนเสร็จเรียบร้อย",
@@ -148,7 +108,6 @@ const DashboardAdmin = () => {
           ).then(() => {
             window.location.href = "/";
           });
->>>>>>> 5db11bd (feat: starting doing SARP 2.0)
         });
     } catch (err) {
       console.log("Error: ", err);
@@ -174,11 +133,7 @@ const DashboardAdmin = () => {
                 </span>
               </div>
               <div className="">
-<<<<<<< HEAD
-                <form className="mx-auto" onSubmit={AddedCheckList}>
-=======
                 <div className="mx-auto">
->>>>>>> 5db11bd (feat: starting doing SARP 2.0)
                   <div className="flex gap-16 flex-col lg:flex-row xl:flex-row">
                     <div className="flex-[2]">
                       <div className="w-full flex justify-center bg-sky-500 py-2 text-white font-bold text-[18px]">
@@ -512,15 +467,6 @@ const DashboardAdmin = () => {
                         </select>
                       </div>
                       <div className="w-full flex justify-center">
-<<<<<<< HEAD
-                        <button className="bg-sky-500 text-white mt-4 w-full py-2 rounded-lg font-medium hover:bg-sky-600">
-                          บันทึก
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-=======
                         {!Stu ||
                         !Stu2 ||
                         !Stu3 ||
@@ -549,7 +495,6 @@ const DashboardAdmin = () => {
                     </div>
                   </div>
                 </div>
->>>>>>> 5db11bd (feat: starting doing SARP 2.0)
               </div>
             </div>
           </>
