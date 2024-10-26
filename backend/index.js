@@ -127,7 +127,6 @@ app.get("/api/schedule/:weekday_id", (req, res) => {
   });
 });
 
-// This code uses a JOIN operation to combine data from the "subjects" and "staff" tables where the "weekday_id" values match. It filters the results based on the provided "username" in the URL parameter. This should give you the desired result, similar to the original MySQL query you provided.
 app.get("/api/staff/:username", (req, res) => {
   const { username } = req.params;
   const sql =
